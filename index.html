@@ -55,15 +55,22 @@
             transform: scale(1.2); /* Zoom-in effect */
         }
         .main-text {
+            position: absolute;
+            top: 120px; /* Moves the text down */
+            left: 20px; /* Moves the text to the left */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
-            margin: 20px 20px 0 20px;
-            font-size: 100px; /* Big text size */
             transition: transform 0.3s ease; /* Smooth zoom effect */
         }
         .main-text span {
             margin: 0;
+        }
+        .main-text span:first-child {
+            font-size: 80px; /* UNBLOCK size */
+        }
+        .main-text span:last-child {
+            font-size: 120px; /* ZONE size */
         }
         .main-text:hover {
             transform: scale(1.1); /* Zoom-in effect on hover */
