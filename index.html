@@ -12,8 +12,6 @@
             font-family: 'Bowlby One', sans-serif;
             color: white;
             display: flex;
-            flex-direction: column;
-            justify-content: space-between;
         }
 
         header {
@@ -22,6 +20,7 @@
             align-items: center;
             justify-content: space-between;
             padding: 10px 20px;
+            width: 100%;
         }
 
         h1 {
@@ -37,35 +36,6 @@
 
         .blue {
             color: blue;
-        }
-
-        .search-bar-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        input[type="text"] {
-            font-size: 18px;
-            padding: 5px 10px;
-            border: none;
-            border-radius: 5px;
-            width: 200px;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-        }
-
-        .icon {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .icon:hover {
-            transform: scale(1.2);
         }
 
         .main-text {
@@ -100,6 +70,62 @@
             transform: scale(1.1);
         }
 
+        .sidebar {
+            background-color: #222;
+            color: white;
+            width: 250px;
+            height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .sidebar .time {
+            font-size: 18px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            font-size: 18px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+        }
+
+        .tabs {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .tab {
+            font-size: 20px;
+            text-align: center;
+            padding: 10px;
+            background-color: #444;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border-radius: 5px;
+        }
+
+        .tab:hover {
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
@@ -108,38 +134,57 @@
                 font-size: 60px;
             }
             input[type="text"] {
-                width: 150px;
+                width: 100%;
             }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
         <h1><span>UNBLOCK</span><span class="blue">ZONE</span></h1>
-        <div class="search-bar-container">
-            <input type="text" id="searchBar" placeholder="Search...">
-            <a href="https://your-custom-search-url.com">
-                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
-            </a>
-            <a href="https://your-custom-settings-url.com">
-                <img src="https://img.icons8.com/m_outlined/512/228BE6/settings--v3.png" alt="Settings Icon" class="icon">
-            </a>
+        <div class="main-text">
+            <span>UNBLOCK</span>
+            <span class="blue">ZONE</span>
         </div>
     </header>
-    <div class="main-text">
-        <span>UNBLOCK</span>
-        <span class="blue">ZONE</span>
+
+    <div class="sidebar">
+        <!-- Real-time clock -->
+        <div class="time" id="time"></div>
+
+        <!-- Search bar -->
+        <div class="search-bar-container">
+            <input type="text" id="searchBar" placeholder="Search...">
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs">
+            <div class="tab" onclick="window.location.href='https://your-games-url.com'">Games</div>
+            <div class="tab" onclick="window.location.href='https://your-proxies-url.com'">Proxies</div>
+            <div class="tab" onclick="window.location.href='https://your-apps-url.com'">Apps</div>
+            <div class="tab" onclick="window.location.href='https://your-settings-url.com'">Settings</div>
+            <div class="tab" onclick="window.location.href='https://your-exploits-url.com'">Exploits</div>
+        </div>
     </div>
 
     <script>
+        // Update the clock every second
+        function updateClock() {
+            const timeElement = document.getElementById('time');
+            const now = new Date();
+            timeElement.textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateClock, 1000);
+
+        // Handle search bar functionality
         const searchBar = document.getElementById('searchBar');
         searchBar.addEventListener('keypress', function (event) {
             if (event.key === 'Enter') {
                 const query = searchBar.value.trim();
                 if (query) {
-                    alert(`Searching for: ${query}`);
-                    // Add custom logic here to handle the search
+                    window.location.href = `https://szvy.lol/embed.html#https://www.google.com/search?q=${query}`;
                 }
             }
         });
