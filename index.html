@@ -11,86 +11,108 @@
             background-color: black;
             font-family: 'Bowlby One', sans-serif;
             color: white;
-        }
-        header {
-            background-color: #333; /* Dark grey header */
             display: flex;
-            align-items: center;
-            padding: 10px 20px;
+            flex-direction: column;
             justify-content: space-between;
         }
+
+        header {
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+        }
+
         h1 {
             font-size: 50px;
             margin: 0;
             display: inline-block;
-            transition: transform 0.3s ease; /* Smooth zoom effect */
+            transition: transform 0.3s ease;
         }
+
         h1:hover {
-            transform: scale(1.1); /* Zoom-in effect */
+            transform: scale(1.1);
         }
+
         .blue {
             color: blue;
         }
+
         .search-bar-container {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         input[type="text"] {
             font-size: 18px;
             padding: 5px 10px;
             border: none;
             border-radius: 5px;
+            width: 200px;
         }
+
         input[type="text"]:focus {
             outline: none;
         }
+
         .icon {
             width: 30px;
             height: 30px;
             cursor: pointer;
             transition: transform 0.3s ease;
         }
+
         .icon:hover {
             transform: scale(1.2);
         }
+
         .main-text {
             position: absolute;
-            top: 150px; /* Moves the text down */
-            left: 100px; /* Keeps it towards the left */
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: center;
             text-align: center;
-            transition: transform 0.3s ease; /* Smooth zoom effect */
+            transition: transform 0.3s ease;
         }
+
         .main-text span {
             margin: 0;
             display: block;
             width: fit-content;
         }
+
         .main-text span:first-child {
-            font-size: 100px; /* UNBLOCK size */
+            font-size: 100px;
         }
+
         .main-text span:last-child {
-            font-size: 130px; /* Larger ZONE size */
+            font-size: 100px;
             color: blue;
-            margin-left: auto;
-            margin-right: auto;
-            letter-spacing: -2px; /* Adjust for alignment */
+            letter-spacing: -2px;
         }
+
         .main-text:hover {
-            transform: scale(1.1); /* Zoom-in effect */
+            transform: scale(1.1);
         }
-        .subtext {
-            font-family: 'Roboto', sans-serif;
-            font-weight: bold;
-            font-size: 18px;
-            color: white;
-            margin-top: 10px;
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+            .main-text span {
+                font-size: 60px;
+            }
+            input[type="text"] {
+                width: 150px;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -108,8 +130,8 @@
     <div class="main-text">
         <span>UNBLOCK</span>
         <span class="blue">ZONE</span>
-        <div class="subtext">UnblockZone, The BEST Unblocked Games you will ever need!</div>
     </div>
+
     <script>
         const searchBar = document.getElementById('searchBar');
         searchBar.addEventListener('keypress', function (event) {
