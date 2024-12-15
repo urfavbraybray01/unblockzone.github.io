@@ -56,9 +56,8 @@
         }
         .main-text {
             position: absolute;
-            top: 120px; /* Moves the text down */
-            left: 0; /* Moves the text to the far-left */
-            padding-left: 20px; /* Small padding to avoid edge overlap */
+            top: 150px; /* Moves the text down */
+            left: 100px; /* Moves the text towards the center but keeps it left-aligned */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -68,10 +67,10 @@
             margin: 0;
         }
         .main-text span:first-child {
-            font-size: 80px; /* UNBLOCK size */
+            font-size: 100px; /* UNBLOCK size */
         }
         .main-text span:last-child {
-            font-size: 120px; /* ZONE size */
+            font-size: 100px; /* ZONE size to fit UNBLOCK */
         }
         .main-text:hover {
             transform: scale(1.1); /* Zoom-in effect on hover */
