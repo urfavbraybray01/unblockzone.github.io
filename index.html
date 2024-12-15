@@ -45,9 +45,6 @@
             height: 30px;
             cursor: pointer;
         }
-        .icon-blue {
-            filter: brightness(0) saturate(100%) invert(25%) sepia(100%) saturate(2912%) hue-rotate(197deg) brightness(102%) contrast(105%);
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
@@ -56,11 +53,11 @@
         <h1><span>UNBLOCK</span><span class="blue">ZONE</span></h1>
         <div class="search-bar-container">
             <input type="text" id="searchBar" placeholder="Search...">
-            <a href="https://customsearchurl.com">
-                <img src="https://cdn-icons-png.flaticon.com/512/3917/search.png" alt="Search Icon" class="icon icon-blue">
+            <a href="https://cdn-icons-png.freepik.com/512/9135/9135995.png">
+                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
             </a>
-            <a href="https://customsettingsurl.com">
-                <img src="https://cdn-icons-png.flaticon.com/512/3524/settings.png" alt="Settings Icon" class="icon icon-blue">
+            <a href="https://img.icons8.com/m_outlined/512/228BE6/settings--v3.png">
+                <img src="https://img.icons8.com/m_outlined/512/228BE6/settings--v3.png" alt="Settings Icon" class="icon">
             </a>
         </div>
     </header>
@@ -71,8 +68,7 @@
                 const query = searchBar.value.trim();
                 if (query) {
                     alert(`Searching for: ${query}`);
-                    // Add custom logic here to find the closest thing to the search query
-                    // For now, we just display the query
+                    // Add custom logic here to handle the search
                 }
             }
         });
