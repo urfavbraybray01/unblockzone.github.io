@@ -103,11 +103,11 @@
         /* Styles for the new "UNBLOCK ZONE" text and about section */
         .subtitle-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             justify-content: flex-start;
             padding: 20px;
             margin-top: 20px;
-            flex-direction: column; /* Stack vertically */
+            width: 100%; /* Ensuring it takes full width */
         }
 
         .subtitle {
@@ -115,7 +115,7 @@
             display: inline-block;
             transition: transform 0.3s ease;
             text-align: left; /* Align text to the left */
-            width: 100%; /* Make sure the text container takes full width */
+            width: 60%; /* Take up 60% of the container */
         }
 
         .subtitle .blue {
@@ -129,7 +129,7 @@
         }
 
         .about-container {
-            margin-left: 40px;
+            margin-left: auto; /* Push the about section to the right */
             background-color: #222;
             color: white;
             padding: 15px;
@@ -150,11 +150,6 @@
         .about-container p {
             font-size: 16px;
             margin-top: 10px;
-        }
-
-        /* Adjust the description box to allow typing in the code */
-        .about-container p {
-            margin-top: 0;
         }
 
         .about-container .description {
@@ -198,6 +193,7 @@
 
             .subtitle {
                 font-size: 60px;
+                width: 100%; /* Full width for smaller screens */
             }
 
             .about-container {
