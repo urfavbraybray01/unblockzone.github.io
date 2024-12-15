@@ -3,105 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>UnblockZone</title>
-    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/546/546310.png"> <!-- Add your custom favicon URL here -->
+    <link rel="icon" href="https://example.com/blue-internet-globe-logo.png" type="image/png"> <!-- Replace with actual favicon URL -->
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
+
         body {
             margin: 0;
             padding: 0;
-            background-color: black;
-            font-family: 'Bowlby One', sans-serif;
+            background-color: #000; /* Black background */
             color: white;
+            font-family: 'Bowlby One', sans-serif;
+            height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            flex-direction: column;
+            text-align: center;
+        }
+
+        .logo-container {
             position: relative;
         }
 
-        /* Header with medium opacity */
-        .header {
-            position: absolute;
-            top: 10%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 2.5em;
-            color: white;
-            opacity: 0.3;
+        .logo {
+            font-size: 3rem; /* Text size */
+            font-weight: bold;
         }
 
-        /* Main title with different colors */
-        .main-title {
-            font-size: 3em;
-            color: white;
-            position: relative;
-        }
-
-        .main-title .unblock {
-            color: white;
-        }
-
-        .main-title .zone {
-            color: #1976D2;
-        }
-
-        /* Search bar styling */
-        .search-container {
-            display: flex;
-            align-items: center;
-            margin-top: 20px;
-            border-radius: 20px;
-            background-color: #333;
-            padding: 10px;
-        }
-
-        .search-bar {
-            width: 300px;
-            padding: 10px;
-            border: none;
-            border-radius: 15px;
-            font-size: 1.2em;
-            background-color: transparent;
-            color: white;
-            outline: none;
-        }
-
-        .search-bar::placeholder {
-            color: white;
-        }
-
-        .icon {
-            font-size: 1.8em;
-            color: white;
-            margin-left: 10px;
-            cursor: pointer;
-        }
-
-        .settings-icon {
-            margin-left: 10px;
+        .logo .zone {
+            color: #1976D2; /* Blue for "ZONE" */
+            display: block; /* Moves ZONE to the next line */
         }
 
     </style>
 </head>
 <body>
-
-    <div class="header">
-        Your Custom Header (Optional)
+    <div class="logo-container">
+        <div class="logo">
+            UNBLOCK<span class="zone">ZONE</span>
+        </div>
     </div>
-
-    <div class="main-title">
-        <span class="unblock">UNBLOCK</span><span class="zone">ZONE</span>
-    </div>
-
-    <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Search...">
-        <i class="icon fas fa-search"></i>
-        <i class="icon settings-icon fas fa-cogs"></i>
-    </div>
-
-    <!-- Add FontAwesome for the icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
