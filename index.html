@@ -20,12 +20,9 @@
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: space-around;
             padding: 10px 20px;
-            position: fixed;
-            top: 0;
             width: 100%;
-            z-index: 10;
         }
 
         h1 {
@@ -41,6 +38,27 @@
 
         .blue {
             color: blue;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+            background-color: #444;
         }
 
         .search-bar-container {
@@ -72,115 +90,37 @@
             transform: scale(1.2);
         }
 
-        .main-text {
-            position: absolute;
-            top: 150px; /* Adjust the position to make it slightly left */
-            left: 20%; /* Shift it slightly to the left */
-            transform: translateX(-20%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .main-text span {
-            margin: 0;
-            display: block;
-            width: fit-content;
-        }
-
-        .main-text span:first-child {
-            font-size: 100px;
-        }
-
-        .main-text span:last-child {
-            font-size: 100px;
-            color: blue;
-            letter-spacing: -2px;
-        }
-
-        .main-text:hover {
-            transform: scale(1.1);
-        }
-
-        .description-box {
-            background-color: #444;
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            font-size: 18px;
-            width: 70%;
-            margin-top: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            transition: transform 0.3s ease;
-        }
-
-        .description-box:hover {
-            transform: scale(1.05);
-        }
-
-        textarea {
-            width: 100%;
-            background: #333;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            font-size: 16px;
-            resize: none;
-            margin-top: 10px;
-        }
-
-        textarea:focus {
-            outline: none;
-        }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
-            }
-            .main-text span {
-                font-size: 60px;
             }
             input[type="text"] {
                 width: 150px;
             }
 
-            .description-box {
-                width: 90%;
+            .nav-buttons {
+                display: block;
+                text-align: center;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
             }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header>
-        <h1><span>UNBLOCK</span><span class="blue">ZONE</span></h1>
-        <div class="search-bar-container">
-            <input type="text" id="searchBar" placeholder="Search...">
-            <a href="https://your-custom-search-url.com">
-                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
-            </a>
-            <a href="https://your-custom-settings-url.com">
-                <img src="https://img.icons8.com/m_outlined/512/228BE6/settings--v3.png" alt="Settings Icon" class="icon">
-            </a>
+        <div class="nav-buttons">
+            <a href="https://your-apps-url.com" class="nav-button">APPS</a>
+            <a href="https://your-games-url.com" class="nav-button">GAMES</a>
+            <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
+            <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
+            <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
     </header>
-
-    <div class="main-text">
-        <span>UNBLOCK</span>
-        <span class="blue">ZONE</span>
-    </div>
-
-    <div class="description-box">
-        <h3>Description</h3>
-        <textarea placeholder="Type the latest updates here..."></textarea>
-    </div>
 
     <script>
         const searchBar = document.getElementById('searchBar');
@@ -194,6 +134,5 @@
             }
         });
     </script>
-
 </body>
 </html>
