@@ -20,7 +20,7 @@
             justify-content: space-between;
         }
         h1 {
-            font-size: 50px; /* Adjusted font size */
+            font-size: 50px;
             margin: 0;
             display: inline-block;
             transition: transform 0.3s ease; /* Smooth zoom effect */
@@ -49,31 +49,38 @@
             width: 30px;
             height: 30px;
             cursor: pointer;
-            transition: transform 0.3s ease; /* Smooth zoom effect */
+            transition: transform 0.3s ease;
         }
         .icon:hover {
-            transform: scale(1.2); /* Zoom-in effect */
+            transform: scale(1.2);
         }
         .main-text {
             position: absolute;
             top: 150px; /* Moves the text down */
-            left: 100px; /* Moves the text towards the center but keeps it left-aligned */
+            left: 100px; /* Keeps it towards the left */
             display: flex;
             flex-direction: column;
             align-items: flex-start;
+            text-align: center;
             transition: transform 0.3s ease; /* Smooth zoom effect */
         }
         .main-text span {
             margin: 0;
+            display: block;
+            width: fit-content;
         }
         .main-text span:first-child {
             font-size: 100px; /* UNBLOCK size */
         }
         .main-text span:last-child {
-            font-size: 100px; /* ZONE size to fit UNBLOCK */
+            font-size: 100px; /* ZONE size matches UNBLOCK */
+            color: blue;
+            margin-left: auto;
+            margin-right: auto;
+            letter-spacing: -2px; /* Adjust for perfect alignment */
         }
         .main-text:hover {
-            transform: scale(1.1); /* Zoom-in effect on hover */
+            transform: scale(1.1); /* Zoom-in effect */
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
@@ -84,10 +91,10 @@
         <div class="search-bar-container">
             <input type="text" id="searchBar" placeholder="Search...">
             <a href="https://your-custom-search-url.com">
-                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
+                <img src="https://your-custom-search-icon-url.com" alt="Search Icon" class="icon">
             </a>
             <a href="https://your-custom-settings-url.com">
-                <img src="https://img.icons8.com/m_outlined/512/228BE6/settings--v3.png" alt="Settings Icon" class="icon">
+                <img src="https://your-custom-settings-icon-url.com" alt="Settings Icon" class="icon">
             </a>
         </div>
     </header>
