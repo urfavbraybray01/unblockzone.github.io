@@ -22,6 +22,10 @@
             align-items: center;
             justify-content: space-between;
             padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 10;
         }
 
         h1 {
@@ -70,9 +74,9 @@
 
         .main-text {
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
+            top: 150px; /* Adjust the position to make it slightly left */
+            left: 20%; /* Shift it slightly to the left */
+            transform: translateX(-20%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -100,6 +104,41 @@
             transform: scale(1.1);
         }
 
+        .description-box {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            font-size: 18px;
+            width: 70%;
+            margin-top: 20px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .description-box:hover {
+            transform: scale(1.05);
+        }
+
+        textarea {
+            width: 100%;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            resize: none;
+            margin-top: 10px;
+        }
+
+        textarea:focus {
+            outline: none;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
@@ -110,11 +149,16 @@
             input[type="text"] {
                 width: 150px;
             }
+
+            .description-box {
+                width: 90%;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <header>
         <h1><span>UNBLOCK</span><span class="blue">ZONE</span></h1>
         <div class="search-bar-container">
@@ -127,9 +171,15 @@
             </a>
         </div>
     </header>
+
     <div class="main-text">
         <span>UNBLOCK</span>
         <span class="blue">ZONE</span>
+    </div>
+
+    <div class="description-box">
+        <h3>Description</h3>
+        <textarea placeholder="Type the latest updates here..."></textarea>
     </div>
 
     <script>
@@ -144,6 +194,6 @@
             }
         });
     </script>
+
 </body>
 </html>
-
