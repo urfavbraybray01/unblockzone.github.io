@@ -22,10 +22,6 @@
             align-items: center;
             justify-content: space-between;
             padding: 10px 20px;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 10;
         }
 
         h1 {
@@ -41,12 +37,6 @@
 
         .blue {
             color: blue;
-        }
-
-        .header-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
         }
 
         .search-bar-container {
@@ -80,9 +70,9 @@
 
         .main-text {
             position: absolute;
-            top: 150px;
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
+            transform: translate(-50%, -50%);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -110,38 +100,6 @@
             transform: scale(1.1);
         }
 
-        .updates-container {
-            background-color: #444;
-            padding: 20px;
-            border-radius: 10px;
-            color: white;
-            font-size: 18px;
-            width: 250px;
-            margin-left: 20px;
-            box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            transition: transform 0.3s ease;
-        }
-
-        .updates-container:hover {
-            transform: scale(1.05);
-        }
-
-        .search-bar-below {
-            margin-top: 200px;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            width: 100%;
-        }
-
-        .search-bar-below input[type="text"] {
-            width: 300px;
-        }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
@@ -152,42 +110,26 @@
             input[type="text"] {
                 width: 150px;
             }
-
-            .updates-container {
-                width: 200px;
-            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
 <body>
-
     <header>
         <h1><span>UNBLOCK</span><span class="blue">ZONE</span></h1>
-        <div class="header-right">
-            <div class="search-bar-container">
-                <input type="text" id="headerSearchBar" placeholder="Search...">
-                <a href="https://your-custom-search-url.com">
-                    <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
-                </a>
-                <a href="https://your-custom-settings-url.com">
-                    <img src="https://img.icons8.com/m_outlined/512/228BE6/settings--v3.png" alt="Settings Icon" class="icon">
-                </a>
-            </div>
-            <div class="updates-container">
-                <h3>Updates</h3>
-                <textarea id="updatesText" placeholder="Type the latest updates here..." rows="5" style="width: 100%; background: #333; color: white; border: none; border-radius: 5px;"></textarea>
-            </div>
+        <div class="search-bar-container">
+            <input type="text" id="searchBar" placeholder="Search...">
+            <a href="https://your-custom-search-url.com">
+                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
+            </a>
+            <a href="https://your-custom-settings-url.com">
+                <img src="https://img.icons8.com/m_outlined/512/228BE6/settings--v3.png" alt="Settings Icon" class="icon">
+            </a>
         </div>
     </header>
-
     <div class="main-text">
         <span>UNBLOCK</span>
         <span class="blue">ZONE</span>
-    </div>
-
-    <div class="search-bar-below">
-        <input type="text" id="belowSearchBar" placeholder="Search...">
     </div>
 
     <script>
@@ -201,29 +143,7 @@
                 }
             }
         });
-
-        // Handle header search bar functionality
-        const headerSearchBar = document.getElementById('headerSearchBar');
-        headerSearchBar.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                const query = headerSearchBar.value.trim();
-                if (query) {
-                    window.location.href = `https://szvy.lol/embed.html#https://www.google.com/search?q=${query}`;
-                }
-            }
-        });
-
-        // Handle below search bar functionality
-        const belowSearchBar = document.getElementById('belowSearchBar');
-        belowSearchBar.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                const query = belowSearchBar.value.trim();
-                if (query) {
-                    window.location.href = `https://szvy.lol/embed.html#https://www.google.com/search?q=${query}`;
-                }
-            }
-        });
     </script>
-
 </body>
 </html>
+
