@@ -100,6 +100,63 @@
             transform: scale(1.2);
         }
 
+        /* Styles for the new "UNBLOCK ZONE" text and about section */
+        .subtitle-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .subtitle {
+            font-size: 40px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .subtitle:hover {
+            transform: scale(1.1);
+        }
+
+        .subtitle .blue {
+            color: blue;
+        }
+
+        .subtitle .white {
+            color: white;
+        }
+
+        .about-container {
+            margin-left: 40px;
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+        }
+
+        .about-container h2 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .about-container p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .about-container input[type="text"] {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: none;
+            background-color: #444;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
@@ -124,6 +181,15 @@
 
             input[type="text"] {
                 width: 150px;
+            }
+
+            .subtitle {
+                font-size: 30px;
+            }
+
+            .about-container {
+                width: 100%;
+                margin-top: 20px;
             }
         }
     </style>
@@ -151,6 +217,20 @@
             </a>
         </div>
     </header>
+
+    <!-- Subtitle Section with "UNBLOCK ZONE" and About -->
+    <div class="subtitle-container">
+        <div class="subtitle">
+            <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
+        </div>
+
+        <!-- About UnblockZone -->
+        <div class="about-container">
+            <h2>About UnblockZone</h2>
+            <p>UnblockZone is a platform to access various online services safely and securely. Explore apps, games, proxies, and more!</p>
+            <input type="text" placeholder="Custom text here...">
+        </div>
+    </div>
 
     <script>
         function searchPage() {
