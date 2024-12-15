@@ -107,24 +107,24 @@
             justify-content: flex-start;
             padding: 20px;
             margin-top: 20px;
+            flex-direction: column; /* Stack vertically */
         }
 
         .subtitle {
             font-size: 60px; /* Increased font size for larger text */
             display: inline-block;
             transition: transform 0.3s ease;
-        }
-
-        .subtitle:hover {
-            transform: scale(1.1);
+            text-align: center;
         }
 
         .subtitle .blue {
             color: blue;
+            font-size: 90px; /* Make "ZONE" bigger */
+            display: block;
         }
 
-        .subtitle .white {
-            color: white;
+        .subtitle:hover {
+            transform: scale(1.1);
         }
 
         .about-container {
@@ -233,7 +233,8 @@
     <!-- Subtitle Section with "UNBLOCK ZONE" and About -->
     <div class="subtitle-container">
         <div class="subtitle">
-            <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
+            <span class="white">UNBLOCK</span>
+            <span class="blue">ZONE</span> <!-- "ZONE" is now bigger and placed under "UNBLOCK" -->
         </div>
 
         <!-- About UnblockZone -->
@@ -241,6 +242,7 @@
             <h2>About UnblockZone</h2>
             <p>UnblockZone is a platform to access various online services safely and securely. Explore apps, games, proxies, and more!</p>
             <!-- Editable description box -->
+            <textarea class="description">Enter your custom description here...</textarea>
         </div>
     </div>
 
