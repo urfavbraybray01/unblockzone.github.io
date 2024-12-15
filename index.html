@@ -4,44 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnblockZone</title>
-    <link rel="icon" href="https://example.com/blue-internet-globe-logo.png" type="image/png"> <!-- Replace with actual favicon URL -->
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap');
-
-        body {
-            margin: 0;
-            padding: 0;
-            background-color: #000; /* Black background */
-            color: white;
-            font-family: 'Bowlby One', sans-serif;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
-
-        .logo-container {
-            position: relative;
-        }
-
-        .logo {
-            font-size: 3rem; /* Text size */
-            font-weight: bold;
-        }
-
-        .logo .zone {
-            color: #1976D2; /* Blue for "ZONE" */
-            display: block; /* Moves ZONE to the next line */
-        }
-
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/8/87/Blue_globe.svg" type="image/svg+xml"> <!-- Favicon -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="logo-container">
-        <div class="logo">
-            UNBLOCK<span class="zone">ZONE</span>
+    <header>
+        <div class="text-container">
+            <span class="unblock">UNBLOCK</span><span class="zone">ZONE</span>
+        </div>
+    </header>
+    
+    <div class="search-container">
+        <input type="text" class="search-bar" placeholder="Search...">
+        <div class="icons">
+            <span class="search-icon">&#128269;</span>
+            <span class="settings-icon">&#9881;</span>
         </div>
     </div>
 </body>
