@@ -15,12 +15,22 @@
             font-family: 'Bowlby One', sans-serif;
             height: 100vh;
             display: flex;
+            flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
         }
 
+        .header {
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.1); /* Medium opacity header */
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-sizing: border-box;
+        }
+
         .logo {
-            margin: 10px; /* Margin from the corner */
             font-size: 2rem; /* Text size */
             font-weight: bold;
         }
@@ -28,11 +38,56 @@
         .logo span {
             color: #1976D2; /* Blue for "zone" */
         }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            margin-left: 10px;
+            cursor: pointer;
+        }
+
+        .icon.search {
+            fill: #1976D2; /* Blue color for search icon */
+        }
+
+        .icon.settings {
+            fill: white; /* White color for settings icon */
+        }
+
+        .content {
+            margin: 10px;
+        }
     </style>
 </head>
 <body>
-    <div class="logo">
-        UNBLOCK<span>ZONE</span>
+    <div class="header">
+        <div class="logo">
+            UNBLOCK<span>ZONE</span>
+        </div>
+        <div class="search-container">
+            <input class="search-bar" type="text" placeholder="Search...">
+            <svg class="icon search" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C14.89 5.41 12.7 3 10 3S5.11 5.41 5.11 8.39c0 3 2.2 5.41 4.89 5.41a6.471 6.471 0 005.34-1.48l.27.28v.79l5 4.99L20.49 19l-4.99-5zM10 13c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4z"></path>
+            </svg>
+            <svg class="icon settings" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M19.14 12.94a7.962 7.962 0 000-1.88l2.03-1.57a.506.506 0 00.12-.63l-1.92-3.32a.506.506 0 00-.61-.23l-2.39.96a7.961 7.961 0 00-1.62-.94L14.5 2.6a.506.506 0 00-.49-.6h-3.5a.506.506 0 00-.49.6l-.38 2.44a7.961 7.961 0 00-1.62.94l-2.39-.96a.506.506 0 00-.61.23L2.8 8.86a.506.506 0 00.12.63l2.03 1.57a7.962 7.962 0 000 1.88L2.92 14.43a.506.506 0 00-.12.63l1.92 3.32a.506.506 0 00.61.23l2.39-.96c.52.39 1.07.72 1.62.94l.38 2.44a.506.506 0 00.49.6h3.5a.506.506 0 00.49-.6l.38-2.44c.56-.22 1.1-.55 1.62-.94l2.39.96a.506.506 0 00.61-.23l1.92-3.32a.506.506 0 00-.12-.63l-2.03-1.57zM12 15.5a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"></path>
+            </svg>
+        </div>
+    </div>
+    <div class="content">
+        <!-- Additional content can go here -->
     </div>
 </body>
 </html>
