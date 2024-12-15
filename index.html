@@ -5,22 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnblockZone</title>
     <style>
-        body {
+        /* Prevent horizontal scrolling */
+        html, body {
             margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden; /* Disable horizontal scrolling */
+        }
+
+        body {
             background-color: black;
             font-family: 'Bowlby One', sans-serif;
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Align content at the top */
-            text-align: center; /* Center content horizontally */
+            justify-content: flex-start;
+            text-align: center;
         }
 
         header {
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Align everything to the left */
+            justify-content: flex-start;
             padding: 10px 20px;
             width: 100%;
             box-sizing: border-box;
@@ -47,8 +54,8 @@
 
         .nav-buttons {
             display: flex;
-            gap: 10px; /* Reduced gap to bring buttons closer */
-            margin-left: 20px; /* Adjust to bring buttons closer to the title */
+            gap: 10px;
+            margin-left: 20px;
         }
 
         .nav-button {
@@ -71,14 +78,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-left: 20px; /* Position the search bar next to the buttons */
+            margin-left: 20px;
         }
 
         input[type="text"] {
             font-size: 18px;
             padding: 8px 15px;
             border: none;
-            border-radius: 20px; /* Round corners */
+            border-radius: 20px;
             width: 200px;
             background-color: white;
             color: black;
@@ -102,23 +109,23 @@
         /* Styles for the new "UNBLOCK ZONE" text and about section */
         .subtitle-container {
             display: flex;
-            flex-direction: column; /* Align content vertically */
+            flex-direction: column;
             justify-content: center;
-            align-items: center; /* Center the content */
+            align-items: center;
             padding: 20px;
             width: 100%;
             margin-top: 20px;
         }
 
         .subtitle {
-            font-size: 80px; /* Increased font size for larger text */
+            font-size: 80px;
             display: inline-block;
             transition: transform 0.3s ease;
         }
 
         .subtitle .blue {
             color: blue;
-            font-size: 100px; /* Make "ZONE" bigger */
+            font-size: 100px;
             display: block;
         }
 
@@ -154,6 +161,7 @@
             h1 {
                 font-size: 40px;
             }
+
             .nav-buttons {
                 display: block;
                 text-align: center;
@@ -178,7 +186,7 @@
 
             .subtitle {
                 font-size: 60px;
-                width: 100%; /* Full width for smaller screens */
+                width: 100%;
             }
 
             .about-container {
@@ -216,7 +224,7 @@
     <div class="subtitle-container">
         <div class="subtitle">
             <span class="white">UNBLOCK</span>
-            <span class="blue">ZONE</span> <!-- "ZONE" is now bigger and placed under "UNBLOCK" -->
+            <span class="blue">ZONE</span>
         </div>
 
         <!-- About UnblockZone -->
