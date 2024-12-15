@@ -12,6 +12,7 @@
             font-family: 'Bowlby One', sans-serif;
             color: white;
             display: flex;
+            flex-direction: row;
         }
 
         header {
@@ -21,6 +22,9 @@
             justify-content: space-between;
             padding: 10px 20px;
             width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 10;
         }
 
         h1 {
@@ -36,6 +40,35 @@
 
         .blue {
             color: blue;
+        }
+
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="text"] {
+            font-size: 18px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
         }
 
         .main-text {
@@ -76,9 +109,13 @@
             width: 250px;
             height: 100vh;
             padding: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 5;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: flex-start;
         }
 
         .sidebar .time {
@@ -102,10 +139,6 @@
             width: 100%;
         }
 
-        input[type="text"]:focus {
-            outline: none;
-        }
-
         .tabs {
             display: flex;
             flex-direction: column;
@@ -126,6 +159,12 @@
             transform: scale(1.1);
         }
 
+        .content {
+            margin-left: 250px; /* To avoid overlap with the sidebar */
+            padding-top: 80px; /* To ensure the header doesn't overlap content */
+            width: calc(100% - 250px);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
@@ -134,7 +173,7 @@
                 font-size: 60px;
             }
             input[type="text"] {
-                width: 100%;
+                width: 150px;
             }
         }
     </style>
@@ -148,6 +187,9 @@
             <span>UNBLOCK</span>
             <span class="blue">ZONE</span>
         </div>
+        <div class="search-bar-container">
+            <input type="text" id="searchBar" placeholder="Search...">
+        </div>
     </header>
 
     <div class="sidebar">
@@ -156,7 +198,7 @@
 
         <!-- Search bar -->
         <div class="search-bar-container">
-            <input type="text" id="searchBar" placeholder="Search...">
+            <input type="text" id="sidebarSearchBar" placeholder="Search...">
         </div>
 
         <!-- Tabs -->
@@ -169,6 +211,12 @@
         </div>
     </div>
 
+    <div class="content">
+        <!-- Main Content Area -->
+        <h2>Welcome to UnblockZone</h2>
+        <p>This is where you can explore games, proxies, apps, and more!</p>
+    </div>
+
     <script>
         // Update the clock every second
         function updateClock() {
@@ -178,7 +226,18 @@
         }
         setInterval(updateClock, 1000);
 
-        // Handle search bar functionality
+        // Handle sidebar search bar functionality
+        const sidebarSearchBar = document.getElementById('sidebarSearchBar');
+        sidebarSearchBar.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                const query = sidebarSearchBar.value.trim();
+                if (query) {
+                    window.location.href = `https://szvy.lol/embed.html#https://www.google.com/search?q=${query}`;
+                }
+            }
+        });
+
+        // Handle header search bar functionality
         const searchBar = document.getElementById('searchBar');
         searchBar.addEventListener('keypress', function (event) {
             if (event.key === 'Enter') {
