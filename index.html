@@ -14,6 +14,7 @@
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
+            align-items: center;
             overflow: hidden;
         }
 
@@ -102,10 +103,13 @@
 
         .slideshow {
             position: relative;
-            width: 100%;
-            height: calc(100vh - 70px); /* Adjust height to fit remaining viewport */
-            margin-top: 10px;
+            width: 80%; /* Adjust width to make it smaller */
+            max-width: 600px;
+            height: 300px; /* Adjust height to make it smaller */
+            margin-top: 20px;
             overflow: hidden;
+            border-radius: 20px; /* Rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
 
         .slide {
@@ -149,7 +153,8 @@
             }
 
             .slideshow {
-                height: 60vh; /* Adjust for smaller screens */
+                width: 90%;
+                height: 200px; /* Smaller slideshow for mobile */
             }
         }
     </style>
@@ -174,14 +179,14 @@
     </header>
 
     <div class="slideshow">
-        <div class="slide" style="background-image: url('https://via.placeholder.com/1920x1080/FF5733/FFFFFF?text=Slide+1');"></div>
-        <div class="slide" style="background-image: url('https://via.placeholder.com/1920x1080/33FF57/FFFFFF?text=Slide+2');"></div>
-        <div class="slide" style="background-image: url('https://via.placeholder.com/1920x1080/3357FF/FFFFFF?text=Slide+3');"></div>
-        <div class="slide" style="background-image: url('https://via.placeholder.com/1920x1080/FF33A1/FFFFFF?text=Slide+4');"></div>
-        <div class="slide" style="background-image: url('https://via.placeholder.com/1920x1080/FFD733/FFFFFF?text=Slide+5');"></div>
-        <div class="slide" style="background-image: url('https://via.placeholder.com/1920x1080/57FFD7/FFFFFF?text=Slide+6');"></div>
-        <div class="slide" style="background-image: url('https://via.placeholder.com/1920x1080/D733FF/FFFFFF?text=Slide+7');"></div>
-        <div class="slide" style="background-image: url('https://via.placeholder.com/1920x1080/33FFAA/FFFFFF?text=Slide+8');"></div>
+        <div class="slide" style="background-image: url('https://mp.moonpreneur.com/blog/wp-content/uploads/2023/08/Fortnite.png');"></div>
+        <div class="slide" style="background-image: url('https://www.tubefilter.com/wp-content/uploads/2023/01/roblox-quest-metaverse-1400x825.jpg');"></div>
+        <div class="slide" style="background-image: url('https://mma.prnewswire.com/media/2475287/now_gg_Logo.jpg?p=publish');"></div>
+        <div class="slide" style="background-image: url('https://miro.medium.com/v2/resize:fit:1200/1*Vq5VQWL1hKsVyrfo7cVKoA.jpeg');"></div>
+        <div class="slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSW11mV4Rh2vMvgEvvY_3l6vNqivjY54OqGqw&s');"></div>
+        <div class="slide" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTCYDVQcLmE6Xi6FEUTX1vhJRupQOGeLT2RAw&s');"></div>
+        <div class="slide" style="background-image: url('https://i0.wp.com/etspeaksfromhome.co.uk/wp-content/uploads/2018/04/Crossy-Road-My-New-Online-Game-Addiction.png?fit=700%2C420&ssl=1');"></div>
+        <div class="slide" style="background-image: url('https://www.crimsoncriernews.com/wp-content/uploads/2023/11/original.jpg');"></div>
     </div>
 
     <script>
