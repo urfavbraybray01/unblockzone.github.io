@@ -70,14 +70,17 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-left: 20px; /* Position the search bar next to the buttons */
         }
 
         input[type="text"] {
             font-size: 18px;
-            padding: 5px 10px;
+            padding: 8px 15px;
             border: none;
-            border-radius: 5px;
+            border-radius: 20px; /* Round corners */
             width: 200px;
+            background-color: white;
+            color: black;
         }
 
         input[type="text"]:focus {
@@ -99,10 +102,6 @@
             h1 {
                 font-size: 40px;
             }
-            input[type="text"] {
-                width: 150px;
-            }
-
             .nav-buttons {
                 display: block;
                 text-align: center;
@@ -112,6 +111,17 @@
             .nav-button {
                 width: 100%;
                 margin-bottom: 10px;
+            }
+
+            .search-bar-container {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            input[type="text"] {
+                width: 150px;
             }
         }
     </style>
@@ -130,19 +140,37 @@
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar-container">
+            <input type="text" id="searchBar" placeholder="Search...">
+            <a href="#" onclick="searchPage()">
+                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
+            </a>
+        </div>
     </header>
 
+    <!-- Content to be searched -->
+    <div id="content">
+        <h2>Welcome to UnblockZone</h2>
+        <p>Here you can explore apps, games, proxies, exploits, and more. This is just a placeholder content for testing search functionality.</p>
+        <p>Type something in the search bar to find more information!</p>
+    </div>
+
     <script>
-        const searchBar = document.getElementById('searchBar');
-        searchBar.addEventListener('keypress', function (event) {
-            if (event.key === 'Enter') {
-                const query = searchBar.value.trim();
-                if (query) {
-                    alert(`Searching for: ${query}`);
-                    // Add custom logic here to handle the search
+        function searchPage() {
+            const query = document.getElementById('searchBar').value.trim();
+            if (query) {
+                const content = document.getElementById('content');
+                const text = content.innerText.toLowerCase();
+
+                if (text.includes(query.toLowerCase())) {
+                    alert(`Found "${query}" in the content!`);
+                } else {
+                    alert(`No results found for "${query}".`);
                 }
             }
-        });
+        }
     </script>
 </body>
 </html>
