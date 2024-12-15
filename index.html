@@ -102,10 +102,9 @@
 
         .slideshow {
             position: relative;
-            width: 80%;
-            max-width: 1280px; /* Adjusted for YouTube thumbnail size */
+            width: 1280px; /* YouTube thumbnail size width */
+            height: 720px; /* YouTube thumbnail size height */
             margin: 20px auto; /* Center the slideshow */
-            height: 720px; /* Adjusted for YouTube thumbnail size */
             border-radius: 15px;
             overflow: hidden;
         }
@@ -157,6 +156,11 @@
 
             input[type="text"] {
                 width: 150px;
+            }
+
+            .slideshow {
+                width: 100%;
+                height: auto; /* Adjust for smaller screens */
             }
         }
     </style>
