@@ -9,23 +9,44 @@
             margin: 0;
             height: 100vh;
             background-color: black;
-            display: flex;
-            align-items: flex-start;
-            justify-content: flex-start;
             font-family: 'Bowlby One', sans-serif;
+            color: white;
         }
         header {
             background-color: #333; /* Dark grey header */
-            width: 100%;
-            padding: 10px;
+            display: flex;
+            align-items: center;
+            padding: 10px 20px;
+            justify-content: space-between;
         }
         h1 {
-            font-size: 70px; /* Slightly smaller text */
-            color: white;
+            font-size: 50px; /* Adjusted font size */
             margin: 0;
         }
         .blue {
             color: blue;
+        }
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        input[type="text"] {
+            font-size: 18px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        input[type="text"]:focus {
+            outline: none;
+        }
+        .icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+        }
+        .icon-blue {
+            filter: brightness(0) saturate(100%) invert(25%) sepia(100%) saturate(2912%) hue-rotate(197deg) brightness(102%) contrast(105%);
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
@@ -33,6 +54,28 @@
 <body>
     <header>
         <h1><span>UNBLOCK</span><span class="blue">ZONE</span></h1>
+        <div class="search-bar-container">
+            <input type="text" id="searchBar" placeholder="Search...">
+            <a href="https://customsearchurl.com">
+                <img src="https://cdn-icons-png.flaticon.com/512/3917/search.png" alt="Search Icon" class="icon icon-blue">
+            </a>
+            <a href="https://customsettingsurl.com">
+                <img src="https://cdn-icons-png.flaticon.com/512/3524/settings.png" alt="Settings Icon" class="icon icon-blue">
+            </a>
+        </div>
     </header>
+    <script>
+        const searchBar = document.getElementById('searchBar');
+        searchBar.addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                const query = searchBar.value.trim();
+                if (query) {
+                    alert(`Searching for: ${query}`);
+                    // Add custom logic here to find the closest thing to the search query
+                    // For now, we just display the query
+                }
+            }
+        });
+    </script>
 </body>
 </html>
