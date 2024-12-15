@@ -100,12 +100,32 @@
             transform: scale(1.2);
         }
 
-        .slideshow {
+        .slideshow-container {
             position: relative;
-            width: 1280px; /* YouTube thumbnail size width */
-            height: 720px; /* YouTube thumbnail size height */
-            margin: 20px auto; /* Center the slideshow */
+            width: 1280px;
+            height: 780px; /* Increased height for the bottom section */
+            margin: 20px auto;
             border-radius: 15px;
+            overflow: hidden;
+            background: black;
+        }
+
+        /* Embed YouTube video as background */
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .slideshow {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 500px; /* Adjusted height for the slideshow section */
+            margin-bottom: 20px; /* Additional space at the bottom */
             overflow: hidden;
         }
 
@@ -118,7 +138,7 @@
             background-size: cover;
             background-position: center;
             opacity: 0;
-            transition: opacity 0.7s ease; /* Faster fade-in/out */
+            transition: opacity 0.7s ease;
             z-index: 1;
         }
 
@@ -158,22 +178,34 @@
         </div>
     </header>
 
-    <!-- First Slideshow -->
-    <div class="slideshow" id="slideshow1">
-        <a href="https://custom-link1.com" class="slide active" style="background-image: url('https://mp.moonpreneur.com/blog/wp-content/uploads/2023/08/Fortnite.png');"></a>
-        <a href="https://custom-link2.com" class="slide" style="background-image: url('https://www.tubefilter.com/wp-content/uploads/2023/01/roblox-quest-metaverse-1400x825.jpg');"></a>
-        <a href="https://custom-link3.com" class="slide" style="background-image: url('https://i.ytimg.com/vi/kVFWLlRhH8Y/maxresdefault.jpg');"></a>
-        <a href="https://custom-link4.com" class="slide" style="background-image: url('https://defold.com/images/games/monkeymart-half.png');"></a>
-        <a href="https://custom-link5.com" class="slide" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png');"></a>
+    <!-- First Slideshow Container -->
+    <div class="slideshow-container">
+        <!-- YouTube Video Background -->
+        <iframe class="video-background" src="https://www.youtube.com/embed/wv-m7k5ZUD0?autoplay=1&mute=1&loop=1&playlist=wv-m7k5ZUD0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <!-- Slideshow -->
+        <div class="slideshow">
+            <a href="https://custom-link1.com" class="slide active" style="background-image: url('https://mp.moonpreneur.com/blog/wp-content/uploads/2023/08/Fortnite.png');"></a>
+            <a href="https://custom-link2.com" class="slide" style="background-image: url('https://www.tubefilter.com/wp-content/uploads/2023/01/roblox-quest-metaverse-1400x825.jpg');"></a>
+            <a href="https://custom-link3.com" class="slide" style="background-image: url('https://i.ytimg.com/vi/kVFWLlRhH8Y/maxresdefault.jpg');"></a>
+            <a href="https://custom-link4.com" class="slide" style="background-image: url('https://defold.com/images/games/monkeymart-half.png');"></a>
+            <a href="https://custom-link5.com" class="slide" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png');"></a>
+        </div>
     </div>
 
-    <!-- Second Slideshow -->
-    <div class="slideshow" id="slideshow2">
-        <a href="https://custom-link6.com" class="slide active" style="background-image: url('https://mp.moonpreneur.com/blog/wp-content/uploads/2023/08/Fortnite.png');"></a>
-        <a href="https://custom-link7.com" class="slide" style="background-image: url('https://www.tubefilter.com/wp-content/uploads/2023/01/roblox-quest-metaverse-1400x825.jpg');"></a>
-        <a href="https://custom-link8.com" class="slide" style="background-image: url('https://i.ytimg.com/vi/kVFWLlRhH8Y/maxresdefault.jpg');"></a>
-        <a href="https://custom-link9.com" class="slide" style="background-image: url('https://defold.com/images/games/monkeymart-half.png');"></a>
-        <a href="https://custom-link10.com" class="slide" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png');"></a>
+    <!-- Second Slideshow Container -->
+    <div class="slideshow-container">
+        <!-- YouTube Video Background -->
+        <iframe class="video-background" src="https://www.youtube.com/embed/wv-m7k5ZUD0?autoplay=1&mute=1&loop=1&playlist=wv-m7k5ZUD0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <!-- Slideshow -->
+        <div class="slideshow">
+            <a href="https://custom-link6.com" class="slide active" style="background-image: url('https://mp.moonpreneur.com/blog/wp-content/uploads/2023/08/Fortnite.png');"></a>
+            <a href="https://custom-link7.com" class="slide" style="background-image: url('https://www.tubefilter.com/wp-content/uploads/2023/01/roblox-quest-metaverse-1400x825.jpg');"></a>
+            <a href="https://custom-link8.com" class="slide" style="background-image: url('https://i.ytimg.com/vi/kVFWLlRhH8Y/maxresdefault.jpg');"></a>
+            <a href="https://custom-link9.com" class="slide" style="background-image: url('https://defold.com/images/games/monkeymart-half.png');"></a>
+            <a href="https://custom-link10.com" class="slide" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png');"></a>
+        </div>
     </div>
 
     <script>
