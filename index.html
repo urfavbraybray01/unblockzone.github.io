@@ -110,7 +110,7 @@
         }
 
         .subtitle {
-            font-size: 40px;
+            font-size: 60px; /* Increased font size for larger text */
             display: inline-block;
             transition: transform 0.3s ease;
         }
@@ -134,6 +134,11 @@
             padding: 15px;
             border-radius: 10px;
             width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-container:hover {
+            transform: scale(1.1);
         }
 
         .about-container h2 {
@@ -146,15 +151,22 @@
             margin-top: 10px;
         }
 
-        .about-container input[type="text"] {
-            width: 100%;
-            margin-top: 10px;
-            padding: 10px;
-            font-size: 16px;
-            border-radius: 10px;
-            border: none;
-            background-color: #444;
+        /* Adjust the description box to allow typing in the code */
+        .about-container p {
+            margin-top: 0;
+        }
+
+        .about-container .description {
+            font-size: 14px;
             color: white;
+            margin-top: 10px;
+            height: 100px;
+            resize: none;
+            background-color: #444;
+            border: none;
+            border-radius: 10px;
+            padding: 10px;
+            width: 100%;
         }
 
         @media (max-width: 768px) {
@@ -184,7 +196,7 @@
             }
 
             .subtitle {
-                font-size: 30px;
+                font-size: 40px;
             }
 
             .about-container {
@@ -228,7 +240,7 @@
         <div class="about-container">
             <h2>About UnblockZone</h2>
             <p>UnblockZone is a platform to access various online services safely and securely. Explore apps, games, proxies, and more!</p>
-            <input type="text" placeholder="Custom text here...">
+            <!-- Editable description box -->
         </div>
     </div>
 
