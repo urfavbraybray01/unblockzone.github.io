@@ -54,6 +54,20 @@
         .icon:hover {
             transform: scale(1.2); /* Zoom-in effect */
         }
+        .main-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin: 20px 20px 0 20px;
+            font-size: 100px; /* Big text size */
+            transition: transform 0.3s ease; /* Smooth zoom effect */
+        }
+        .main-text span {
+            margin: 0;
+        }
+        .main-text:hover {
+            transform: scale(1.1); /* Zoom-in effect on hover */
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
@@ -70,6 +84,10 @@
             </a>
         </div>
     </header>
+    <div class="main-text">
+        <span>UNBLOCK</span>
+        <span class="blue">ZONE</span>
+    </div>
     <script>
         const searchBar = document.getElementById('searchBar');
         searchBar.addEventListener('keypress', function (event) {
