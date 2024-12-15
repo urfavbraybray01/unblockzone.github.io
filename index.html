@@ -88,33 +88,20 @@
             outline: none;
         }
 
-        .icon {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .icon:hover {
-            transform: scale(1.2);
-        }
-
         .content {
             display: flex;
-            flex-direction: row;
-            justify-content: flex-start;
-            align-items: flex-start;
+            justify-content: space-between;
+            align-items: center;
             width: 100%;
-            margin-top: 20px;
-            padding: 0 20px;
+            height: 100%;
             box-sizing: border-box;
+            padding: 0 20px;
         }
 
         .slideshow-container {
             position: relative;
-            width: 40%; /* Left section */
-            max-width: 500px; /* Limit max size */
-            height: 350px;
+            width: 48%; /* Almost half width */
+            height: 50%; /* Touches the half-line mark */
             border-radius: 20px;
             overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -139,56 +126,31 @@
             opacity: 1;
         }
 
-        .right-content {
-            margin-left: 30px;
-            color: white;
-            flex: 1; /* Take the rest of the space */
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
             }
 
             .nav-buttons {
-                display: block;
-                text-align: center;
+                flex-wrap: wrap;
+                gap: 5px;
                 margin-top: 10px;
             }
 
             .nav-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .search-bar-container {
-                margin-left: 0;
-                margin-top: 10px;
-                width: 100%;
-                justify-content: center;
-            }
-
-            input[type="text"] {
-                width: 150px;
+                padding: 8px 15px;
+                font-size: 14px;
             }
 
             .content {
                 flex-direction: column;
                 align-items: center;
+                gap: 20px;
             }
 
             .slideshow-container {
                 width: 90%;
-                max-width: 300px;
-                height: 250px;
-            }
-
-            .right-content {
-                margin-left: 0;
-                text-align: center;
+                height: 200px;
             }
         }
     </style>
@@ -213,15 +175,20 @@
     </header>
 
     <div class="content">
-        <div class="slideshow-container">
+        <!-- Left Slideshow -->
+        <div class="slideshow-container" id="leftSlideshow">
             <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Slide+1');"></div>
             <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Slide+2');"></div>
             <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Slide+3');"></div>
             <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Slide+4');"></div>
         </div>
 
-        <div class="right-content">
-            <p>Welcome to UnblockZone, your hub for Apps, Games, Proxies, and more!</p>
+        <!-- Right Slideshow -->
+        <div class="slideshow-container" id="rightSlideshow">
+            <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Slide+5');"></div>
+            <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Slide+6');"></div>
+            <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Slide+7');"></div>
+            <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Slide+8');"></div>
         </div>
     </div>
 
@@ -233,28 +200,32 @@
             }
         }
 
-        // Slideshow functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
+        function initSlideshow(slideshowId) {
+            let currentSlide = 0;
+            const slides = document.querySelectorAll(`#${slideshowId} .slide`);
+            const totalSlides = slides.length;
 
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                }
-            });
-        }
+            function showSlide(index) {
+                slides.forEach((slide, i) => {
+                    slide.classList.remove('active');
+                    if (i === index) {
+                        slide.classList.add('active');
+                    }
+                });
+            }
 
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+
             showSlide(currentSlide);
+            setInterval(nextSlide, 4000); // Change slide every 4 seconds
         }
 
-        // Initialize slideshow
-        showSlide(currentSlide);
-        setInterval(nextSlide, 4000); // Change slide every 4 seconds
+        // Initialize both slideshows
+        initSlideshow('leftSlideshow');
+        initSlideshow('rightSlideshow');
     </script>
 </body>
 </html>
