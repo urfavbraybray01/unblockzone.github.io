@@ -101,10 +101,11 @@
         }
 
         .slideshow {
-            position: absolute; /* Move it to the left side */
-            left: 0; /* Align slideshow all the way to the left */
-            width: 30%; /* Adjusted to fit on the left side */
-            height: 100vh; /* Stretch to full viewport height */
+            position: relative; /* Relative to the parent body */
+            top: 100%; /* Start right after the header */
+            left: 0; /* Align it to the left */
+            width: 50%; /* Fit it up to the halfway mark horizontally */
+            height: 50vh; /* Make it occupy the bottom half of the screen */
             border-radius: 15px;
             overflow: hidden;
             z-index: 1;
