@@ -13,15 +13,15 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Align content at the top */
-            overflow: hidden; /* Remove overflow */
+            justify-content: flex-start;
+            overflow: hidden;
         }
 
         header {
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Align everything to the left */
+            justify-content: flex-start;
             padding: 10px 20px;
             width: 100%;
             box-sizing: border-box;
@@ -48,8 +48,8 @@
 
         .nav-buttons {
             display: flex;
-            gap: 10px; /* Reduced gap to bring buttons closer */
-            margin-left: 20px; /* Adjust to bring buttons closer to the title */
+            gap: 10px;
+            margin-left: 20px;
         }
 
         .nav-button {
@@ -72,14 +72,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-left: 20px; /* Position the search bar next to the buttons */
+            margin-left: 20px;
         }
 
         input[type="text"] {
             font-size: 18px;
             padding: 8px 15px;
             border: none;
-            border-radius: 20px; /* Round corners */
+            border-radius: 20px;
             width: 200px;
             background-color: white;
             color: black;
@@ -100,10 +100,39 @@
             transform: scale(1.2);
         }
 
+        .slideshow {
+            position: relative;
+            width: 80%; /* Adjust width as needed */
+            height: 300px; /* Fixed height */
+            margin: 20px auto 0; /* Center it horizontally */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out, transform 0.3s ease;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide:hover {
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
             }
+
             .nav-buttons {
                 display: block;
                 text-align: center;
@@ -125,16 +154,18 @@
             input[type="text"] {
                 width: 150px;
             }
+
+            .slideshow {
+                width: 95%; /* Reduce width for smaller screens */
+                height: 250px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <!-- Title with "UNBLOCKZONE" -->
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
-
-        <!-- Navigation Buttons -->
         <div class="nav-buttons">
             <a href="https://your-apps-url.com" class="nav-button">APPS</a>
             <a href="https://your-games-url.com" class="nav-button">GAMES</a>
@@ -142,8 +173,6 @@
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
-
-        <!-- Search Bar -->
         <div class="search-bar-container">
             <input type="text" id="searchBar" placeholder="Search...">
             <a href="#" onclick="searchPage()">
@@ -152,14 +181,44 @@
         </div>
     </header>
 
+    <div class="slideshow">
+        <a href="https://example1.com" class="slide" style="background-image: url('https://via.placeholder.com/800x600/FF5733/FFFFFF?text=Slide+1');"></a>
+        <a href="https://example2.com" class="slide" style="background-image: url('https://via.placeholder.com/800x600/33FF57/FFFFFF?text=Slide+2');"></a>
+        <a href="https://example3.com" class="slide" style="background-image: url('https://via.placeholder.com/800x600/3357FF/FFFFFF?text=Slide+3');"></a>
+        <a href="https://example4.com" class="slide" style="background-image: url('https://via.placeholder.com/800x600/FF33A1/FFFFFF?text=Slide+4');"></a>
+        <a href="https://example5.com" class="slide" style="background-image: url('https://via.placeholder.com/800x600/FFD733/FFFFFF?text=Slide+5');"></a>
+    </div>
+
     <script>
         function searchPage() {
             const query = document.getElementById('searchBar').value.trim();
             if (query) {
-                // Since no specific content is provided to search, add a search condition if needed.
                 alert(`Searching for: ${query}`);
             }
         }
+
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            showSlide(currentSlide);
+        }
+
+        // Initialize slideshow
+        showSlide(currentSlide);
+        setInterval(nextSlide, 4000); // Change slide every 4 seconds
     </script>
 </body>
 </html>
