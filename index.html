@@ -13,19 +13,16 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            overflow: hidden;
+            justify-content: space-between;
         }
 
         header {
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: flex-start; /* Align everything to the left */
             padding: 10px 20px;
             width: 100%;
-            box-sizing: border-box;
         }
 
         h1 {
@@ -49,8 +46,8 @@
 
         .nav-buttons {
             display: flex;
-            gap: 10px;
-            margin-left: 20px;
+            gap: 10px; /* Reduced gap to bring buttons closer */
+            margin-left: 20px; /* Adjust to bring buttons closer to the title */
         }
 
         .nav-button {
@@ -73,14 +70,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-left: 20px;
+            margin-left: 20px; /* Position the search bar next to the buttons */
         }
 
         input[type="text"] {
             font-size: 18px;
             padding: 8px 15px;
             border: none;
-            border-radius: 20px;
+            border-radius: 20px; /* Round corners */
             width: 200px;
             background-color: white;
             color: black;
@@ -99,48 +96,6 @@
 
         .icon:hover {
             transform: scale(1.2);
-        }
-
-        .slideshow-container {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            margin-left: 50px;
-            margin-top: 20px;
-        }
-
-        .slideshow-title {
-            font-size: 40px;
-            margin-bottom: 10px;
-        }
-
-        .slideshow {
-            position: relative;
-            width: 80%; /* Adjust width to make it smaller */
-            max-width: 400px;
-            height: 200px; /* Adjust height to make it smaller */
-            overflow: hidden;
-            border-radius: 20px; /* Rounded corners */
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            transition: transform 0.3s ease;
-        }
-
-        .slideshow:hover {
-            transform: scale(1.1); /* Zoom in on hover */
-        }
-
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            background-size: cover;
-            background-position: center;
-            transition: opacity 1s ease-in-out;
-        }
-
-        .slide.active {
-            opacity: 1;
         }
 
         @media (max-width: 768px) {
@@ -168,24 +123,25 @@
             input[type="text"] {
                 width: 150px;
             }
-
-            .slideshow {
-                width: 90%;
-                height: 150px; /* Smaller slideshow for mobile */
-            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
+        <!-- Title with "UNBLOCKZONE" -->
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
+
+        <!-- Navigation Buttons -->
         <div class="nav-buttons">
             <a href="https://your-apps-url.com" class="nav-button">APPS</a>
+            <a href="https://your-games-url.com" class="nav-button">GAMES</a>
             <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
+
+        <!-- Search Bar -->
         <div class="search-bar-container">
             <input type="text" id="searchBar" placeholder="Search...">
             <a href="#" onclick="searchPage()">
@@ -194,49 +150,19 @@
         </div>
     </header>
 
-    <div class="slideshow-container">
-        <div class="slideshow">
-            <div class="slide" style="background-image: url('https://via.placeholder.com/400x200/FF5733/FFFFFF?text=Slide+1');"></div>
-            <div class="slide" style="background-image: url('https://via.placeholder.com/400x200/33FF57/FFFFFF?text=Slide+2');"></div>
-            <div class="slide" style="background-image: url('https://via.placeholder.com/400x200/3357FF/FFFFFF?text=Slide+3');"></div>
-            <div class="slide" style="background-image: url('https://via.placeholder.com/400x200/FF33A1/FFFFFF?text=Slide+4');"></div>
-            <div class="slide" style="background-image: url('https://via.placeholder.com/400x200/FFD733/FFFFFF?text=Slide+5');"></div>
-            <div class="slide" style="background-image: url('https://via.placeholder.com/400x200/57FFD7/FFFFFF?text=Slide+6');"></div>
-            <div class="slide" style="background-image: url('https://via.placeholder.com/400x200/D733FF/FFFFFF?text=Slide+7');"></div>
-            <div class="slide" style="background-image: url('https://via.placeholder.com/400x200/33FFAA/FFFFFF?text=Slide+8');"></div>
-        </div>
-    </div>
+    <!-- Content Removed -->
+    <!-- No content section is added here as per the request -->
 
     <script>
         function searchPage() {
             const query = document.getElementById('searchBar').value.trim();
             if (query) {
+                // Since no specific content is provided to search, add a search condition if needed.
                 alert(`Searching for: ${query}`);
             }
         }
-
-        // Slideshow functionality
-        let currentSlide = 0;
-        const slides = document.querySelectorAll('.slide');
-        const totalSlides = slides.length;
-
-        function showSlide(index) {
-            slides.forEach((slide, i) => {
-                slide.classList.remove('active');
-                if (i === index) {
-                    slide.classList.add('active');
-                }
-            });
-        }
-
-        function nextSlide() {
-            currentSlide = (currentSlide + 1) % totalSlides;
-            showSlide(currentSlide);
-        }
-
-        // Initialize slideshow
-        showSlide(currentSlide);
-        setInterval(nextSlide, 4000); // Change slide every 4 seconds
     </script>
 </body>
 </html>
+
+
