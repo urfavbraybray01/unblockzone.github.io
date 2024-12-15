@@ -13,8 +13,6 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
             overflow: hidden;
         }
 
@@ -101,27 +99,30 @@
             transform: scale(1.2);
         }
 
-        .slideshow-container {
+        .content {
             display: flex;
-            flex-direction: column;
+            flex-direction: row;
+            justify-content: flex-start;
             align-items: flex-start;
-            margin-left: 50px;
+            width: 100%;
             margin-top: 20px;
+            padding: 0 20px;
+            box-sizing: border-box;
         }
 
-        .slideshow {
+        .slideshow-container {
             position: relative;
-            width: 100%; /* Full width to fit left space */
-            max-width: 600px; /* Adjust max-width for larger slideshow */
-            height: 400px; /* Larger height */
+            width: 40%; /* Left section */
+            max-width: 500px; /* Limit max size */
+            height: 350px;
+            border-radius: 20px;
             overflow: hidden;
-            border-radius: 20px; /* Rounded corners */
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
             transition: transform 0.3s ease;
         }
 
-        .slideshow:hover {
-            transform: scale(1.1); /* Zoom in on hover */
+        .slideshow-container:hover {
+            transform: scale(1.05); /* Zoom in on hover */
         }
 
         .slide {
@@ -138,10 +139,20 @@
             opacity: 1;
         }
 
+        .right-content {
+            margin-left: 30px;
+            color: white;
+            flex: 1; /* Take the rest of the space */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
             }
+
             .nav-buttons {
                 display: block;
                 text-align: center;
@@ -164,9 +175,20 @@
                 width: 150px;
             }
 
-            .slideshow {
+            .content {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .slideshow-container {
                 width: 90%;
-                height: 300px; /* Smaller slideshow for mobile */
+                max-width: 300px;
+                height: 250px;
+            }
+
+            .right-content {
+                margin-left: 0;
+                text-align: center;
             }
         }
     </style>
@@ -190,16 +212,16 @@
         </div>
     </header>
 
-    <div class="slideshow-container">
-        <div class="slideshow">
-            <div class="slide" style="background-image: url('https://mp.moonpreneur.com/blog/wp-content/uploads/2023/08/Fortnite.png');"></div>
-            <div class="slide" style="background-image: url('https://www.tubefilter.com/wp-content/uploads/2023/01/roblox-quest-metaverse-1400x825.jpg');"></div>
-            <div class="slide" style="background-image: url('https://i0.wp.com/etspeaksfromhome.co.uk/wp-content/uploads/2018/04/Crossy-Road-My-New-Online-Game-Addiction.png?fit=700%2C420&ssl=1');"></div>
-            <div class="slide" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png');"></div>
-            <div class="slide" style="background-image: url('https://assetsio.gnwcdn.com/mario-64-header.jpg?width=1200&height=1200&fit=bounds&quality=70&format=jpg&auto=webp');"></div>
-            <div class="slide" style="background-image: url('https://pbs.twimg.com/media/EMfeE2oXkAAUTBE.jpg');"></div>
-            <div class="slide" style="background-image: url('https://i.ytimg.com/vi/kVFWLlRhH8Y/maxresdefault.jpg');"></div>
-            <div class="slide" style="background-image: url('https://defold.com/images/games/monkeymart-half.png');"></div>
+    <div class="content">
+        <div class="slideshow-container">
+            <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/FF5733/FFFFFF?text=Slide+1');"></div>
+            <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/33FF57/FFFFFF?text=Slide+2');"></div>
+            <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/3357FF/FFFFFF?text=Slide+3');"></div>
+            <div class="slide" style="background-image: url('https://via.placeholder.com/600x400/FF33A1/FFFFFF?text=Slide+4');"></div>
+        </div>
+
+        <div class="right-content">
+            <p>Welcome to UnblockZone, your hub for Apps, Games, Proxies, and more!</p>
         </div>
     </div>
 
