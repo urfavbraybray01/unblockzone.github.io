@@ -104,7 +104,7 @@
         .subtitle-container {
             display: flex;
             align-items: flex-start;
-            justify-content: flex-start;
+            justify-content: flex-end; /* Align the text to the right */
             padding: 20px;
             margin-top: 20px;
             width: 100%; /* Ensuring it takes full width */
@@ -153,6 +153,8 @@
         }
 
         .about-container .description {
+            font-family: 'Roboto', sans-serif; /* Use Roboto font */
+            font-weight: 500; /* Medium Bold weight */
             font-size: 14px;
             color: white;
             margin-top: 10px;
@@ -202,7 +204,7 @@
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -238,8 +240,8 @@
         <div class="about-container">
             <h2>About UnblockZone</h2>
             <p>UnblockZone is a platform to access various online services safely and securely. Explore apps, games, proxies, and more!</p>
-            <!-- Editable description box -->
-            <textarea class="description">Enter your custom description here...</textarea>
+            <!-- Editable description box with Roboto font, medium bold -->
+            <textarea class="description"></textarea>
         </div>
     </div>
 
