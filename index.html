@@ -13,15 +13,15 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start; /* Align content at the top */
-            overflow: hidden; /* Remove overflow */
+            justify-content: flex-start;
+            overflow: hidden;
         }
 
         header {
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Align everything to the left */
+            justify-content: flex-start;
             padding: 10px 20px;
             width: 100%;
             box-sizing: border-box;
@@ -48,8 +48,8 @@
 
         .nav-buttons {
             display: flex;
-            gap: 10px; /* Reduced gap to bring buttons closer */
-            margin-left: 20px; /* Adjust to bring buttons closer to the title */
+            gap: 10px;
+            margin-left: 20px;
         }
 
         .nav-button {
@@ -72,14 +72,14 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            margin-left: 20px; /* Position the search bar next to the buttons */
+            margin-left: 20px;
         }
 
         input[type="text"] {
             font-size: 18px;
             padding: 8px 15px;
             border: none;
-            border-radius: 20px; /* Round corners */
+            border-radius: 20px;
             width: 200px;
             background-color: white;
             color: black;
@@ -103,14 +103,15 @@
         .slideshow-container {
             position: relative;
             width: 1280px;
-            height: 780px; /* Increased height for the bottom section */
+            height: 780px;
             margin: 20px auto;
             border-radius: 15px;
             overflow: hidden;
             background: black;
+            padding-bottom: 200px; /* Add space at the bottom to enable scrolling */
         }
 
-        /* Embed YouTube video as background */
+        /* Custom Video Background */
         .video-background {
             position: absolute;
             top: 0;
@@ -118,21 +119,19 @@
             width: 100%;
             height: 100%;
             z-index: -1;
+            object-fit: cover;
         }
 
         .slideshow {
             position: absolute;
             bottom: 0;
             width: 100%;
-            height: 500px; /* Adjusted height for the slideshow section */
-            margin-bottom: 20px; /* Additional space at the bottom */
-            overflow: hidden;
+            height: 500px;
+            overflow-y: scroll; /* Enable vertical scrolling */
         }
 
         .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
+            position: relative;
             width: 100%;
             height: 100%;
             background-size: cover;
@@ -151,16 +150,13 @@
             transform: scale(1.1);
             transition: transform 0.3s ease;
         }
-
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <!-- Title with "UNBLOCKZONE" -->
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
 
-        <!-- Navigation Buttons -->
         <div class="nav-buttons">
             <a href="https://your-apps-url.com" class="nav-button">APPS</a>
             <a href="https://your-games-url.com" class="nav-button">GAMES</a>
@@ -169,7 +165,6 @@
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
 
-        <!-- Search Bar -->
         <div class="search-bar-container">
             <input type="text" id="searchBar" placeholder="Search...">
             <a href="#" onclick="searchPage()">
@@ -178,61 +173,34 @@
         </div>
     </header>
 
-    <!-- First Slideshow Container -->
+    <!-- Slideshow Container -->
     <div class="slideshow-container">
-        <!-- YouTube Video Background -->
-        <iframe class="video-background" src="https://www.youtube.com/embed/wv-m7k5ZUD0?autoplay=1&mute=1&loop=1&playlist=wv-m7k5ZUD0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <!-- Custom Video Background -->
+        <video class="video-background" autoplay muted loop>
+            <source src="https://rr2---sn-aigl6nsr.googlevideo.com/videoplayback?expire=1734323694&ei=jllfZ5vjLNOAi9oPsdHQuQ0&ip=176.1.193.41&id=o-ALrEU7I0QB4t8luvBDku-VQIO5oLG9EYKThO1U8y9ZzA&itag=137&aitags=134%2C136%2C137%2C160%2C243&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&bui=AfMhrI_iBQjbaCroN2zEApL1hojs2p7FnsYkbIBv5TTsufpkFbhMVaDoWUsdwJH8WfvfRqCst7QRnrmd&spc=x-caUNLobDP-tj2Rkme7CXMShR1lVAHE7Izb38k0rVXkRuwfTVKE&vprv=1&svpuc=1&mime=video%2Fmp4&ns=_Ps_46S-o9eDZxcUxSDmCsQQ&rqh=1&gir=yes&clen=659603&dur=31.933&lmt=1678366659465491&keepalive=yes&fexp=24350590,24350675,24350705,24350737,24350760,24350827,24350851,51326932,51331020,51335594,51347747&c=MWEB&sefc=1&txp=5319224&n=X0HhQkmPhuJvuQ&sparams=expire%2Cei%2Cip%2Cid%2Caitags%2Csource%2Crequiressl%2Cxpc%2Cbui%2Cspc%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Cgir%2Cclen%2Cdur%2Clmt&sig=AJfQdSswRQIgT6zlGI4mxneYevsj3CrrTdllGvbYKydNDWyv7XIurj8CIQDbn2A3HZM58F0hjngA-W4uTPbIbjusC17pyKiym6Sabg%3D%3D&rm=sn-uxax4vopj5qx-q0n67e,sn-4g5ezk7l&rrc=79,104&req_id=ba7d84cdb3eba3ee&rms=rdu,au&redirect_counter=2&cms_redirect=yes&cmsv=e&ipbypass=yes&met=1734302100,&mh=6K&mip=136.47.143.104&mm=29&mn=sn-aigl6nsr&ms=rdu&mt=1734301392&mv=D&mvi=2&pl=0&lsparams=ipbypass,met,mh,mip,mm,mn,ms,mv,mvi,pl,rms&lsig=AGluJ3MwRgIhAI8hevugUBhzDLtWqe7LrlLRnBkIUHs1k3vYOLaEUHmWAiEAll1EwBDA0y7PjeKr_CBiLd5c8Rck5jLSHLDi8_4VOQA%3D" type="video/mp4">
+        </video>
 
         <!-- Slideshow -->
         <div class="slideshow">
-            <a href="https://custom-link1.com" class="slide active" style="background-image: url('https://mp.moonpreneur.com/blog/wp-content/uploads/2023/08/Fortnite.png');"></a>
-            <a href="https://custom-link2.com" class="slide" style="background-image: url('https://www.tubefilter.com/wp-content/uploads/2023/01/roblox-quest-metaverse-1400x825.jpg');"></a>
-            <a href="https://custom-link3.com" class="slide" style="background-image: url('https://i.ytimg.com/vi/kVFWLlRhH8Y/maxresdefault.jpg');"></a>
-            <a href="https://custom-link4.com" class="slide" style="background-image: url('https://defold.com/images/games/monkeymart-half.png');"></a>
-            <a href="https://custom-link5.com" class="slide" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png');"></a>
-        </div>
-    </div>
-
-    <!-- Second Slideshow Container -->
-    <div class="slideshow-container">
-        <!-- YouTube Video Background -->
-        <iframe class="video-background" src="https://www.youtube.com/embed/wv-m7k5ZUD0?autoplay=1&mute=1&loop=1&playlist=wv-m7k5ZUD0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-        <!-- Slideshow -->
-        <div class="slideshow">
-            <a href="https://custom-link6.com" class="slide active" style="background-image: url('https://mp.moonpreneur.com/blog/wp-content/uploads/2023/08/Fortnite.png');"></a>
-            <a href="https://custom-link7.com" class="slide" style="background-image: url('https://www.tubefilter.com/wp-content/uploads/2023/01/roblox-quest-metaverse-1400x825.jpg');"></a>
-            <a href="https://custom-link8.com" class="slide" style="background-image: url('https://i.ytimg.com/vi/kVFWLlRhH8Y/maxresdefault.jpg');"></a>
-            <a href="https://custom-link9.com" class="slide" style="background-image: url('https://defold.com/images/games/monkeymart-half.png');"></a>
-            <a href="https://custom-link10.com" class="slide" style="background-image: url('https://miro.medium.com/v2/resize:fit:1400/1*MZcxSSARUkVfSeAwzQ95kw.png');"></a>
+            <a href="https://custom-link1.com" class="slide active" style="background-image: url('image1.jpg');"></a>
+            <a href="https://custom-link2.com" class="slide" style="background-image: url('image2.jpg');"></a>
+            <a href="https://custom-link3.com" class="slide" style="background-image: url('image3.jpg');"></a>
         </div>
     </div>
 
     <script>
-        function searchPage() {
-            const query = document.getElementById('searchBar').value.trim();
-            if (query) {
-                alert(`Searching for: ${query}`);
-            }
-        }
+        // JavaScript for slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
 
-        let currentSlide1 = 0;
-        let currentSlide2 = 0;
-
-        const slides1 = document.querySelectorAll('#slideshow1 .slide');
-        const slides2 = document.querySelectorAll('#slideshow2 .slide');
-
-        function showSlide(slides, currentSlide) {
+        function showSlide() {
             slides.forEach((slide, index) => {
                 slide.classList.toggle('active', index === currentSlide);
             });
-            return (currentSlide + 1) % slides.length;
+            currentSlide = (currentSlide + 1) % slides.length;
         }
 
-        setInterval(() => {
-            currentSlide1 = showSlide(slides1, currentSlide1);
-            currentSlide2 = showSlide(slides2, currentSlide2);
-        }, 4000); // Change slide every 4 seconds
+        setInterval(showSlide, 4000); // Change slide every 4 seconds
     </script>
 </body>
 </html>
