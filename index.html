@@ -140,21 +140,22 @@
         .review-section {
             position: relative;
             width: 100%;
-            overflow-y: scroll;
-            max-height: 600px; /* Allows vertical scroll */
+            overflow-x: auto;
+            white-space: nowrap;
             margin-top: 20px;
             padding: 0 20px;
         }
 
         .review-container {
             display: flex;
-            flex-direction: column; /* Stack reviews vertically */
             transition: transform 0.7s ease;
         }
 
         .review-box {
             background-color: #222;
             border-radius: 20px;
+            width: 300px;
+            height: 300px; /* Make reviews square */
             margin: 10px;
             padding: 20px;
             box-sizing: border-box;
@@ -213,7 +214,8 @@
 
         @media (max-width: 768px) {
             .review-box {
-                width: 80%;
+                width: 250px;
+                height: 250px; /* Adjust square size for smaller screens */
             }
 
             .arrow {
@@ -251,6 +253,7 @@
 
     <!-- Review Section -->
     <div class="review-section">
+        <button class="arrow left" onclick="prevReview()">&#8249;</button>
         <div class="review-container">
             <div class="review-box">
                 <div class="review-stars">★★★★★</div>
@@ -278,9 +281,32 @@
                 <div class="review-description">Love the design and functionality. Definitely worth trying.</div>
             </div>
         </div>
+        <button class="arrow right" onclick="nextReview()">&#8250;</button>
     </div>
 
     <script>
+        let currentIndex = 0;
+
+        function nextReview() {
+            const container = document.querySelector('.review-container');
+            const reviews = document.querySelectorAll('.review-box');
+            const totalReviews = reviews.length;
+            const reviewsPerView = 3;  // Show only 3 reviews at a time
+
+            if (currentIndex < totalReviews - reviewsPerView) {
+                currentIndex++;
+                container.style.transform = `translateX(-${currentIndex * 320}px)`;  // Adjust for review width + margin
+            }
+        }
+
+        function prevReview() {
+            const container = document.querySelector('.review-container');
+            if (currentIndex > 0) {
+                currentIndex--;
+                container.style.transform = `translateX(-${currentIndex * 320}px)`;  // Adjust for review width + margin
+            }
+        }
+
         // Search function (just a placeholder function)
         function searchPage() {
             alert("Search functionality will be added soon.");
