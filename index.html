@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnblockZone</title>
-    <!-- Import Bowlby One font -->
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+    <!-- Import Bowlby One and Roboto fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
         /* Prevent horizontal scrolling */
         html, body {
@@ -140,19 +140,21 @@
         .review-section {
             position: relative;
             width: 100%;
-            overflow: hidden;
+            overflow-y: scroll;
+            max-height: 600px; /* Allows vertical scroll */
             margin-top: 20px;
+            padding: 0 20px;
         }
 
         .review-container {
             display: flex;
+            flex-direction: column; /* Stack reviews vertically */
             transition: transform 0.7s ease;
         }
 
         .review-box {
             background-color: #222;
             border-radius: 20px;
-            width: 300px;
             margin: 10px;
             padding: 20px;
             box-sizing: border-box;
@@ -162,6 +164,7 @@
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease, opacity 0.7s ease;
+            font-family: 'Roboto', sans-serif; /* Apply Roboto Medium Bold */
         }
 
         .review-box:hover {
@@ -248,7 +251,6 @@
 
     <!-- Review Section -->
     <div class="review-section">
-        <button class="arrow left" onclick="prevReview()">&#8249;</button>
         <div class="review-container">
             <div class="review-box">
                 <div class="review-stars">★★★★★</div>
@@ -276,30 +278,12 @@
                 <div class="review-description">Love the design and functionality. Definitely worth trying.</div>
             </div>
         </div>
-        <button class="arrow right" onclick="nextReview()">&#8250;</button>
     </div>
 
     <script>
-        let currentIndex = 0;
-
-        function nextReview() {
-            const container = document.querySelector('.review-container');
-            const reviews = document.querySelectorAll('.review-box');
-            const totalReviews = reviews.length;
-            const reviewsPerView = 3;
-
-            if (currentIndex < totalReviews - reviewsPerView) {
-                currentIndex++;
-                container.style.transform = `translateX(-${currentIndex * 320}px)`;
-            }
-        }
-
-        function prevReview() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                const container = document.querySelector('.review-container');
-                container.style.transform = `translateX(-${currentIndex * 320}px)`;
-            }
+        // Search function (just a placeholder function)
+        function searchPage() {
+            alert("Search functionality will be added soon.");
         }
     </script>
 </body>
