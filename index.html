@@ -311,32 +311,31 @@
     <!-- Big Icon Section -->
     <div class="icon-container">
         <!-- Icon 1 -->
-        <div class="icon-box" onclick="openUrlInNewTab('youtube.com')">
+        <div class="icon-box" onclick="openUrlInNewTab('https://www.example1.com')">
             <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 1" class="default">
             <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 1 Hover" class="hover">
         </div>
         <!-- Icon 2 -->
-        <div class="icon-box" onclick="openUrlInNewTab('youtube.com')">
+        <div class="icon-box" onclick="openUrlInNewTab('https://www.example2.com')">
             <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 2" class="default">
             <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 2 Hover" class="hover">
         </div>
         <!-- Icon 3 -->
-        <div class="icon-box" onclick="openUrlInNewTab('youtube.com')">
+        <div class="icon-box" onclick="openUrlInNewTab('https://www.example3.com')">
             <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 3" class="default">
             <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 3 Hover" class="hover">
         </div>
         <!-- Icon 4 -->
-        <div class="icon-box" onclick="openUrlInNewTab('youtube.com')">
+        <div class="icon-box" onclick="openUrlInNewTab('https://www.example4.com')">
             <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 4" class="default">
             <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 4 Hover" class="hover">
         </div>
     </div>
 
     <script>
-        // Function to open a new tab with about:blank and redirect to the custom URL
         function openUrlInNewTab(url) {
             const newTab = window.open('about:blank', '_blank');
-            newTab.location.href = url;
+            newTab.document.write(`<script>window.location.href = '${url}';</script>`);
         }
 
         function searchPage() {
