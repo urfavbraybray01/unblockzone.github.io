@@ -187,7 +187,7 @@
             opacity: 1; /* Show the GIF when hovering */
         }
 
-        /* Smaller icons underneath the big icons */
+        /* Smaller icons underneath the big icons (Icons 1-5) */
         .small-icon-container {
             display: flex;
             justify-content: center;
@@ -198,10 +198,10 @@
 
         .small-icon-box {
             position: relative;
-            width: 200px; /* Size of small icons */
-            height: 150px;
+            width: 600px; /* Adjusted the width to match big icons */
+            height: 400px; /* Adjusted the height to match big icons */
             background-color: #444;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
             transition: transform 0.3s ease;
         }
@@ -271,7 +271,7 @@
 
             .small-icon-box {
                 width: 90%; /* Responsive sizing for small icons */
-                height: 120px;
+                height: 300px;
             }
         }
     </style>
@@ -318,7 +318,7 @@
         <!-- Icon 2 -->
         <div class="icon-box">
             <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 2" class="default">
-            <img src="https://media.giphy.com/media/10dT4FfNeS3Hlm/giphy.gif" alt="Icon 2 Hover" class="hover">
+            <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 2 Hover" class="hover">
         </div>
     </div>
 
@@ -326,32 +326,26 @@
     <div class="small-icon-container">
         <!-- Small Icon 1 -->
         <div class="small-icon-box">
-            <a href="https://www.example1.com">
-                <img src="https://via.placeholder.com/200x150?text=Icon+1" alt="Icon 1">
+            <a href="about:blank" onclick="window.open('https://www.example1.com', '_blank');">
+                <img src="https://via.placeholder.com/600x400?text=Icon+1" alt="Icon 1">
             </a>
         </div>
         <!-- Small Icon 2 -->
         <div class="small-icon-box">
-            <a href="https://www.example2.com">
-                <img src="https://via.placeholder.com/200x150?text=Icon+2" alt="Icon 2">
+            <a href="about:blank" onclick="window.open('https://www.example2.com', '_blank');">
+                <img src="https://via.placeholder.com/600x400?text=Icon+2" alt="Icon 2">
             </a>
         </div>
         <!-- Small Icon 3 -->
         <div class="small-icon-box">
-            <a href="https://www.example3.com">
-                <img src="https://via.placeholder.com/200x150?text=Icon+3" alt="Icon 3">
+            <a href="about:blank" onclick="window.open('https://www.example3.com', '_blank');">
+                <img src="https://via.placeholder.com/600x400?text=Icon+3" alt="Icon 3">
             </a>
         </div>
         <!-- Small Icon 4 -->
         <div class="small-icon-box">
-            <a href="https://www.example4.com">
-                <img src="https://via.placeholder.com/200x150?text=Icon+4" alt="Icon 4">
-            </a>
-        </div>
-        <!-- Small Icon 5 -->
-        <div class="small-icon-box">
-            <a href="https://www.example5.com">
-                <img src="https://via.placeholder.com/200x150?text=Icon+5" alt="Icon 5">
+            <a href="about:blank" onclick="window.open('https://www.example4.com', '_blank');">
+                <img src="https://via.placeholder.com/600x400?text=Icon+4" alt="Icon 4">
             </a>
         </div>
     </div>
