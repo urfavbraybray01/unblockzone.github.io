@@ -10,7 +10,7 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden; /* Disable both horizontal and vertical scrolling */
+            overflow: hidden;
         }
 
         body {
@@ -21,6 +21,8 @@
             flex-direction: column;
             text-align: center;
             position: relative;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
         }
 
         header {
@@ -55,16 +57,16 @@
 
         .nav-buttons {
             display: flex;
-            gap: 5px;
+            gap: 20px; /* Increased gap between buttons */
             margin-left: 20px;
         }
 
         .nav-button {
             background-color: black;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 25px; /* Increased padding for larger size */
             border-radius: 20px;
-            font-size: 16px;
+            font-size: 18px; /* Increased font size */
             text-decoration: none;
             text-align: center;
             transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
@@ -104,7 +106,6 @@
             transform: scale(1.1);
         }
 
-        /* Dark grey search bar with blue glow effect */
         .custom-search-bar {
             font-size: 18px;
             padding: 10px 20px;
@@ -125,32 +126,6 @@
             box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
-
-            .nav-buttons {
-                display: block;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .nav-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .subtitle {
-                font-size: 60px;
-            }
-
-            .custom-search-bar {
-                width: 80%;
-            }
-        }
-
-        /* Snow effect container */
         .snow-container {
             position: absolute;
             top: 0;
@@ -179,10 +154,49 @@
             }
         }
 
+        /* Loading screen styles */
+        #loadingScreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+            flex-direction: column;
+        }
+
+        #loadingScreen h2 {
+            font-size: 50px;
+            color: white;
+            animation: wave 1.5s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Loading Screen -->
+    <div id="loadingScreen">
+        <div class="snow-container" id="snowContainer"></div>
+        <h2>Loading...</h2>
+    </div>
+
+    <!-- Main Content -->
     <header>
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
         <div class="nav-buttons">
@@ -203,8 +217,6 @@
         <!-- Search Bar Positioned Directly Below Subtitle -->
         <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
     </div>
-
-    <div class="snow-container" id="snowContainer"></div> <!-- Snow effect -->
 
     <script>
         document.getElementById('customSearchBar').addEventListener('keypress', function(event) {
@@ -256,6 +268,12 @@
         // Generate snowflakes and snowballs continuously
         setInterval(createSnowflake, 150); // Frequency of snowflakes
         setInterval(createSnowball, 100); // Frequency of snowballs
+
+        // Hide the loading screen and show the content after 4 seconds
+        setTimeout(function() {
+            document.getElementById('loadingScreen').style.display = 'none'; // Hide loading screen
+            document.body.style.opacity = 1; // Show the content with a fade-in effect
+        }, 4000); // 4 seconds delay
     </script>
 </body>
 </html>
