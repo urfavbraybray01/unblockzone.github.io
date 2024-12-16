@@ -21,16 +21,19 @@
             flex-direction: column;
             justify-content: flex-start;
             text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
         header {
-            background-color: #333;
+            background-color: rgba(0, 0, 0, 0.5);
             display: flex;
             align-items: center;
             justify-content: flex-start;
             padding: 10px 20px;
             width: 100%;
             box-sizing: border-box;
+            z-index: 10;
         }
 
         h1 {
@@ -221,6 +224,43 @@
             bottom: 0;
         }
 
+        /* Animation for Moving Dots */
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background-color: white;
+            animation: moveDot 10s infinite ease-in-out;
+        }
+
+        @keyframes moveDot {
+            0% {
+                transform: translate(0, 0);
+            }
+            25% {
+                transform: translate(100vw, 100vh);
+            }
+            50% {
+                transform: translate(-100vw, 100vh);
+            }
+            75% {
+                transform: translate(-100vw, -100vh);
+            }
+            100% {
+                transform: translate(100vw, -100vh);
+            }
+        }
+
+        /* Create Dots Dynamically */
+        .dot:nth-child(odd) {
+            animation-duration: 12s;
+            animation-delay: -5s;
+        }
+
+        .dot:nth-child(even) {
+            animation-duration: 8s;
+            animation-delay: -3s;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
@@ -298,35 +338,46 @@
         <!-- About UnblockZone -->
         <div class="about-container">
             <h2>About UnblockZone</h2>
-            <p>UnblockZone is a platform to access various online services safely and securely. Explore apps, games, proxies, and more!</p>
+            <p>Your gateway to unrestricted access.</p>
         </div>
     </div>
 
     <!-- Popular Games Section -->
-    <div class="popular-games-title">Popular Games</div>
-
     <div class="popular-games-container">
+        <h2 class="popular-games-title">POPULAR GAMES</h2>
+        <div class="game-thumbnail">
+            <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 1">
+        </div>
         <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
-            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 1">
+            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 2">
         </div>
         <div class="game-thumbnail" style="background-image: url('https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/3X/9/b/9bfc1dfe89bdfd8906a4bdb7cbfc27a01f8b4904.gif');">
-            <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 2">
+            <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 3">
         </div>
         <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
-            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 3">
-        </div>
-        <div class="game-thumbnail" style="background-image: url('https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/3X/9/b/9bfc1dfe89bdfd8906a4bdb7cbfc27a01f8b4904.gif');">
-            <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 4">
-        </div>
-        <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
-            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 5">
+            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 4">
         </div>
     </div>
+
+    <!-- Moving White Dots -->
+    <div id="dots"></div>
 
     <script>
         function searchPage() {
             var searchQuery = document.getElementById('searchBar').value;
             window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
+        }
+
+        // Create the 50 moving dots dynamically
+        const dotsContainer = document.getElementById('dots');
+        for (let i = 0; i < 50; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('dot');
+            dot.style.width = `${Math.random() * 10 + 5}px`; // Random size between 5px and 15px
+            dot.style.height = dot.style.width; // Make it circular
+            dot.style.top = `${Math.random() * 100}vh`; // Random initial position
+            dot.style.left = `${Math.random() * 100}vw`; // Random initial position
+            dotsContainer.appendChild(dot);
         }
     </script>
 </body>
