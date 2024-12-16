@@ -311,46 +311,34 @@
     <!-- Big Icon Section -->
     <div class="icon-container">
         <!-- Icon 1 -->
-        <div class="icon-box">
+        <div class="icon-box" onclick="openUrlInNewTab('skib.com')">
             <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 1" class="default">
-            <img src="https://media.giphy.com/media/10dT4FfNeS3Hlm/giphy.gif" alt="Icon 1 Hover" class="hover">
+            <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 1 Hover" class="hover">
         </div>
         <!-- Icon 2 -->
-        <div class="icon-box">
+        <div class="icon-box" onclick="openUrlInNewTab('skib.com')">
             <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 2" class="default">
             <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 2 Hover" class="hover">
         </div>
-    </div>
-
-    <!-- Small Icons Section -->
-    <div class="small-icon-container">
-        <!-- Small Icon 1 -->
-        <div class="small-icon-box">
-            <a href="about:blank" onclick="window.open('https://www.example1.com', '_blank');">
-                <img src="https://via.placeholder.com/600x400?text=Icon+1" alt="Icon 1">
-            </a>
+        <!-- Icon 3 -->
+        <div class="icon-box" onclick="openUrlInNewTab('skib.com')">
+            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 3" class="default">
+            <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 3 Hover" class="hover">
         </div>
-        <!-- Small Icon 2 -->
-        <div class="small-icon-box">
-            <a href="about:blank" onclick="window.open('https://www.example2.com', '_blank');">
-                <img src="https://via.placeholder.com/600x400?text=Icon+2" alt="Icon 2">
-            </a>
-        </div>
-        <!-- Small Icon 3 -->
-        <div class="small-icon-box">
-            <a href="about:blank" onclick="window.open('https://www.example3.com', '_blank');">
-                <img src="https://via.placeholder.com/600x400?text=Icon+3" alt="Icon 3">
-            </a>
-        </div>
-        <!-- Small Icon 4 -->
-        <div class="small-icon-box">
-            <a href="about:blank" onclick="window.open('https://www.example4.com', '_blank');">
-                <img src="https://via.placeholder.com/600x400?text=Icon+4" alt="Icon 4">
-            </a>
+        <!-- Icon 4 -->
+        <div class="icon-box" onclick="openUrlInNewTab('skib.com')">
+            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 4" class="default">
+            <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 4 Hover" class="hover">
         </div>
     </div>
 
     <script>
+        // Function to open a new tab with about:blank and redirect to the custom URL
+        function openUrlInNewTab(url) {
+            const newTab = window.open('about:blank', '_blank');
+            newTab.location.href = url;
+        }
+
         function searchPage() {
             var searchQuery = document.getElementById('searchBar').value;
             window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
