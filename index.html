@@ -176,7 +176,7 @@
             if (event.key === 'Enter') {
                 const searchQuery = event.target.value;
                 const encodedQuery = encodeURIComponent(searchQuery);
-                const url = `https://szvy.lol/embed.html#https://www.google.com=${encodedQuery}`;
+                const url = `https://szvy.lol/embed.html#https://www.google.com{encodedQuery}`;
                 window.location.href = url;
             }
         });
