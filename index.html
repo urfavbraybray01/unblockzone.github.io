@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnblockZone</title>
     <style>
-        /* Prevent horizontal scrolling */
+        /* Prevent scrolling */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow-x: hidden;
+            overflow: hidden; /* Disable scrolling */
         }
 
         body {
@@ -53,83 +53,25 @@
             color: white;
         }
 
-        .nav-buttons {
-            display: flex;
-            gap: 5px;
-            margin-left: 20px;
-        }
-
-        .nav-button {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 16px;
-            text-decoration: none;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-button:hover {
-            transform: scale(1.1);
-            background-color: #444;
-        }
-
-        .subtitle-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-            margin-top: 20px;
-            position: relative; /* To stack snow behind text */
-        }
-
-        .subtitle {
-            font-size: 80px;
-            display: inline-block;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .subtitle .blue {
-            color: blue;
-            font-size: 100px;
-            display: block;
-        }
-
-        .subtitle:hover {
-            transform: scale(1.1);
-        }
-
-        .custom-search-bar {
-            font-size: 18px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            width: 50%;
-            background-color: #555;
-            color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .custom-search-bar:focus {
-            outline: none;
-        }
-
-        .custom-search-bar:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
-        }
-
-        /* Real-time clock styles */
-        .real-time {
+        .time-box {
             font-family: 'Roboto', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
+            font-weight: 700;
+            font-size: 30px;
             color: white;
-            text-align: right;
+            background-color: #222;
+            border-radius: 20px;
+            padding: 10px 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .time-box:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px 4px #008CFF; /* Blue glow effect */
+        }
+
+        .time-box:active {
+            transform: scale(1.05); /* Slight click effect */
         }
 
         @media (max-width: 768px) {
@@ -137,136 +79,37 @@
                 font-size: 40px;
             }
 
-            .nav-buttons {
-                display: block;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .nav-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .subtitle {
-                font-size: 60px;
-            }
-
-            .custom-search-bar {
-                width: 80%;
-            }
-
-            .real-time {
-                font-size: 12px;
-            }
-        }
-
-        /* Snow effect container */
-        .snow-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* Behind all content */
-            pointer-events: none; /* Allow interaction with elements above */
-        }
-
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            color: white;
-            font-size: 10px;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(110vh); /* Fall beyond viewport height */
+            .time-box {
+                font-size: 20px;
+                padding: 8px 16px;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
-        <div class="nav-buttons">
-            <a href="https://your-apps-url.com" class="nav-button">APPS</a>
-            <a href="https://your-games-url.com" class="nav-button">GAMES</a>
-            <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
-            <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
-            <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
-        </div>
-        <div class="real-time" id="realTime"></div>
+        <div class="time-box" id="timeBox"></div>
     </header>
 
-    <div class="subtitle-container">
-        <div class="snow-container" id="snowContainer"></div> <!-- Snow Effect -->
-        <div class="subtitle">
-            <span class="white">UNBLOCK</span>
-            <span class="blue">ZONE</span>
-        </div>
-
-        <!-- Search Bar Positioned Directly Below Subtitle -->
-        <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
-    </div>
-
     <script>
-        document.getElementById('customSearchBar').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                const searchQuery = event.target.value;
-                const encodedQuery = encodeURIComponent(searchQuery);
-                const url = `https://wxstbound.global.ssl.fastly.net/embed.html#https://www.google.com/search?q=${encodedQuery}`;
-                window.location.href = url;
-            }
-        });
-
         // Real-time clock update function
         function updateRealTime() {
             const now = new Date();
-            const options = {
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            document.getElementById('realTime').textContent = now.toLocaleString('en-US', options);
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('timeBox').textContent = timeString;
         }
+
+        // Redirect to today's date on click
+        document.getElementById('timeBox').addEventListener('click', () => {
+            const today = new Date().toISOString().split('T')[0]; // Format YYYY-MM-DD
+            window.location.href = `https://wxstbound.global.ssl.fastly.net/embed.html#https://www.google.com/search?q=${today}`;
+        });
 
         // Update clock every second
         setInterval(updateRealTime, 1000);
         updateRealTime(); // Initialize on page load
-
-        // Snow effect generator
-        const snowContainer = document.getElementById('snowContainer');
-
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Fall speed
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Random size
-            snowflake.style.opacity = Math.random() * 0.8 + 0.2; // Random opacity
-
-            snowContainer.appendChild(snowflake);
-
-            // Remove snowflake after falling
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
-        }
-
-        // Generate snowflakes continuously
-        setInterval(createSnowflake, 150); // Frequency of snowflakes
     </script>
 </body>
 </html>
