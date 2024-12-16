@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnblockZone</title>
     <style>
-        /* Prevent horizontal scrolling */
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%; /* Ensure full height for scrolling */
-            overflow-x: hidden; /* Disable horizontal scrolling */
+            height: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -18,7 +17,7 @@
             font-family: 'Bowlby One', sans-serif;
             color: white;
             text-align: center;
-            overflow-y: auto; /* Enable vertical scrolling */
+            overflow-y: auto;
         }
 
         h1 {
@@ -42,6 +41,7 @@
             border-radius: 20px;
             overflow: hidden;
             transition: transform 0.3s ease;
+            margin-bottom: 20px;
         }
 
         .icon-box:hover {
@@ -58,12 +58,12 @@
             background-color: #000000;
             color: #ffffff;
             border: 1px solid #ffffff;
-            font-size: 26px;
-            width: 50%;
+            font-size: 20px;
+            width: 80%;
             cursor: pointer;
             border-radius: 10px;
             padding: 10px;
-            margin: 20px 0;
+            margin: 10px 0;
             transition: transform 0.3s ease;
         }
 
@@ -77,9 +77,8 @@
             newTab.document.write(`<script>window.location.href = '${url}';</script>`);
         }
 
-        function openGame() {
+        function openGame(url) {
             var win = window.open();
-            var url = "URL BRUH"; // Replace this with the actual game URL
             var iframe = win.document.createElement('iframe');
             iframe.style.width = "100%";
             iframe.style.height = "100%";
@@ -96,36 +95,37 @@
 
     <!-- Big Icon Section -->
     <div class="icon-container">
-        <!-- Example Icons -->
-        <div class="icon-box" onclick="openUrlInNewTab('https://www.example1.com')">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 1">
+        <!-- Icon 1 -->
+        <div>
+            <div class="icon-box" onclick="openUrlInNewTab('https://www.example1.com')">
+                <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 1">
+            </div>
+            <button onclick="openGame('https://game1.com')">Play Game</button>
         </div>
-        <div class="icon-box" onclick="openUrlInNewTab('https://www.example2.com')">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 2">
+        
+        <!-- Icon 2 -->
+        <div>
+            <div class="icon-box" onclick="openUrlInNewTab('https://www.example2.com')">
+                <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 2">
+            </div>
+            <button onclick="openGame('https://game2.com')">Play Game</button>
         </div>
-        <div class="icon-box" onclick="openUrlInNewTab('https://www.example3.com')">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 3">
+
+        <!-- Icon 3 -->
+        <div>
+            <div class="icon-box" onclick="openUrlInNewTab('https://www.example3.com')">
+                <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 3">
+            </div>
+            <button onclick="openGame('https://game3.com')">Play Game</button>
         </div>
-        <div class="icon-box" onclick="openUrlInNewTab('https://www.example4.com')">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 4">
+
+        <!-- Icon 4 -->
+        <div>
+            <div class="icon-box" onclick="openUrlInNewTab('https://www.example4.com')">
+                <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 4">
+            </div>
+            <button onclick="openGame('https://game4.com')">Play Game</button>
         </div>
     </div>
-
-    <!-- Play Game Button -->
-    <center>
-        <button onclick="openGame()" style="background-color: #000000; color: #fff; border: 1; border-color: #ffffff; vertical-align: center; font-size: 26px; width:100%; cursor: pointer; border-radius: 10px;">play game</button>
-        <script>
-            function openGame() {
-                var win = window.open();
-                var url = "URL BRUH"; // Replace this with the actual game URL
-                var iframe = win.document.createElement('iframe');
-                iframe.style.width = "100%";
-                iframe.style.height = "100%";
-                iframe.style.border = "none";
-                iframe.src = url;
-                win.document.body.appendChild(iframe);
-            }
-        </script>
-    </center>
 </body>
 </html>
