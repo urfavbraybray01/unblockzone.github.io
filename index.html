@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnblockZone</title>
-    <!-- Import Bowlby One and Roboto fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
     <style>
         /* Prevent horizontal scrolling */
         html, body {
@@ -23,7 +21,6 @@
             flex-direction: column;
             justify-content: flex-start;
             text-align: center;
-            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         header {
@@ -41,7 +38,6 @@
             margin: 0;
             display: inline-block;
             transition: transform 0.3s ease;
-            font-family: 'Bowlby One', sans-serif; /* Apply Bowlby One font */
         }
 
         h1:hover {
@@ -58,7 +54,7 @@
 
         .nav-buttons {
             display: flex;
-            gap: 5px;
+            gap: 5px; /* Adjusted the gap to make buttons closer */
             margin-left: 20px;
         }
 
@@ -71,7 +67,6 @@
             text-decoration: none;
             text-align: center;
             transition: transform 0.3s ease;
-            font-family: 'Bowlby One', sans-serif; /* Apply Bowlby One font */
         }
 
         .nav-button:hover {
@@ -137,70 +132,47 @@
             transform: scale(1.1);
         }
 
-        /* Review Section Styles */
-        .review-section {
-            width: 100%;
-            max-height: 100vh; /* Limit height to the viewport */
-            overflow-y: scroll; /* Enable vertical scrolling */
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .review-container {
-            display: flex;
-            flex-direction: column; /* Stack reviews vertically */
-            gap: 20px;
-        }
-
-        .review-box {
-            background-color: #222;
-            border-radius: 20px;
-            width: 300px;
-            height: 300px; /* Make reviews square */
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: left;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 0.7s ease;
-            font-family: 'Roboto', sans-serif; /* Apply Roboto Medium Bold */
-        }
-
-        .review-box:hover {
-            transform: scale(1.1);
-        }
-
-        .review-stars {
-            color: gold;
-            font-size: 20px;
-            margin-bottom: 10px;
-        }
-
-        .review-name {
-            font-size: 18px;
-            font-weight: bold;
-            margin-bottom: 10px;
-            color: white;
-        }
-
-        .review-description {
-            font-size: 16px;
-            color: #ddd;
-        }
-
         @media (max-width: 768px) {
-            .review-box {
-                width: 250px;
-                height: 250px; /* Adjust square size for smaller screens */
+            h1 {
+                font-size: 40px;
+            }
+
+            .nav-buttons {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .search-bar-container {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            input[type="text"] {
+                width: 150px;
+            }
+
+            .subtitle {
+                font-size: 60px;
+                width: 100%;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
+        <!-- Title with "UNBLOCKZONE" -->
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
 
+        <!-- Navigation Buttons -->
         <div class="nav-buttons">
             <a href="https://your-apps-url.com" class="nav-button">APPS</a>
             <a href="https://your-games-url.com" class="nav-button">GAMES</a>
@@ -209,6 +181,7 @@
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
 
+        <!-- Search Bar -->
         <div class="search-bar-container">
             <input type="text" id="searchBar" placeholder="Search...">
             <a href="#" onclick="searchPage()">
@@ -217,6 +190,7 @@
         </div>
     </header>
 
+    <!-- Subtitle Section with "UNBLOCK ZONE" -->
     <div class="subtitle-container">
         <div class="subtitle">
             <span class="white">UNBLOCK</span>
@@ -224,41 +198,10 @@
         </div>
     </div>
 
-    <!-- Review Section -->
-    <div class="review-section">
-        <div class="review-container">
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">John Doe</div>
-                <div class="review-description">UnblockZone is amazing! It helped me access all my favorite apps seamlessly.</div>
-            </div>
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Jane Smith</div>
-                <div class="review-description">A must-use platform for anyone looking for safe and fast access online.</div>
-            </div>
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Alex Brown</div>
-                <div class="review-description">Super user-friendly and reliable. Highly recommend UnblockZone!</div>
-            </div>
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Chris Wilson</div>
-                <div class="review-description">Fantastic platform with so many great features!</div>
-            </div>
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Taylor Green</div>
-                <div class="review-description">Love the design and functionality. Definitely worth trying.</div>
-            </div>
-        </div>
-    </div>
-
     <script>
-        // Search function (just a placeholder function)
         function searchPage() {
-            alert("Search functionality will be added soon.");
+            var searchQuery = document.getElementById('searchBar').value;
+            window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
         }
     </script>
 </body>
