@@ -147,6 +147,7 @@
             justify-content: center;
             overflow: hidden;
             max-width: 1300px;
+            transition: opacity 0.7s ease;
         }
 
         .review-box {
@@ -252,6 +253,7 @@
             <!-- Reviews will be dynamically loaded here -->
         </div>
         <button class="arrow right" id="nextReviews" onclick="loadNextReviews()">→</button>
+        <button class="arrow left" id="prevReviews" onclick="loadPrevReviews()">←</button>
     </div>
 
     <footer>
@@ -272,15 +274,15 @@
         ];
 
         let currentReviewIndex = 0;
+        const reviewsPerPage = 4;
 
         // Function to load reviews
         function loadReviews() {
             const reviewContainer = document.getElementById('reviews');
-            reviewContainer.innerHTML = ''; // Clear existing reviews
+            reviewContainer.innerHTML = '';
 
-            for (let i = currentReviewIndex; i < currentReviewIndex + 4; i++) {
-                if (i >= reviews.length) break;
-                const review = reviews[i];
+            const visibleReviews = reviews.slice(currentReviewIndex, currentReviewIndex + reviewsPerPage);
+            visibleReviews.forEach(review => {
                 const reviewBox = document.createElement('div');
                 reviewBox.classList.add('review-box');
                 reviewBox.innerHTML = `
@@ -289,13 +291,33 @@
                     <div class="review-description">${review.description}</div>
                 `;
                 reviewContainer.appendChild(reviewBox);
+            });
+
+            // Control arrow visibility and animations
+            if (currentReviewIndex + reviewsPerPage >= reviews.length) {
+                document.getElementById('nextReviews').style.display = 'none';
+                document.getElementById('prevReviews').style.display = 'block';
+            } else if (currentReviewIndex === 0) {
+                document.getElementById('prevReviews').style.display = 'none';
+                document.getElementById('nextReviews').style.display = 'block';
+            } else {
+                document.getElementById('nextReviews').style.display = 'block';
+                document.getElementById('prevReviews').style.display = 'block';
             }
         }
 
-        // Load the next 4 reviews
+        // Load next set of reviews
         function loadNextReviews() {
-            if (currentReviewIndex + 4 < reviews.length) {
-                currentReviewIndex += 4;
+            if (currentReviewIndex + reviewsPerPage < reviews.length) {
+                currentReviewIndex += reviewsPerPage;
+                loadReviews();
+            }
+        }
+
+        // Load previous set of reviews
+        function loadPrevReviews() {
+            if (currentReviewIndex - reviewsPerPage >= 0) {
+                currentReviewIndex -= reviewsPerPage;
                 loadReviews();
             }
         }
