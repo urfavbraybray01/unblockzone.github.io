@@ -54,7 +54,7 @@
 
         .nav-buttons {
             display: flex;
-            gap: 10px;
+            gap: 5px; /* Adjusted the gap to make buttons closer */
             margin-left: 20px;
         }
 
@@ -175,6 +175,7 @@
             text-align: left;
             margin-left: 20px;
             margin-top: 20px;
+            text-transform: uppercase;
             transition: transform 0.3s ease;
         }
 
@@ -194,7 +195,7 @@
         }
 
         .game-thumbnail:hover {
-            transform: scale(1.1);
+            transform: scale(1.05); /* Zooms in a little bit (5%) */
         }
 
         .game-thumbnail img {
@@ -311,24 +312,21 @@
         <div class="game-thumbnail" style="background-image: url('https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/3X/9/b/9bfc1dfe89bdfd8906a4bdb7cbfc27a01f8b4904.gif');">
             <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 2">
         </div>
-        <div class="game-thumbnail" style="background-image: url('https://media.tenor.com/bhUZY3e9OooAAAAM/logo-jumping-chicken.gif');">
-            <img src="https://i0.wp.com/etspeaksfromhome.co.uk/wp-content/uploads/2018/04/Crossy-Road-My-New-Online-Game-Addiction.png?fit=700%2C420&ssl=1" alt="Game 3">
+        <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
+            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 3">
         </div>
-        <div class="game-thumbnail" style="background-image: url('https://usishield.com/wp-content/uploads/2023/09/ezgif-2-ca4648b3a3.gif');">
-            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7xZoHvpITv18feJd63bPUYfKibRNalXsBvg&s" alt="Game 4">
+        <div class="game-thumbnail" style="background-image: url('https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/3X/9/b/9bfc1dfe89bdfd8906a4bdb7cbfc27a01f8b4904.gif');">
+            <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 4">
         </div>
-        <div class="game-thumbnail" style="background-image: url('https://i.gifer.com/1D7s.gif');">
-            <img src="https://upload.wikimedia.org/wikipedia/en/6/6a/Super_Mario_64_box_cover.jpg" alt="Game 5">
+        <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
+            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 5">
         </div>
     </div>
 
     <script>
         function searchPage() {
-            const query = document.getElementById('searchBar').value.trim();
-            if (query) {
-                // Since no specific content is provided to search, add a search condition if needed.
-                alert(`Searching for: ${query}`);
-            }
+            var searchQuery = document.getElementById('searchBar').value;
+            window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
         }
     </script>
 </body>
