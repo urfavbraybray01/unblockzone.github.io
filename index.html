@@ -187,6 +187,41 @@
             opacity: 1; /* Show the GIF when hovering */
         }
 
+        /* Smaller icons underneath the big icons */
+        .small-icon-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .small-icon-box {
+            position: relative;
+            width: 200px; /* Size of small icons */
+            height: 150px;
+            background-color: #444;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .small-icon-box:hover {
+            transform: scale(1.05);
+        }
+
+        .small-icon-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .small-icon-box a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
@@ -228,6 +263,16 @@
                 width: 90%; /* Responsive sizing for smaller screens */
                 height: 300px;
             }
+
+            .small-icon-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .small-icon-box {
+                width: 90%; /* Responsive sizing for small icons */
+                height: 120px;
+            }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -263,7 +308,7 @@
         </div>
     </div>
 
-    <!-- Icon Section with 5 Icons -->
+    <!-- Big Icon Section -->
     <div class="icon-container">
         <!-- Icon 1 -->
         <div class="icon-box">
@@ -275,20 +320,39 @@
             <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 2" class="default">
             <img src="https://media.giphy.com/media/10dT4FfNeS3Hlm/giphy.gif" alt="Icon 2 Hover" class="hover">
         </div>
-        <!-- Icon 3 -->
-        <div class="icon-box">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 3" class="default">
-            <img src="https://media.giphy.com/media/10dT4FfNeS3Hlm/giphy.gif" alt="Icon 3 Hover" class="hover">
+    </div>
+
+    <!-- Small Icons Section -->
+    <div class="small-icon-container">
+        <!-- Small Icon 1 -->
+        <div class="small-icon-box">
+            <a href="https://www.example1.com">
+                <img src="https://via.placeholder.com/200x150?text=Icon+1" alt="Icon 1">
+            </a>
         </div>
-        <!-- Icon 4 -->
-        <div class="icon-box">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 4" class="default">
-            <img src="https://media.giphy.com/media/10dT4FfNeS3Hlm/giphy.gif" alt="Icon 4 Hover" class="hover">
+        <!-- Small Icon 2 -->
+        <div class="small-icon-box">
+            <a href="https://www.example2.com">
+                <img src="https://via.placeholder.com/200x150?text=Icon+2" alt="Icon 2">
+            </a>
         </div>
-        <!-- Icon 5 -->
-        <div class="icon-box">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 5" class="default">
-            <img src="https://media.giphy.com/media/10dT4FfNeS3Hlm/giphy.gif" alt="Icon 5 Hover" class="hover">
+        <!-- Small Icon 3 -->
+        <div class="small-icon-box">
+            <a href="https://www.example3.com">
+                <img src="https://via.placeholder.com/200x150?text=Icon+3" alt="Icon 3">
+            </a>
+        </div>
+        <!-- Small Icon 4 -->
+        <div class="small-icon-box">
+            <a href="https://www.example4.com">
+                <img src="https://via.placeholder.com/200x150?text=Icon+4" alt="Icon 4">
+            </a>
+        </div>
+        <!-- Small Icon 5 -->
+        <div class="small-icon-box">
+            <a href="https://www.example5.com">
+                <img src="https://via.placeholder.com/200x150?text=Icon+5" alt="Icon 5">
+            </a>
         </div>
     </div>
 
