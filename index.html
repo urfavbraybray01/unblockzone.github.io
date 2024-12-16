@@ -1,135 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnblockZone</title>
-    <style>
-        /* Prevent horizontal scrolling */
-        html, body {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            background-color: black;
-            font-family: 'Bowlby One', sans-serif;
-            color: white;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            position: relative;
-        }
-
-        header {
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-
-        h1 {
-            font-size: 50px;
-            margin: 0;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        h1:hover {
-            transform: scale(1.1);
-        }
-
-        .blue {
-            color: blue;
-        }
-
-        .white {
-            color: white;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 5px;
-            margin-left: 20px;
-        }
-
-        .nav-button {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 16px;
-            text-decoration: none;
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-button:hover {
-            transform: scale(1.1);
-            background-color: #444;
-        }
-
-        .subtitle-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            width: 100%;
-            margin-top: 20px;
-            position: relative; /* To stack snow behind text */
-        }
-
-        .subtitle {
-            font-size: 80px;
-            display: inline-block;
-            margin-bottom: 20px;
-            transition: transform 0.3s ease;
-        }
-
-        .subtitle .blue {
-            color: blue;
-            font-size: 100px;
-            display: block;
-        }
-
-        .subtitle:hover {
-            transform: scale(1.1);
-        }
-
-        .custom-search-bar {
-            font-size: 18px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 30px;
-            width: 50%;
-            background-color: #555;
-            color: white;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .custom-search-bar:focus {
-            outline: none;
-        }
-
-        .custom-search-bar:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
-        }
-
-        /* Real-time clock styles */
-        .real-time {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 500;
-            font-size: 14px;
-            color: white;
-            text-align: right;
+            100% {
+                transform: translateY(110vh); /* Fall beyond viewport height */
+            }
         }
 
         @media (max-width: 768px) {
@@ -155,40 +26,8 @@
             .custom-search-bar {
                 width: 80%;
             }
-
-            .real-time {
-                font-size: 12px;
-            }
         }
 
-        /* Snow effect container */
-        .snow-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* Behind all content */
-            pointer-events: none; /* Allow interaction with elements above */
-        }
-
-        .snowflake {
-            position: absolute;
-            top: -10px;
-            color: white;
-            font-size: 10px;
-            opacity: 0.8;
-            animation: fall linear infinite;
-        }
-
-        @keyframes fall {
-            0% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(110vh); /* Fall beyond viewport height */
-            }
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -202,7 +41,6 @@
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
-        <div class="real-time" id="realTime"></div>
     </header>
 
     <div class="subtitle-container">
@@ -225,25 +63,6 @@
                 window.location.href = url;
             }
         });
-
-        // Real-time clock update function
-        function updateRealTime() {
-            const now = new Date();
-            const options = {
-                weekday: 'short',
-                year: 'numeric',
-                month: 'short',
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit'
-            };
-            document.getElementById('realTime').textContent = now.toLocaleString('en-US', options);
-        }
-
-        // Update clock every second
-        setInterval(updateRealTime, 1000);
-        updateRealTime(); // Initialize on page load
 
         // Snow effect generator
         const snowContainer = document.getElementById('snowContainer');
