@@ -20,6 +20,7 @@
             display: flex;
             flex-direction: column;
             text-align: center;
+            position: relative; /* So snowflakes can be positioned relative to the body */
         }
 
         header {
@@ -171,6 +172,59 @@
             }
         }
 
+        /* Snowflakes falling animation */
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            z-index: 1;
+            color: white;
+            font-size: 24px;
+            user-select: none;
+            animation: fall 10s linear infinite;
+            pointer-events: none;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* Randomize snowflake size, delay, and horizontal position */
+        .snowflake:nth-child(1) {
+            left: 10%;
+            animation-duration: 12s;
+            font-size: 20px;
+            animation-delay: 0s;
+        }
+
+        .snowflake:nth-child(2) {
+            left: 30%;
+            animation-duration: 15s;
+            font-size: 28px;
+            animation-delay: 2s;
+        }
+
+        .snowflake:nth-child(3) {
+            left: 50%;
+            animation-duration: 18s;
+            font-size: 24px;
+            animation-delay: 1s;
+        }
+
+        .snowflake:nth-child(4) {
+            left: 70%;
+            animation-duration: 14s;
+            font-size: 26px;
+            animation-delay: 3s;
+        }
+
+        .snowflake:nth-child(5) {
+            left: 90%;
+            animation-duration: 16s;
+            font-size: 22px;
+            animation-delay: 4s;
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -201,6 +255,16 @@
 
         <!-- Search Bar Positioned Directly Below Subtitle -->
         <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
+    </div>
+
+    <!-- Snowflakes -->
+    <div class="snowflakes-container">
+        <div class="snowflake">❄️</div>
+        <div class="snowflake">❄️</div>
+        <div class="snowflake">❄️</div>
+        <div class="snowflake">❄️</div>
+        <div class="snowflake">❄️</div>
+        <!-- Add more snowflakes as needed -->
     </div>
 
     <script>
