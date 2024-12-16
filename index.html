@@ -26,7 +26,7 @@
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between;
             padding: 10px 20px;
             position: sticky;
             top: 0;
@@ -122,6 +122,15 @@
             box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
         }
 
+        /* Real-time clock styles */
+        .real-time {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            color: white;
+            text-align: right;
+        }
+
         @media (max-width: 768px) {
             h1 {
                 font-size: 40px;
@@ -145,9 +154,13 @@
             .custom-search-bar {
                 width: 80%;
             }
+
+            .real-time {
+                font-size: 12px;
+            }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -159,6 +172,7 @@
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
+        <div class="real-time" id="realTime"></div>
     </header>
 
     <div class="subtitle-container">
@@ -180,6 +194,25 @@
                 window.location.href = url;
             }
         });
+
+        // Real-time clock update function
+        function updateRealTime() {
+            const now = new Date();
+            const options = {
+                weekday: 'short',
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit'
+            };
+            document.getElementById('realTime').textContent = now.toLocaleString('en-US', options);
+        }
+
+        // Update clock every second
+        setInterval(updateRealTime, 1000);
+        updateRealTime(); // Initialize on page load
     </script>
 </body>
 </html>
