@@ -20,6 +20,7 @@
             display: flex;
             flex-direction: column;
             text-align: center;
+            position: relative;
         }
 
         header {
@@ -82,6 +83,7 @@
             padding: 20px;
             width: 100%;
             margin-top: 20px;
+            position: relative; /* To stack snow behind text */
         }
 
         .subtitle {
@@ -101,7 +103,6 @@
             transform: scale(1.1);
         }
 
-        /* Dark grey search bar with blue glow effect */
         .custom-search-bar {
             font-size: 18px;
             padding: 10px 20px;
@@ -159,6 +160,35 @@
                 font-size: 12px;
             }
         }
+
+        /* Snow effect container */
+        .snow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0; /* Behind all content */
+            pointer-events: none; /* Allow interaction with elements above */
+        }
+
+        .snowflake {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 10px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(110vh); /* Fall beyond viewport height */
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@500&display=swap" rel="stylesheet">
 </head>
@@ -176,6 +206,7 @@
     </header>
 
     <div class="subtitle-container">
+        <div class="snow-container" id="snowContainer"></div> <!-- Snow Effect -->
         <div class="subtitle">
             <span class="white">UNBLOCK</span>
             <span class="blue">ZONE</span>
@@ -213,6 +244,29 @@
         // Update clock every second
         setInterval(updateRealTime, 1000);
         updateRealTime(); // Initialize on page load
+
+        // Snow effect generator
+        const snowContainer = document.getElementById('snowContainer');
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + 'vw';
+            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Fall speed
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Random size
+            snowflake.style.opacity = Math.random() * 0.8 + 0.2; // Random opacity
+
+            snowContainer.appendChild(snowflake);
+
+            // Remove snowflake after falling
+            setTimeout(() => {
+                snowflake.remove();
+            }, 5000);
+        }
+
+        // Generate snowflakes continuously
+        setInterval(createSnowflake, 150); // Frequency of snowflakes
     </script>
 </body>
 </html>
