@@ -23,6 +23,7 @@
             flex-direction: column;
             justify-content: flex-start;
             text-align: center;
+            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         header {
@@ -138,17 +139,17 @@
 
         /* Review Section Styles */
         .review-section {
-            position: relative;
             width: 100%;
-            overflow-x: auto;
-            white-space: nowrap;
+            max-height: 100vh; /* Limit height to the viewport */
+            overflow-y: scroll; /* Enable vertical scrolling */
+            padding: 20px;
             margin-top: 20px;
-            padding: 0 20px;
         }
 
         .review-container {
             display: flex;
-            transition: transform 0.7s ease;
+            flex-direction: column; /* Stack reviews vertically */
+            gap: 20px;
         }
 
         .review-box {
@@ -156,11 +157,9 @@
             border-radius: 20px;
             width: 300px;
             height: 300px; /* Make reviews square */
-            margin: 10px;
             padding: 20px;
             box-sizing: border-box;
             text-align: left;
-            flex-shrink: 0;
             position: relative;
             overflow: hidden;
             cursor: pointer;
@@ -190,36 +189,10 @@
             color: #ddd;
         }
 
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10;
-            padding: 10px;
-            border-radius: 50%;
-        }
-
-        .arrow.left {
-            left: 10px;
-        }
-
-        .arrow.right {
-            right: 10px;
-        }
-
         @media (max-width: 768px) {
             .review-box {
                 width: 250px;
                 height: 250px; /* Adjust square size for smaller screens */
-            }
-
-            .arrow {
-                font-size: 20px;
             }
         }
     </style>
@@ -253,7 +226,6 @@
 
     <!-- Review Section -->
     <div class="review-section">
-        <button class="arrow left" onclick="prevReview()">&#8249;</button>
         <div class="review-container">
             <div class="review-box">
                 <div class="review-stars">★★★★★</div>
@@ -281,32 +253,9 @@
                 <div class="review-description">Love the design and functionality. Definitely worth trying.</div>
             </div>
         </div>
-        <button class="arrow right" onclick="nextReview()">&#8250;</button>
     </div>
 
     <script>
-        let currentIndex = 0;
-
-        function nextReview() {
-            const container = document.querySelector('.review-container');
-            const reviews = document.querySelectorAll('.review-box');
-            const totalReviews = reviews.length;
-            const reviewsPerView = 3;  // Show only 3 reviews at a time
-
-            if (currentIndex < totalReviews - reviewsPerView) {
-                currentIndex++;
-                container.style.transform = `translateX(-${currentIndex * 320}px)`;  // Adjust for review width + margin
-            }
-        }
-
-        function prevReview() {
-            const container = document.querySelector('.review-container');
-            if (currentIndex > 0) {
-                currentIndex--;
-                container.style.transform = `translateX(-${currentIndex * 320}px)`;  // Adjust for review width + margin
-            }
-        }
-
         // Search function (just a placeholder function)
         function searchPage() {
             alert("Search functionality will be added soon.");
