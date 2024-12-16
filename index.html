@@ -9,8 +9,8 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%; /* Ensure full height for scrolling */
-            overflow-x: hidden; /* Disable horizontal scrolling */
+            height: 100%;
+            overflow-x: hidden;
         }
 
         body {
@@ -19,20 +19,16 @@
             color: white;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
             text-align: center;
-            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         header {
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-start;
             padding: 10px 20px;
-            width: 100%;
-            box-sizing: border-box;
-            position: sticky; /* Keep header at the top when scrolling */
+            position: sticky;
             top: 0;
             z-index: 10;
         }
@@ -56,6 +52,28 @@
             color: white;
         }
 
+        .nav-buttons {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+
+        .nav-button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+            background-color: #444;
+        }
+
         .subtitle-container {
             display: flex;
             flex-direction: column;
@@ -69,12 +87,8 @@
         .subtitle {
             font-size: 80px;
             display: inline-block;
+            margin-bottom: 20px;
             transition: transform 0.3s ease;
-            text-shadow: 0 0 5px black; /* Default */
-        }
-
-        .subtitle:hover {
-            text-shadow: 0 0 20px #0026ff, 0 0 30px #0026ff; /* Darker blue glow */
         }
 
         .subtitle .blue {
@@ -83,38 +97,29 @@
             display: block;
         }
 
-        /* Search bar styles */
-        .search-bar-container {
-            margin-top: 20px;
-            position: relative;
-            width: 60%; /* Adjust size for better centering */
+        .subtitle:hover {
+            transform: scale(1.1);
         }
 
-        .search-bar-container input {
+        /* Dark grey search bar with blue glow effect */
+        .custom-search-bar {
             font-size: 18px;
-            padding: 10px 15px;
-            border: 1px solid #333;
-            border-radius: 20px;
-            width: 100%;
-            background-color: #2b2b2b;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            width: 50%;
+            background-color: #555;
             color: white;
-            transition: all 0.3s ease;
-            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .search-bar-container input:focus {
+        .custom-search-bar:focus {
             outline: none;
         }
 
-        .search-bar-container input:hover {
-            transform: scale(1.05); /* Zoom effect */
-            box-shadow: 0 0 20px #0026ff, 0 0 30px #0026ff; /* Blue glow */
-        }
-
-        /* Real-Time Clock */
-        .real-time {
-            color: white;
-            font-size: 18px;
+        .custom-search-bar:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
         }
 
         @media (max-width: 768px) {
@@ -122,74 +127,59 @@
                 font-size: 40px;
             }
 
+            .nav-buttons {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
             .subtitle {
                 font-size: 60px;
             }
 
-            .search-bar-container {
-                width: 90%;
-            }
-
-            .real-time {
-                font-size: 14px;
+            .custom-search-bar {
+                width: 80%;
             }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <!-- Title with "UNBLOCKZONE" -->
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
-
-        <!-- Real-Time Date and Time -->
-        <div class="real-time" id="realTime"></div>
+        <div class="nav-buttons">
+            <a href="https://your-apps-url.com" class="nav-button">APPS</a>
+            <a href="https://your-games-url.com" class="nav-button">GAMES</a>
+            <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
+            <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
+            <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
+        </div>
     </header>
 
-    <!-- Subtitle Section with "UNBLOCK ZONE" -->
     <div class="subtitle-container">
         <div class="subtitle">
             <span class="white">UNBLOCK</span>
             <span class="blue">ZONE</span>
         </div>
-    </div>
 
-    <!-- Search Bar Section -->
-    <div class="search-bar-container">
-        <input
-            type="text"
-            id="searchBar"
-            placeholder="Search..."
-            onkeypress="handleSearch(event)">
+        <!-- Search Bar Positioned Directly Below Subtitle -->
+        <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
     </div>
 
     <script>
-        // Update real-time date and time
-        function updateRealTime() {
-            const now = new Date();
-            const options = {
-                weekday: "long",
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-                hour: "2-digit",
-                minute: "2-digit",
-                second: "2-digit",
-            };
-            document.getElementById("realTime").textContent = now.toLocaleString("en-US", options);
-        }
-        setInterval(updateRealTime, 1000); // Update every second
-
-        // Handle search submission
-        function handleSearch(event) {
-            if (event.key === "Enter") {
-                const query = document.getElementById("searchBar").value;
-                const url = `https://wxstbound.global.ssl.fastly.net/embed.html#https://www.google.com/search?q=${encodeURIComponent(query)}`;
+        document.getElementById('customSearchBar').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                const searchQuery = event.target.value;
+                const encodedQuery = encodeURIComponent(searchQuery);
+                const url = `https://wxstbound.global.ssl.fastly.net/embed.html#https://www.google.com/search?q=${encodedQuery}`;
                 window.location.href = url;
             }
-        }
-
-        // Initialize the real-time clock
-        updateRealTime();
+        });
     </script>
 </body>
 </html>
