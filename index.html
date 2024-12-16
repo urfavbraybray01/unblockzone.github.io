@@ -3,63 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dynamic Particle Background</title>
+    <title>UnblockZone</title>
     <style>
-        /* General Reset */
+        /* Prevent horizontal scrolling */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: Arial, sans-serif;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Disable horizontal scrolling */
+        }
+
+        body {
+            background-color: black;
+            font-family: 'Bowlby One', sans-serif;
             color: white;
-        }
-
-        /* Canvas for Three.js Background */
-        canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* Background behind content */
-        }
-
-        /* Ensure Multiple Pages */
-        .content {
-            height: 500vh; /* 5 pages of content */
-            width: 100%;
-            position: relative;
-        }
-
-        /* Header Styling */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            padding: 10px 20px;
-            box-sizing: border-box;
-            z-index: 1;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-direction: column;
+            justify-content: flex-start;
+            text-align: center;
         }
 
-        header h1 {
-            font-size: 36px;
+        header {
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 50px;
             margin: 0;
+            display: inline-block;
             transition: transform 0.3s ease;
         }
 
-        header h1:hover {
+        h1:hover {
             transform: scale(1.1);
         }
 
-        header .nav-buttons {
+        .blue {
+            color: blue;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .nav-buttons {
             display: flex;
             gap: 10px;
+            margin-left: 20px;
         }
 
         .nav-button {
@@ -67,8 +63,10 @@
             color: white;
             padding: 10px 20px;
             border-radius: 20px;
+            font-size: 16px;
             text-decoration: none;
-            transition: transform 0.3s ease, background-color 0.3s ease;
+            text-align: center;
+            transition: transform 0.3s ease;
         }
 
         .nav-button:hover {
@@ -76,115 +74,260 @@
             background-color: #444;
         }
 
-        /* Section Styling */
-        .content-section {
-            padding: 100px 20px;
-            text-align: center;
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
         }
 
-        .content-section h2 {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
-
-        .content-section p {
+        input[type="text"] {
             font-size: 18px;
-            line-height: 1.6;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            width: 200px;
+            background-color: white;
+            color: black;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Styles for the new "UNBLOCK ZONE" text and about section */
+        .subtitle-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .subtitle {
+            font-size: 80px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .subtitle .blue {
+            color: blue;
+            font-size: 100px;
+            display: block;
+        }
+
+        .subtitle:hover {
+            transform: scale(1.1);
+        }
+
+        .about-container {
+            margin-top: 20px;
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-container:hover {
+            transform: scale(1.1);
+        }
+
+        .about-container h2 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .about-container p {
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        /* Popular Games Section */
+        .popular-games-container {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+            padding: 0 20px;
+            justify-items: center;
+        }
+
+        /* Popular Games Title */
+        .popular-games-title {
+            font-size: 30px;
+            color: white;
+            font-family: 'Bowlby One', sans-serif;
+            text-align: left;
+            margin-left: 20px;
+            margin-top: 20px;
+            text-transform: uppercase; /* Added this line to make the text all uppercase */
+            transition: transform 0.3s ease;
+        }
+
+        .popular-games-title:hover {
+            transform: scale(1.1);
+        }
+
+        .game-thumbnail {
+            width: 200px;
+            height: 112px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .game-thumbnail:hover {
+            transform: scale(1.05); /* Zooms in a little bit (5%) */
+        }
+
+        .game-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.3s ease;
+        }
+
+        .game-thumbnail:hover img {
+            opacity: 0;
+        }
+
+        .game-thumbnail:hover::after {
+            content: "";
+            background-image: url('https://your-gif-link.gif'); /* Replace with your GIF URL */
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .nav-buttons {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .search-bar-container {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            input[type="text"] {
+                width: 150px;
+            }
+
+            .subtitle {
+                font-size: 60px;
+                width: 100%;
+            }
+
+            .about-container {
+                width: 100%;
+                margin-top: 20px;
+            }
+
+            .popular-games-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Dynamic Background -->
-    <canvas id="particleCanvas"></canvas>
-
-    <!-- Fixed Header -->
     <header>
-        <h1>Particle Background</h1>
+        <!-- Title with "UNBLOCKZONE" -->
+        <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
+
+        <!-- Navigation Buttons -->
         <div class="nav-buttons">
-            <a href="#" class="nav-button">Home</a>
-            <a href="#" class="nav-button">About</a>
-            <a href="#" class="nav-button">Features</a>
-            <a href="#" class="nav-button">Contact</a>
+            <a href="https://your-apps-url.com" class="nav-button">APPS</a>
+            <a href="https://your-games-url.com" class="nav-button">GAMES</a>
+            <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
+            <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
+            <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar-container">
+            <input type="text" id="searchBar" placeholder="Search...">
+            <a href="#" onclick="searchPage()">
+                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
+            </a>
         </div>
     </header>
 
-    <!-- Content -->
-    <div class="content">
-        <div class="content-section">
-            <h2>Welcome to the Dynamic World</h2>
-            <p>Scroll to experience the immersive particle animation behind the scenes.</p>
+    <!-- Subtitle Section with "UNBLOCK ZONE" and About -->
+    <div class="subtitle-container">
+        <div class="subtitle">
+            <span class="white">UNBLOCK</span>
+            <span class="blue">ZONE</span>
         </div>
-        <div class="content-section">
-            <h2>Explore More</h2>
-            <p>Discover exciting features and content as you scroll through the pages.</p>
-        </div>
-        <div class="content-section">
-            <h2>How It Works</h2>
-            <p>This background is powered by WebGL and Three.js for dynamic animations.</p>
-        </div>
-        <div class="content-section">
-            <h2>Stay Connected</h2>
-            <p>Reach out for more updates, features, and collaborations.</p>
+
+        <!-- About UnblockZone -->
+        <div class="about-container">
+            <h2>About UnblockZone</h2>
+            <p>UnblockZone is a platform to access various online services safely and securely. Explore apps, games, proxies, and more!</p>
         </div>
     </div>
 
-    <!-- Three.js Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r146/three.min.js"></script>
+    <!-- Popular Games Section -->
+    <div class="popular-games-title">Popular Games</div>
 
-    <!-- Particle Animation Script -->
+    <div class="popular-games-container">
+        <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
+            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 1">
+        </div>
+        <div class="game-thumbnail" style="background-image: url('https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/3X/9/b/9bfc1dfe89bdfd8906a4bdb7cbfc27a01f8b4904.gif');">
+            <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 2">
+        </div>
+        <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
+            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 3">
+        </div>
+        <div class="game-thumbnail" style="background-image: url('https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/3X/9/b/9bfc1dfe89bdfd8906a4bdb7cbfc27a01f8b4904.gif');">
+            <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 4">
+        </div>
+        <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
+            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 5">
+        </div>
+    </div>
+
     <script>
-        // Set up Three.js scene, camera, and renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('particleCanvas'), alpha: true });
-
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        camera.position.z = 5;
-
-        // Particle settings
-        const particleCount = 1000;
-        const particles = new THREE.BufferGeometry();
-        const positions = new Float32Array(particleCount * 3);
-
-        for (let i = 0; i < particleCount; i++) {
-            positions[i * 3] = (Math.random() - 0.5) * 20; // X position
-            positions[i * 3 + 1] = (Math.random() - 0.5) * 20; // Y position
-            positions[i * 3 + 2] = (Math.random() - 0.5) * 20; // Z position
+        function searchPage() {
+            var searchQuery = document.getElementById('searchBar').value;
+            window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
         }
-
-        particles.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-
-        // Particle material
-        const particleMaterial = new THREE.PointsMaterial({
-            color: 0xffffff,
-            size: 0.2,
-            transparent: true,
-            opacity: 0.8
-        });
-
-        // Create particle system
-        const particleSystem = new THREE.Points(particles, particleMaterial);
-        scene.add(particleSystem);
-
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-
-            // Rotate particle system for dynamic effect
-            particleSystem.rotation.y += 0.001;
-            particleSystem.rotation.x += 0.0005;
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        // Handle window resizing
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
     </script>
 </body>
 </html>
