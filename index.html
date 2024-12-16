@@ -4,25 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnblockZone</title>
-    <!-- Import Bowlby One font -->
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+    <!-- Import Bowlby One and Roboto fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
     <style>
-        /* Prevent horizontal scrolling */
+        /* Base styling */
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%;
-            overflow-x: hidden; /* Disable horizontal scrolling */
-        }
-
-        body {
+            width: 100%;
             background-color: black;
             font-family: 'Bowlby One', sans-serif;
             color: white;
+        }
+
+        body {
             display: flex;
             flex-direction: column;
+            align-items: center;
             justify-content: flex-start;
-            text-align: center;
         }
 
         header {
@@ -111,10 +110,7 @@
         }
 
         .subtitle-container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            text-align: center;
             padding: 20px;
             width: 100%;
             margin-top: 20px;
@@ -122,7 +118,6 @@
 
         .subtitle {
             font-size: 80px;
-            display: inline-block;
             transition: transform 0.3s ease;
         }
 
@@ -138,15 +133,13 @@
 
         /* Review Section Styles */
         .review-section {
-            position: relative;
             width: 100%;
-            overflow: hidden;
-            margin-top: 20px;
+            padding: 20px 0;
         }
 
         .review-container {
             display: flex;
-            transition: transform 0.7s ease;
+            overflow-x: hidden;
         }
 
         .review-box {
@@ -172,18 +165,23 @@
             color: gold;
             font-size: 20px;
             margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif; /* Apply Roboto */
+            font-weight: 700; /* Bold */
         }
 
         .review-name {
             font-size: 18px;
-            font-weight: bold;
+            font-weight: 700; /* Bold */
             margin-bottom: 10px;
             color: white;
+            font-family: 'Roboto', sans-serif; /* Apply Roboto */
         }
 
         .review-description {
             font-size: 16px;
             color: #ddd;
+            font-family: 'Roboto', sans-serif; /* Apply Roboto */
+            font-weight: 500; /* Medium */
         }
 
         .arrow {
@@ -208,34 +206,30 @@
             right: 10px;
         }
 
-        @media (max-width: 768px) {
-            .review-box {
-                width: 80%;
-            }
-
-            .arrow {
-                font-size: 20px;
-            }
+        /* Footer to add extra height for scroll */
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            background: #222;
+            color: white;
+            width: 100%;
         }
     </style>
 </head>
 <body>
     <header>
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
-
         <div class="nav-buttons">
-            <a href="https://your-apps-url.com" class="nav-button">APPS</a>
-            <a href="https://your-games-url.com" class="nav-button">GAMES</a>
-            <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
-            <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
-            <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
+            <a href="#" class="nav-button">APPS</a>
+            <a href="#" class="nav-button">GAMES</a>
+            <a href="#" class="nav-button">PROXIES</a>
+            <a href="#" class="nav-button">EXPLOITS</a>
+            <a href="#" class="nav-button">SETTINGS</a>
         </div>
-
         <div class="search-bar-container">
             <input type="text" id="searchBar" placeholder="Search...">
-            <a href="#" onclick="searchPage()">
-                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
-            </a>
+            <img src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="Search Icon" class="icon">
         </div>
     </header>
 
@@ -246,61 +240,28 @@
         </div>
     </div>
 
-    <!-- Review Section -->
     <div class="review-section">
-        <button class="arrow left" onclick="prevReview()">&#8249;</button>
         <div class="review-container">
             <div class="review-box">
                 <div class="review-stars">★★★★★</div>
                 <div class="review-name">John Doe</div>
-                <div class="review-description">UnblockZone is amazing! It helped me access all my favorite apps seamlessly.</div>
+                <div class="review-description">Great service! Helped me access all my apps without any issues.</div>
             </div>
             <div class="review-box">
                 <div class="review-stars">★★★★★</div>
                 <div class="review-name">Jane Smith</div>
-                <div class="review-description">A must-use platform for anyone looking for safe and fast access online.</div>
+                <div class="review-description">A must-use platform for anyone needing online access.</div>
             </div>
             <div class="review-box">
                 <div class="review-stars">★★★★★</div>
                 <div class="review-name">Alex Brown</div>
-                <div class="review-description">Super user-friendly and reliable. Highly recommend UnblockZone!</div>
-            </div>
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Chris Wilson</div>
-                <div class="review-description">Fantastic platform with so many great features!</div>
-            </div>
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Taylor Green</div>
-                <div class="review-description">Love the design and functionality. Definitely worth trying.</div>
+                <div class="review-description">Simple and fast—just what I needed!</div>
             </div>
         </div>
-        <button class="arrow right" onclick="nextReview()">&#8250;</button>
     </div>
 
-    <script>
-        let currentIndex = 0;
-
-        function nextReview() {
-            const container = document.querySelector('.review-container');
-            const reviews = document.querySelectorAll('.review-box');
-            const totalReviews = reviews.length;
-            const reviewsPerView = 3;
-
-            if (currentIndex < totalReviews - reviewsPerView) {
-                currentIndex++;
-                container.style.transform = `translateX(-${currentIndex * 320}px)`;
-            }
-        }
-
-        function prevReview() {
-            if (currentIndex > 0) {
-                currentIndex--;
-                const container = document.querySelector('.review-container');
-                container.style.transform = `translateX(-${currentIndex * 320}px)`;
-            }
-        }
-    </script>
+    <footer>
+        <p>© 2024 UnblockZone. All rights reserved.</p>
+    </footer>
 </body>
 </html>
