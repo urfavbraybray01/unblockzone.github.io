@@ -54,7 +54,7 @@
 
         .nav-buttons {
             display: flex;
-            gap: 5px; /* Adjusted the gap to make buttons closer */
+            gap: 5px;
             margin-left: 20px;
         }
 
@@ -132,47 +132,93 @@
             transform: scale(1.1);
         }
 
+        /* Review Section Styles */
+        .review-section {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .review-container {
+            display: flex;
+            transition: transform 0.7s ease;
+        }
+
+        .review-box {
+            background-color: #222;
+            border-radius: 20px;
+            width: 300px;
+            margin: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: left;
+            flex-shrink: 0;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, opacity 0.7s ease;
+        }
+
+        .review-box:hover {
+            transform: scale(1.1);
+        }
+
+        .review-stars {
+            color: gold;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .review-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .review-description {
+            font-size: 16px;
+            color: #ddd;
+        }
+
+        .arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            z-index: 10;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .arrow.left {
+            left: 10px;
+        }
+
+        .arrow.right {
+            right: 10px;
+        }
+
         @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
+            .review-box {
+                width: 80%;
             }
 
-            .nav-buttons {
-                display: block;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .nav-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .search-bar-container {
-                margin-left: 0;
-                margin-top: 10px;
-                width: 100%;
-                justify-content: center;
-            }
-
-            input[type="text"] {
-                width: 150px;
-            }
-
-            .subtitle {
-                font-size: 60px;
-                width: 100%;
+            .arrow {
+                font-size: 20px;
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <!-- Title with "UNBLOCKZONE" -->
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
 
-        <!-- Navigation Buttons -->
         <div class="nav-buttons">
             <a href="https://your-apps-url.com" class="nav-button">APPS</a>
             <a href="https://your-games-url.com" class="nav-button">GAMES</a>
@@ -181,7 +227,6 @@
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
 
-        <!-- Search Bar -->
         <div class="search-bar-container">
             <input type="text" id="searchBar" placeholder="Search...">
             <a href="#" onclick="searchPage()">
@@ -190,7 +235,6 @@
         </div>
     </header>
 
-    <!-- Subtitle Section with "UNBLOCK ZONE" -->
     <div class="subtitle-container">
         <div class="subtitle">
             <span class="white">UNBLOCK</span>
@@ -198,10 +242,60 @@
         </div>
     </div>
 
+    <!-- Review Section -->
+    <div class="review-section">
+        <button class="arrow left" onclick="prevReview()">&#8249;</button>
+        <div class="review-container">
+            <div class="review-box">
+                <div class="review-stars">★★★★★</div>
+                <div class="review-name">Victor Santos</div>
+                <div class="review-description">i love unblockzone and i play everyday pluh.</div>
+            </div>
+            <div class="review-box">
+                <div class="review-stars">★★★★★</div>
+                <div class="review-name">Jaden Smith</div>
+                <div class="review-description">unblockzone is just a chill guy.</div>
+            </div>
+            <div class="review-box">
+                <div class="review-stars">★★★★★</div>
+                <div class="review-name">Jacob Wilson</div>
+                <div class="review-description">one of the best bru.</div>
+            </div>
+            <div class="review-box">
+                <div class="review-stars">★★★★★</div>
+                <div class="review-name">Mr. Lowell</div>
+                <div class="review-description">amazing!!</div>
+            </div>
+            <div class="review-box">
+                <div class="review-stars">★★★★★</div>
+                <div class="review-name">Dante Gribble</div>
+                <div class="review-description">very sigma, very skibidi.</div>
+            </div>
+        </div>
+        <button class="arrow right" onclick="nextReview()">&#8250;</button>
+    </div>
+
     <script>
-        function searchPage() {
-            var searchQuery = document.getElementById('searchBar').value;
-            window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
+        let currentIndex = 0;
+
+        function nextReview() {
+            const container = document.querySelector('.review-container');
+            const reviews = document.querySelectorAll('.review-box');
+            const totalReviews = reviews.length;
+            const reviewsPerView = 3;
+
+            if (currentIndex < totalReviews - reviewsPerView) {
+                currentIndex++;
+                container.style.transform = `translateX(-${currentIndex * 320}px)`;
+            }
+        }
+
+        function prevReview() {
+            if (currentIndex > 0) {
+                currentIndex--;
+                const container = document.querySelector('.review-container');
+                container.style.transform = `translateX(-${currentIndex * 320}px)`;
+            }
         }
     </script>
 </body>
