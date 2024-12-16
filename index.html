@@ -101,7 +101,7 @@
             transform: scale(1.1);
         }
 
-        /* Dark grey search bar with glow effect */
+        /* Dark grey search bar with blue glow effect */
         .custom-search-bar {
             font-size: 18px;
             padding: 10px 20px;
@@ -119,7 +119,7 @@
 
         .custom-search-bar:hover {
             transform: scale(1.1);
-            box-shadow: 0px 0px 20px 4px #00ffcc; /* Glow effect */
+            box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
         }
 
         @media (max-width: 768px) {
@@ -176,7 +176,7 @@
             if (event.key === 'Enter') {
                 const searchQuery = event.target.value;
                 const encodedQuery = encodeURIComponent(searchQuery);
-                const url = `https://szvy.lol/embed.html#https://www.google.com{encodedQuery}`;
+                const url = `https://wxstbound.global.ssl.fastly.net/embed.html#https://www.google.com/search?q=${encodedQuery}`;
                 window.location.href = url;
             }
         });
