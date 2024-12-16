@@ -15,6 +15,7 @@
             background-color: black;
             font-family: 'Bowlby One', sans-serif;
             color: white;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
         }
 
         body {
@@ -135,11 +136,17 @@
         .review-section {
             width: 100%;
             padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
         .review-container {
             display: flex;
-            overflow-x: hidden;
+            flex-wrap: wrap;
+            justify-content: center;
+            overflow: hidden;
+            max-width: 1300px;
         }
 
         .review-box {
@@ -241,27 +248,60 @@
     </div>
 
     <div class="review-section">
-        <div class="review-container">
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Victor Santos</div>
-                <div class="review-description">best site ever pluh</div>
-            </div>
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Jaden Smith</div>
-                <div class="review-description">broo one of the best</div>
-            </div>
-            <div class="review-box">
-                <div class="review-stars">★★★★★</div>
-                <div class="review-name">Dante Gribble</div>
-                <div class="review-description">sigma games</div>
-            </div>
+        <div class="review-container" id="reviews">
+            <!-- Reviews will be dynamically loaded here -->
         </div>
+        <button class="arrow right" id="nextReviews" onclick="loadNextReviews()">→</button>
     </div>
 
     <footer>
         <p>© 2024 UnblockZone. All rights reserved.</p>
     </footer>
+
+    <script>
+        // Array of all reviews
+        const reviews = [
+            { stars: "★★★★★", name: "John Doe", description: "Great service! Helped me access all my apps without any issues." },
+            { stars: "★★★★★", name: "Jane Smith", description: "A must-use platform for anyone needing online access." },
+            { stars: "★★★★★", name: "Alex Brown", description: "Simple and fast—just what I needed!" },
+            { stars: "★★★★★", name: "Maya Green", description: "Works perfectly for unblocking all sites!" },
+            { stars: "★★★★★", name: "Luke Sky", description: "Reliable and efficient service, worth every penny!" },
+            { stars: "★★★★★", name: "Emma White", description: "Best unblocker I've used. No issues whatsoever!" },
+            { stars: "★★★★★", name: "Sophia Martin", description: "Smooth experience and great customer support!" },
+            { stars: "★★★★★", name: "James Miller", description: "UnblockZone is a game-changer for internet freedom!" },
+        ];
+
+        let currentReviewIndex = 0;
+
+        // Function to load reviews
+        function loadReviews() {
+            const reviewContainer = document.getElementById('reviews');
+            reviewContainer.innerHTML = ''; // Clear existing reviews
+
+            for (let i = currentReviewIndex; i < currentReviewIndex + 4; i++) {
+                if (i >= reviews.length) break;
+                const review = reviews[i];
+                const reviewBox = document.createElement('div');
+                reviewBox.classList.add('review-box');
+                reviewBox.innerHTML = `
+                    <div class="review-stars">${review.stars}</div>
+                    <div class="review-name">${review.name}</div>
+                    <div class="review-description">${review.description}</div>
+                `;
+                reviewContainer.appendChild(reviewBox);
+            }
+        }
+
+        // Load the next 4 reviews
+        function loadNextReviews() {
+            if (currentReviewIndex + 4 < reviews.length) {
+                currentReviewIndex += 4;
+                loadReviews();
+            }
+        }
+
+        // Initial load
+        loadReviews();
+    </script>
 </body>
 </html>
