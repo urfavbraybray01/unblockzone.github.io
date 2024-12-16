@@ -194,31 +194,14 @@
             transition: transform 0.3s ease;
         }
 
+        /* Remove zoom-in effect */
         .game-thumbnail:hover {
-            transform: scale(1.05); /* Zooms in a little bit (5%) */
+            /* transform: scale(1.05); */
         }
 
-        .game-thumbnail img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.3s ease;
-        }
-
+        /* Keep image opacity consistent */
         .game-thumbnail:hover img {
-            opacity: 0;
-        }
-
-        .game-thumbnail:hover::after {
-            content: "";
-            background-image: url('https://your-gif-link.gif'); /* Replace with your GIF URL */
-            background-size: cover;
-            background-position: center;
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            opacity: 1;
         }
 
         @media (max-width: 768px) {
@@ -325,8 +308,8 @@
 
     <script>
         function searchPage() {
-            var searchQuery = document.getElementById('searchBar').value;
-            window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
+            const query = document.getElementById('searchBar').value;
+            window.location.href = `https://google.com/search?q=${encodeURIComponent(query)}`;
         }
     </script>
 </body>
