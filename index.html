@@ -180,7 +180,7 @@
             color: white;
             font-size: 24px;
             user-select: none;
-            animation: fall 10s linear infinite;
+            animation: fall 6s linear infinite; /* Shorter duration for faster falling */
             pointer-events: none;
         }
 
@@ -193,37 +193,73 @@
         /* Randomize snowflake size, delay, and horizontal position */
         .snowflake:nth-child(1) {
             left: 10%;
-            animation-duration: 12s;
+            animation-duration: 8s;
             font-size: 20px;
             animation-delay: 0s;
         }
 
         .snowflake:nth-child(2) {
             left: 30%;
-            animation-duration: 15s;
+            animation-duration: 10s;
             font-size: 28px;
-            animation-delay: 2s;
+            animation-delay: 1s;
         }
 
         .snowflake:nth-child(3) {
             left: 50%;
-            animation-duration: 18s;
+            animation-duration: 7s;
             font-size: 24px;
-            animation-delay: 1s;
+            animation-delay: 2s;
         }
 
         .snowflake:nth-child(4) {
             left: 70%;
-            animation-duration: 14s;
+            animation-duration: 9s;
             font-size: 26px;
             animation-delay: 3s;
         }
 
         .snowflake:nth-child(5) {
             left: 90%;
-            animation-duration: 16s;
+            animation-duration: 8s;
             font-size: 22px;
             animation-delay: 4s;
+        }
+
+        /* More snowflakes to add density */
+        .snowflake:nth-child(6) {
+            left: 15%;
+            animation-duration: 12s;
+            font-size: 22px;
+            animation-delay: 1s;
+        }
+
+        .snowflake:nth-child(7) {
+            left: 35%;
+            animation-duration: 11s;
+            font-size: 30px;
+            animation-delay: 3s;
+        }
+
+        .snowflake:nth-child(8) {
+            left: 55%;
+            animation-duration: 10s;
+            font-size: 25px;
+            animation-delay: 4s;
+        }
+
+        .snowflake:nth-child(9) {
+            left: 75%;
+            animation-duration: 13s;
+            font-size: 28px;
+            animation-delay: 2s;
+        }
+
+        .snowflake:nth-child(10) {
+            left: 85%;
+            animation-duration: 7s;
+            font-size: 22px;
+            animation-delay: 0s;
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -259,6 +295,11 @@
 
     <!-- Snowflakes -->
     <div class="snowflakes-container">
+        <div class="snowflake">❄️</div>
+        <div class="snowflake">❄️</div>
+        <div class="snowflake">❄️</div>
+        <div class="snowflake">❄️</div>
+        <div class="snowflake">❄️</div>
         <div class="snowflake">❄️</div>
         <div class="snowflake">❄️</div>
         <div class="snowflake">❄️</div>
