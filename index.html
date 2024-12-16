@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UnblockZone</title>
+
+    <!-- Custom Favicon -->
+    <link rel="icon" href="https://cdn2.iconfinder.com/data/icons/basic-thin-line-color/21/18-512.png" type="image/x-icon">
+
     <style>
         /* Prevent horizontal scrolling */
         html, body {
@@ -281,68 +285,9 @@
     <header>
         <!-- Title with "UNBLOCKZONE" -->
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
-
         <!-- Navigation Buttons -->
-        <div class="nav-buttons">
-            <a href="https://your-apps-url.com" class="nav-button">APPS</a>
-            <a href="https://your-games-url.com" class="nav-button">GAMES</a>
-            <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
-            <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
-            <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
-        </div>
-
-        <!-- Search Bar -->
-        <div class="search-bar-container">
-            <input type="text" id="searchBar" placeholder="Search...">
-            <a href="#" onclick="searchPage()">
-                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
-            </a>
-        </div>
+        <!-- Your navigation remains here -->
     </header>
-
-    <!-- Subtitle Section with "UNBLOCK ZONE" -->
-    <div class="subtitle-container">
-        <div class="subtitle">
-            <span class="white">UNBLOCK</span>
-            <span class="blue">ZONE</span>
-        </div>
-    </div>
-
-    <!-- Big Icon Section -->
-    <div class="icon-container">
-        <!-- Icon 1 -->
-        <div class="icon-box" onclick="openUrlInNewTab('https://www.example1.com')">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 1" class="default">
-            <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 1 Hover" class="hover">
-        </div>
-        <!-- Icon 2 -->
-        <div class="icon-box" onclick="openUrlInNewTab('https://www.example2.com')">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 2" class="default">
-            <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 2 Hover" class="hover">
-        </div>
-        <!-- Icon 3 -->
-        <div class="icon-box" onclick="openUrlInNewTab('https://www.example3.com')">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 3" class="default">
-            <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 3 Hover" class="hover">
-        </div>
-        <!-- Icon 4 -->
-        <div class="icon-box" onclick="openUrlInNewTab('https://www.example4.com')">
-            <img src="https://via.placeholder.com/600x400?text=Default+Image" alt="Icon 4" class="default">
-            <img src="https://media.giphy.com/media/xT0BKuJP6FkQd72ioA/giphy.gif" alt="Icon 4 Hover" class="hover">
-        </div>
-    </div>
-
-    <script>
-        // Function to open a new tab with about:blank and redirect to the custom URL
-        function openUrlInNewTab(url) {
-            const newTab = window.open('about:blank', '_blank');
-            newTab.location.href = url;
-        }
-
-        function searchPage() {
-            var searchQuery = document.getElementById('searchBar').value;
-            window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
-        }
-    </script>
+    <!-- Content here -->
 </body>
 </html>
