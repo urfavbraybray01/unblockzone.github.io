@@ -1,329 +1,77 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UnblockZone</title>
-    <!-- Import Bowlby One and Roboto fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
-    <style>
-        /* Base styling */
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            background-color: black;
-            font-family: 'Bowlby One', sans-serif;
-            color: white;
-            overflow-x: hidden; /* Prevent horizontal scrolling */
+const reviews = [
+    { stars: '⭐⭐⭐⭐⭐', name: 'John Doe', description: 'Amazing service and fast speeds!' },
+    { stars: '⭐⭐⭐⭐⭐', name: 'Jane Smith', description: 'Highly recommend for unblocking content.' },
+    { stars: '⭐⭐⭐⭐', name: 'Mark Lee', description: 'Good performance, but a bit slow at times.' },
+    { stars: '⭐⭐⭐⭐⭐', name: 'Sara Black', description: 'The best experience for streaming.' },
+    { stars: '⭐⭐⭐⭐⭐', name: 'Chris Brown', description: 'Very reliable and great customer support.' },
+    { stars: '⭐⭐⭐⭐', name: 'Lisa Green', description: 'Decent, but sometimes disconnects.' },
+    { stars: '⭐⭐⭐⭐⭐', name: 'David White', description: 'Incredible speed and uptime!' },
+    { stars: '⭐⭐⭐⭐', name: 'Nina Gray', description: 'Pretty solid, but can be a bit laggy.' },
+];
+
+let currentReviewIndex = 0;
+const reviewsPerPage = 4;
+
+// Load reviews based on current index
+function loadReviews() {
+    const reviewContainer = document.getElementById('reviews');
+    
+    // Add fade-out class before updating content
+    reviewContainer.classList.add('fade-out');
+
+    // Wait for fade-out animation to complete before updating content
+    setTimeout(() => {
+        reviewContainer.innerHTML = '';
+
+        const visibleReviews = reviews.slice(currentReviewIndex, currentReviewIndex + reviewsPerPage);
+        visibleReviews.forEach(review => {
+            const reviewBox = document.createElement('div');
+            reviewBox.classList.add('review-box');
+            reviewBox.innerHTML = `
+                <div class="review-stars">${review.stars}</div>
+                <div class="review-name">${review.name}</div>
+                <div class="review-description">${review.description}</div>
+            `;
+            reviewContainer.appendChild(reviewBox);
+        });
+
+        // Remove the fade-out class and add fade-in
+        reviewContainer.classList.remove('fade-out');
+        reviewContainer.classList.add('fade-in');
+
+        // Control arrow visibility
+        if (currentReviewIndex + reviewsPerPage >= reviews.length) {
+            document.getElementById('nextReviews').style.display = 'none';
+            document.getElementById('prevReviews').style.display = 'block';
+        } else if (currentReviewIndex === 0) {
+            document.getElementById('prevReviews').style.display = 'none';
+            document.getElementById('nextReviews').style.display = 'block';
+        } else {
+            document.getElementById('nextReviews').style.display = 'block';
+            document.getElementById('prevReviews').style.display = 'block';
         }
+    }, 700); // Match the fade-out duration (0.7s)
+}
 
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-        }
-
-        header {
-            background-color: #333;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 10px 20px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        h1 {
-            font-size: 50px;
-            margin: 0;
-            display: inline-block;
-            transition: transform 0.3s ease;
-            font-family: 'Bowlby One', sans-serif; /* Apply Bowlby One font */
-        }
-
-        h1:hover {
-            transform: scale(1.1);
-        }
-
-        .blue {
-            color: blue;
-        }
-
-        .white {
-            color: white;
-        }
-
-        .nav-buttons {
-            display: flex;
-            gap: 5px;
-            margin-left: 20px;
-        }
-
-        .nav-button {
-            background-color: black;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 16px;
-            text-decoration: none;
-            text-align: center;
-            transition: transform 0.3s ease;
-            font-family: 'Bowlby One', sans-serif; /* Apply Bowlby One font */
-        }
-
-        .nav-button:hover {
-            transform: scale(1.1);
-            background-color: #444;
-        }
-
-        .search-bar-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-left: 20px;
-        }
-
-        input[type="text"] {
-            font-size: 18px;
-            padding: 8px 15px;
-            border: none;
-            border-radius: 20px;
-            width: 200px;
-            background-color: white;
-            color: black;
-        }
-
-        input[type="text"]:focus {
-            outline: none;
-        }
-
-        .icon {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .icon:hover {
-            transform: scale(1.2);
-        }
-
-        .subtitle-container {
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-            margin-top: 20px;
-        }
-
-        .subtitle {
-            font-size: 80px;
-            transition: transform 0.3s ease;
-        }
-
-        .subtitle .blue {
-            color: blue;
-            font-size: 100px;
-            display: block;
-        }
-
-        .subtitle:hover {
-            transform: scale(1.1);
-        }
-
-        /* Review Section Styles */
-        .review-section {
-            width: 100%;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .review-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            overflow: hidden;
-            max-width: 1300px;
-            transition: opacity 0.7s ease;
-        }
-
-        .review-box {
-            background-color: #222;
-            border-radius: 20px;
-            width: 300px;
-            margin: 10px;
-            padding: 20px;
-            box-sizing: border-box;
-            text-align: left;
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transition: transform 0.3s ease, opacity 0.7s ease;
-        }
-
-        .review-box:hover {
-            transform: scale(1.1);
-        }
-
-        .review-stars {
-            color: gold;
-            font-size: 20px;
-            margin-bottom: 10px;
-            font-family: 'Roboto', sans-serif; /* Apply Roboto */
-            font-weight: 700; /* Bold */
-        }
-
-        .review-name {
-            font-size: 18px;
-            font-weight: 700; /* Bold */
-            margin-bottom: 10px;
-            color: white;
-            font-family: 'Roboto', sans-serif; /* Apply Roboto */
-        }
-
-        .review-description {
-            font-size: 16px;
-            color: #ddd;
-            font-family: 'Roboto', sans-serif; /* Apply Roboto */
-            font-weight: 500; /* Medium */
-        }
-
-        .arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.5);
-            border: none;
-            color: white;
-            font-size: 24px;
-            cursor: pointer;
-            z-index: 10;
-            padding: 10px;
-            border-radius: 50%;
-        }
-
-        .arrow.left {
-            left: 10px;
-        }
-
-        .arrow.right {
-            right: 10px;
-        }
-
-        /* Footer to add extra height for scroll */
-        footer {
-            margin-top: 50px;
-            padding: 20px;
-            text-align: center;
-            background: #222;
-            color: white;
-            width: 100%;
-        }
-    </style>
-</head>
-<body>
-    <header>
-        <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
-        <div class="nav-buttons">
-            <a href="#" class="nav-button">APPS</a>
-            <a href="#" class="nav-button">GAMES</a>
-            <a href="#" class="nav-button">PROXIES</a>
-            <a href="#" class="nav-button">EXPLOITS</a>
-            <a href="#" class="nav-button">SETTINGS</a>
-        </div>
-        <div class="search-bar-container">
-            <input type="text" id="searchBar" placeholder="Search...">
-            <img src="https://cdn-icons-png.flaticon.com/512/54/54481.png" alt="Search Icon" class="icon">
-        </div>
-    </header>
-
-    <div class="subtitle-container">
-        <div class="subtitle">
-            <span class="white">UNBLOCK</span>
-            <span class="blue">ZONE</span>
-        </div>
-    </div>
-
-    <div class="review-section">
-        <div class="review-container" id="reviews">
-            <!-- Reviews will be dynamically loaded here -->
-        </div>
-        <button class="arrow right" id="nextReviews" onclick="loadNextReviews()">→</button>
-        <button class="arrow left" id="prevReviews" onclick="loadPrevReviews()">←</button>
-    </div>
-
-    <footer>
-        <p>© 2024 UnblockZone. All rights reserved.</p>
-    </footer>
-
-    <script>
-        // Array of all reviews
-        const reviews = [
-            { stars: "★★★★★", name: "John Doe", description: "Great service! Helped me access all my apps without any issues." },
-            { stars: "★★★★★", name: "Jane Smith", description: "A must-use platform for anyone needing online access." },
-            { stars: "★★★★★", name: "Alex Brown", description: "Simple and fast—just what I needed!" },
-            { stars: "★★★★★", name: "Maya Green", description: "Works perfectly for unblocking all sites!" },
-            { stars: "★★★★★", name: "Luke Sky", description: "Reliable and efficient service, worth every penny!" },
-            { stars: "★★★★★", name: "Emma White", description: "Best unblocker I've used. No issues whatsoever!" },
-            { stars: "★★★★★", name: "Sophia Martin", description: "Smooth experience and great customer support!" },
-            { stars: "★★★★★", name: "James Miller", description: "UnblockZone is a game-changer for internet freedom!" },
-        ];
-
-        let currentReviewIndex = 0;
-        const reviewsPerPage = 4;
-
-        // Function to load reviews
-        function loadReviews() {
-            const reviewContainer = document.getElementById('reviews');
-            reviewContainer.innerHTML = '';
-
-            const visibleReviews = reviews.slice(currentReviewIndex, currentReviewIndex + reviewsPerPage);
-            visibleReviews.forEach(review => {
-                const reviewBox = document.createElement('div');
-                reviewBox.classList.add('review-box');
-                reviewBox.innerHTML = `
-                    <div class="review-stars">${review.stars}</div>
-                    <div class="review-name">${review.name}</div>
-                    <div class="review-description">${review.description}</div>
-                `;
-                reviewContainer.appendChild(reviewBox);
-            });
-
-            // Control arrow visibility and animations
-            if (currentReviewIndex + reviewsPerPage >= reviews.length) {
-                document.getElementById('nextReviews').style.display = 'none';
-                document.getElementById('prevReviews').style.display = 'block';
-            } else if (currentReviewIndex === 0) {
-                document.getElementById('prevReviews').style.display = 'none';
-                document.getElementById('nextReviews').style.display = 'block';
-            } else {
-                document.getElementById('nextReviews').style.display = 'block';
-                document.getElementById('prevReviews').style.display = 'block';
-            }
-        }
-
-        // Load next set of reviews
-        function loadNextReviews() {
-            if (currentReviewIndex + reviewsPerPage < reviews.length) {
-                currentReviewIndex += reviewsPerPage;
-                loadReviews();
-            }
-        }
-
-        // Load previous set of reviews
-        function loadPrevReviews() {
-            if (currentReviewIndex - reviewsPerPage >= 0) {
-                currentReviewIndex -= reviewsPerPage;
-                loadReviews();
-            }
-        }
-
-        // Initial load
+// Load next set of reviews
+function loadNextReviews() {
+    if (currentReviewIndex + reviewsPerPage < reviews.length) {
+        currentReviewIndex += reviewsPerPage;
         loadReviews();
-    </script>
-</body>
-</html>
+    }
+}
+
+// Load previous set of reviews
+function loadPrevReviews() {
+    if (currentReviewIndex - reviewsPerPage >= 0) {
+        currentReviewIndex -= reviewsPerPage;
+        loadReviews();
+    }
+}
+
+// Event listeners for arrows
+document.getElementById('nextReviews').addEventListener('click', loadNextReviews);
+document.getElementById('prevReviews').addEventListener('click', loadPrevReviews);
+
+// Initial load
+loadReviews();
