@@ -87,6 +87,7 @@
         .subtitle {
             font-size: 80px;
             display: inline-block;
+            margin-bottom: 20px;
             transition: transform 0.3s ease;
         }
 
@@ -101,12 +102,6 @@
         }
 
         /* Dark grey search bar */
-        .custom-search-container {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
         .custom-search-bar {
             font-size: 18px;
             padding: 10px 20px;
@@ -144,7 +139,6 @@
 
             .subtitle {
                 font-size: 60px;
-                width: 100%;
             }
 
             .custom-search-bar {
@@ -171,9 +165,8 @@
             <span class="white">UNBLOCK</span>
             <span class="blue">ZONE</span>
         </div>
-    </div>
 
-    <div class="custom-search-container">
+        <!-- Search Bar Positioned Directly Below Subtitle -->
         <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
     </div>
 
@@ -182,7 +175,7 @@
             if (event.key === 'Enter') {
                 const searchQuery = event.target.value;
                 const encodedQuery = encodeURIComponent(searchQuery);
-                const url = `https://szvy.lol/szvy/szvy/aHR0cHM6Ly93d3cuZ29vZ2xlLmNvbS8%3D?q=${encodedQuery}`;
+                const url = `https://szvy.lol/embed.html#https://www.google.com=${encodedQuery}`;
                 window.location.href = url;
             }
         });
