@@ -9,7 +9,7 @@
         html, body {
             margin: 0;
             padding: 0;
-            height: 100%;
+            height: 100%; /* Ensure full height for scrolling */
             overflow-x: hidden; /* Disable horizontal scrolling */
         }
 
@@ -21,6 +21,7 @@
             flex-direction: column;
             justify-content: flex-start;
             text-align: center;
+            overflow-y: auto; /* Enable vertical scrolling */
         }
 
         header {
@@ -31,6 +32,9 @@
             padding: 10px 20px;
             width: 100%;
             box-sizing: border-box;
+            position: sticky; /* Keep header at the top when scrolling */
+            top: 0;
+            z-index: 10;
         }
 
         h1 {
@@ -196,6 +200,14 @@
             <span class="white">UNBLOCK</span>
             <span class="blue">ZONE</span>
         </div>
+    </div>
+
+    <!-- Content Section -->
+    <div style="padding: 20px;">
+        <p>This is the content section. As you add more content here, you will be able to scroll down to view it.</p>
+        <p>Add more text, images, or anything else you want to be scrollable.</p>
+        <p>Keep adding more content to demonstrate the scroll functionality...</p>
+        <p>...and keep going...</p>
     </div>
 
     <script>
