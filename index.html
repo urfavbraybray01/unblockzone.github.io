@@ -1,77 +1,91 @@
-const reviews = [
-    { stars: '⭐⭐⭐⭐⭐', name: 'John Doe', description: 'Amazing service and fast speeds!' },
-    { stars: '⭐⭐⭐⭐⭐', name: 'Jane Smith', description: 'Highly recommend for unblocking content.' },
-    { stars: '⭐⭐⭐⭐', name: 'Mark Lee', description: 'Good performance, but a bit slow at times.' },
-    { stars: '⭐⭐⭐⭐⭐', name: 'Sara Black', description: 'The best experience for streaming.' },
-    { stars: '⭐⭐⭐⭐⭐', name: 'Chris Brown', description: 'Very reliable and great customer support.' },
-    { stars: '⭐⭐⭐⭐', name: 'Lisa Green', description: 'Decent, but sometimes disconnects.' },
-    { stars: '⭐⭐⭐⭐⭐', name: 'David White', description: 'Incredible speed and uptime!' },
-    { stars: '⭐⭐⭐⭐', name: 'Nina Gray', description: 'Pretty solid, but can be a bit laggy.' },
-];
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnblockZone Reviews</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Include CSS code from above */
+    </style>
+</head>
+<body>
+    <div id="reviews" class="review-container">
+        <!-- Reviews will be loaded here dynamically -->
+    </div>
 
-let currentReviewIndex = 0;
-const reviewsPerPage = 4;
+    <!-- Arrows for navigation -->
+    <div id="prevReviews" class="arrow left" style="display: none;">&lt;</div>
+    <div id="nextReviews" class="arrow right">&gt;</div>
 
-// Load reviews based on current index
-function loadReviews() {
-    const reviewContainer = document.getElementById('reviews');
-    
-    // Add fade-out class before updating content
-    reviewContainer.classList.add('fade-out');
+    <script>
+        const reviews = [
+            { name: 'John Doe', description: 'Amazing service and fast speeds!', stars: '★★★★★' },
+            { name: 'Jane Smith', description: 'Highly recommend for unblocking content.', stars: '★★★★★' },
+            { name: 'Mark Lee', description: 'Good performance, but a bit slow at times.', stars: '★★★★' },
+            { name: 'Sara Black', description: 'The best experience for streaming.', stars: '★★★★★' },
+            { name: 'Chris Brown', description: 'Very reliable and great customer support.', stars: '★★★★★' },
+            { name: 'Lisa Green', description: 'Decent, but sometimes disconnects.', stars: '★★★★' },
+            { name: 'David White', description: 'Incredible speed and uptime!', stars: '★★★★★' },
+            { name: 'Nina Gray', description: 'Pretty solid, but can be a bit laggy.', stars: '★★★★' },
+        ];
 
-    // Wait for fade-out animation to complete before updating content
-    setTimeout(() => {
-        reviewContainer.innerHTML = '';
+        let currentReviewIndex = 0;
+        const reviewsPerPage = 4;
 
-        const visibleReviews = reviews.slice(currentReviewIndex, currentReviewIndex + reviewsPerPage);
-        visibleReviews.forEach(review => {
-            const reviewBox = document.createElement('div');
-            reviewBox.classList.add('review-box');
-            reviewBox.innerHTML = `
-                <div class="review-stars">${review.stars}</div>
-                <div class="review-name">${review.name}</div>
-                <div class="review-description">${review.description}</div>
-            `;
-            reviewContainer.appendChild(reviewBox);
-        });
+        // Load reviews based on the current index
+        function loadReviews() {
+            const reviewContainer = document.getElementById('reviews');
+            reviewContainer.classList.add('fade-out'); // Fade out current reviews
 
-        // Remove the fade-out class and add fade-in
-        reviewContainer.classList.remove('fade-out');
-        reviewContainer.classList.add('fade-in');
+            // Wait for fade-out animation to complete before updating content
+            setTimeout(() => {
+                reviewContainer.innerHTML = ''; // Clear current reviews
 
-        // Control arrow visibility
-        if (currentReviewIndex + reviewsPerPage >= reviews.length) {
-            document.getElementById('nextReviews').style.display = 'none';
-            document.getElementById('prevReviews').style.display = 'block';
-        } else if (currentReviewIndex === 0) {
-            document.getElementById('prevReviews').style.display = 'none';
-            document.getElementById('nextReviews').style.display = 'block';
-        } else {
-            document.getElementById('nextReviews').style.display = 'block';
-            document.getElementById('prevReviews').style.display = 'block';
+                // Get the next set of reviews
+                const visibleReviews = reviews.slice(currentReviewIndex, currentReviewIndex + reviewsPerPage);
+                visibleReviews.forEach(review => {
+                    const reviewBox = document.createElement('div');
+                    reviewBox.classList.add('review-box');
+                    reviewBox.innerHTML = `
+                        <div class="review-stars">${review.stars}</div>
+                        <div class="review-name">${review.name}</div>
+                        <div class="review-description">${review.description}</div>
+                    `;
+                    reviewContainer.appendChild(reviewBox);
+                });
+
+                reviewContainer.classList.remove('fade-out');
+                reviewContainer.classList.add('fade-in'); // Fade in new reviews
+
+                // Handle arrow visibility
+                document.getElementById('nextReviews').style.display = (currentReviewIndex + reviewsPerPage < reviews.length) ? 'block' : 'none';
+                document.getElementById('prevReviews').style.display = (currentReviewIndex > 0) ? 'block' : 'none';
+            }, 700); // Match fade-out duration
         }
-    }, 700); // Match the fade-out duration (0.7s)
-}
 
-// Load next set of reviews
-function loadNextReviews() {
-    if (currentReviewIndex + reviewsPerPage < reviews.length) {
-        currentReviewIndex += reviewsPerPage;
+        // Load next set of reviews
+        function loadNextReviews() {
+            if (currentReviewIndex + reviewsPerPage < reviews.length) {
+                currentReviewIndex += reviewsPerPage;
+                loadReviews();
+            }
+        }
+
+        // Load previous set of reviews
+        function loadPrevReviews() {
+            if (currentReviewIndex - reviewsPerPage >= 0) {
+                currentReviewIndex -= reviewsPerPage;
+                loadReviews();
+            }
+        }
+
+        // Event listeners for arrows
+        document.getElementById('nextReviews').addEventListener('click', loadNextReviews);
+        document.getElementById('prevReviews').addEventListener('click', loadPrevReviews);
+
+        // Initial load
         loadReviews();
-    }
-}
-
-// Load previous set of reviews
-function loadPrevReviews() {
-    if (currentReviewIndex - reviewsPerPage >= 0) {
-        currentReviewIndex -= reviewsPerPage;
-        loadReviews();
-    }
-}
-
-// Event listeners for arrows
-document.getElementById('nextReviews').addEventListener('click', loadNextReviews);
-document.getElementById('prevReviews').addEventListener('click', loadPrevReviews);
-
-// Initial load
-loadReviews();
+    </script>
+</body>
+</html>
