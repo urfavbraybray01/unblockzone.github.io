@@ -54,7 +54,7 @@
 
         .nav-buttons {
             display: flex;
-            gap: 10px;
+            gap: 5px; /* Adjusted the gap to make buttons closer */
             margin-left: 20px;
         }
 
@@ -72,6 +72,89 @@
         .nav-button:hover {
             transform: scale(1.1);
             background-color: #444;
+        }
+
+        .search-bar-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-left: 20px;
+        }
+
+        input[type="text"] {
+            font-size: 18px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 20px;
+            width: 200px;
+            background-color: white;
+            color: black;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+        }
+
+        .icon {
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .icon:hover {
+            transform: scale(1.2);
+        }
+
+        /* Styles for the new "UNBLOCK ZONE" text and about section */
+        .subtitle-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .subtitle {
+            font-size: 80px;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .subtitle .blue {
+            color: blue;
+            font-size: 100px;
+            display: block;
+        }
+
+        .subtitle:hover {
+            transform: scale(1.1);
+        }
+
+        .about-container {
+            margin-top: 20px;
+            background-color: #222;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .about-container:hover {
+            transform: scale(1.1);
+        }
+
+        .about-container h2 {
+            font-size: 20px;
+            margin-top: 0;
+        }
+
+        .about-container p {
+            font-size: 16px;
+            margin-top: 10px;
         }
 
         /* Popular Games Section */
@@ -92,7 +175,7 @@
             text-align: left;
             margin-left: 20px;
             margin-top: 20px;
-            text-transform: uppercase; /* Added this line to make the text all uppercase */
+            text-transform: uppercase;
             transition: transform 0.3s ease;
         }
 
@@ -101,7 +184,6 @@
         }
 
         .game-thumbnail {
-            position: relative;
             width: 200px;
             height: 112px;
             background-size: cover;
@@ -113,7 +195,7 @@
         }
 
         .game-thumbnail:hover {
-            transform: scale(1.2) translateX(-10%); /* Zooms in and shifts to the left */
+            transform: scale(1.05); /* Zooms in a little bit (5%) */
         }
 
         .game-thumbnail img {
@@ -124,16 +206,64 @@
         }
 
         .game-thumbnail:hover img {
-            opacity: 0; /* Optional: Fades out the image */
+            opacity: 0;
+        }
+
+        .game-thumbnail:hover::after {
+            content: "";
+            background-image: url('https://your-gif-link.gif'); /* Replace with your GIF URL */
+            background-size: cover;
+            background-position: center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
         }
 
         @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .nav-buttons {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .search-bar-container {
+                margin-left: 0;
+                margin-top: 10px;
+                width: 100%;
+                justify-content: center;
+            }
+
+            input[type="text"] {
+                width: 150px;
+            }
+
+            .subtitle {
+                font-size: 60px;
+                width: 100%;
+            }
+
+            .about-container {
+                width: 100%;
+                margin-top: 20px;
+            }
+
             .popular-games-container {
                 grid-template-columns: repeat(2, 1fr);
             }
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
@@ -148,7 +278,29 @@
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
         </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar-container">
+            <input type="text" id="searchBar" placeholder="Search...">
+            <a href="#" onclick="searchPage()">
+                <img src="https://cdn-icons-png.freepik.com/512/9135/9135995.png" alt="Search Icon" class="icon">
+            </a>
+        </div>
     </header>
+
+    <!-- Subtitle Section with "UNBLOCK ZONE" and About -->
+    <div class="subtitle-container">
+        <div class="subtitle">
+            <span class="white">UNBLOCK</span>
+            <span class="blue">ZONE</span>
+        </div>
+
+        <!-- About UnblockZone -->
+        <div class="about-container">
+            <h2>About UnblockZone</h2>
+            <p>UnblockZone is a platform to access various online services safely and securely. Explore apps, games, proxies, and more!</p>
+        </div>
+    </div>
 
     <!-- Popular Games Section -->
     <div class="popular-games-title">Popular Games</div>
@@ -163,6 +315,19 @@
         <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
             <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 3">
         </div>
+        <div class="game-thumbnail" style="background-image: url('https://devforum-uploads.s3.dualstack.us-east-2.amazonaws.com/uploads/original/3X/9/b/9bfc1dfe89bdfd8906a4bdb7cbfc27a01f8b4904.gif');">
+            <img src="https://d150u0abw3r906.cloudfront.net/wp-content/uploads/2023/01/image4-1024x576.png" alt="Game 4">
+        </div>
+        <div class="game-thumbnail" style="background-image: url('https://giffiles.alphacoders.com/219/219034.gif');">
+            <img src="https://wallpapers.com/images/featured/cool-fortnite-logo-154uiun82bkt8fjw.jpg" alt="Game 5">
+        </div>
     </div>
+
+    <script>
+        function searchPage() {
+            var searchQuery = document.getElementById('searchBar').value;
+            window.location.href = 'https://www.google.com/search?q=' + encodeURIComponent(searchQuery);
+        }
+    </script>
 </body>
 </html>
