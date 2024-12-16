@@ -1,6 +1,127 @@
-            100% {
-                transform: translateY(110vh); /* Fall beyond viewport height */
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnblockZone</title>
+    <style>
+        /* Prevent horizontal scrolling */
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow-x: hidden;
+        }
+
+        body {
+            background-color: black;
+            font-family: 'Bowlby One', sans-serif;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        header {
+            background-color: #333;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin: 0;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        h1:hover {
+            transform: scale(1.1);
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .white {
+            color: white;
+        }
+
+        .nav-buttons {
+            display: flex;
+            gap: 5px;
+            margin-left: 20px;
+        }
+
+        .nav-button {
+            background-color: black;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+            background-color: #444;
+        }
+
+        .subtitle-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .subtitle {
+            font-size: 80px;
+            display: inline-block;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .subtitle .blue {
+            color: blue;
+            font-size: 100px;
+            display: block;
+        }
+
+        .subtitle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Dark grey search bar with blue glow effect */
+        .custom-search-bar {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 30px;
+            width: 50%;
+            background-color: #555;
+            color: white;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .custom-search-bar:focus {
+            outline: none;
+        }
+
+        .custom-search-bar:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
         }
 
         @media (max-width: 768px) {
@@ -28,12 +149,39 @@
             }
         }
 
+        /* Santa hat style */
+        .santa-hat {
+            position: absolute;
+            top: -25px;
+            right: -15px;
+            width: 30px;
+            height: 30px;
+            background-image: url('https://example.com/santa-hat.png'); /* Replace with your own image URL */
+            background-size: cover;
+            transform: rotate(-20deg); /* Tilted effect */
+            animation: shake 0.5s infinite alternate; /* Animation */
+        }
+
+        @keyframes shake {
+            0% {
+                transform: rotate(-20deg);
+            }
+            100% {
+                transform: rotate(-10deg);
+            }
+        }
+
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
+        <h1>
+            <span class="white">UNBLOCK</span>
+            <span class="blue">ZONE</span>
+            <!-- Santa Hat for UNBLOCK -->
+            <span class="santa-hat" style="right: 10px;"></span>
+        </h1>
         <div class="nav-buttons">
             <a href="https://your-apps-url.com" class="nav-button">APPS</a>
             <a href="https://your-games-url.com" class="nav-button">GAMES</a>
@@ -44,10 +192,11 @@
     </header>
 
     <div class="subtitle-container">
-        <div class="snow-container" id="snowContainer"></div> <!-- Snow Effect -->
         <div class="subtitle">
             <span class="white">UNBLOCK</span>
             <span class="blue">ZONE</span>
+            <!-- Santa Hat for ZONE -->
+            <span class="santa-hat" style="left: 10px;"></span>
         </div>
 
         <!-- Search Bar Positioned Directly Below Subtitle -->
@@ -63,29 +212,6 @@
                 window.location.href = url;
             }
         });
-
-        // Snow effect generator
-        const snowContainer = document.getElementById('snowContainer');
-
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Fall speed
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Random size
-            snowflake.style.opacity = Math.random() * 0.8 + 0.2; // Random opacity
-
-            snowContainer.appendChild(snowflake);
-
-            // Remove snowflake after falling
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
-        }
-
-        // Generate snowflakes continuously
-        setInterval(createSnowflake, 150); // Frequency of snowflakes
     </script>
 </body>
 </html>
