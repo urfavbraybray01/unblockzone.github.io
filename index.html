@@ -333,9 +333,10 @@
     </div>
 
     <script>
+        // Function to open a new tab with about:blank and redirect to the custom URL
         function openUrlInNewTab(url) {
             const newTab = window.open('about:blank', '_blank');
-            newTab.document.write(`<script>window.location.href = '${url}';</script>`);
+            newTab.location.href = url;
         }
 
         function searchPage() {
