@@ -27,7 +27,7 @@
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: flex-start;
+            justify-content: space-between; /* Space between title and right items */
             padding: 10px 20px;
             position: sticky;
             top: 0;
@@ -149,6 +149,14 @@
             }
         }
 
+        /* Clock styling */
+        .clock {
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+            padding-left: 15px;
+        }
+
         /* Snow effect container */
         .snow-container {
             position: absolute;
@@ -190,6 +198,7 @@
             <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
+            <span class="clock" id="clock"></span>
         </div>
     </header>
 
@@ -255,6 +264,17 @@
         // Generate snowflakes and snowballs continuously
         setInterval(createSnowflake, 150); // Frequency of snowflakes
         setInterval(createSnowball, 100); // Frequency of snowballs
+
+        // Real-time clock
+        function updateClock() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            document.getElementById('clock').textContent = timeString;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+        updateClock(); // Initial call to set clock immediately
     </script>
 </body>
 </html>
