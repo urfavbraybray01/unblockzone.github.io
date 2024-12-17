@@ -21,8 +21,6 @@
             flex-direction: column;
             text-align: center;
             position: relative;
-            opacity: 0;
-            transition: opacity 2s ease-in-out;
         }
 
         header {
@@ -126,7 +124,32 @@
             box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
         }
 
-        /* Snow effect in background */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .nav-buttons {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .subtitle {
+                font-size: 60px;
+            }
+
+            .custom-search-bar {
+                width: 80%;
+            }
+        }
+
+        /* Snow effect container */
         .snow-container {
             position: absolute;
             top: 0;
@@ -155,49 +178,10 @@
             }
         }
 
-        /* Loading screen styles */
-        #loadingScreen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 100;
-            flex-direction: column;
-        }
-
-        #loadingScreen h2 {
-            font-size: 50px;
-            color: white;
-            animation: wave 1.5s ease-in-out infinite;
-        }
-
-        @keyframes wave {
-            0% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(0);
-            }
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Loading Screen -->
-    <div id="loadingScreen">
-        <div class="snow-container" id="snowContainer"></div>
-        <h2>Loading...</h2>
-    </div>
-
-    <!-- Main Content -->
     <header>
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
         <div class="nav-buttons">
@@ -218,6 +202,8 @@
         <!-- Search Bar Positioned Directly Below Subtitle -->
         <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
     </div>
+
+    <div class="snow-container" id="snowContainer"></div> <!-- Snow effect -->
 
     <script>
         document.getElementById('customSearchBar').addEventListener('keypress', function(event) {
@@ -269,12 +255,6 @@
         // Generate snowflakes and snowballs continuously
         setInterval(createSnowflake, 150); // Frequency of snowflakes
         setInterval(createSnowball, 100); // Frequency of snowballs
-
-        // Hide the loading screen and show the content after 4 seconds
-        setTimeout(function() {
-            document.getElementById('loadingScreen').style.display = 'none'; // Hide loading screen
-            document.body.style.opacity = 1; // Show the content with a fade-in effect
-        }, 4000); // 4 seconds delay
     </script>
 </body>
 </html>
