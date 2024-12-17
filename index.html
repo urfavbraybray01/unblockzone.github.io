@@ -27,7 +27,7 @@
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: space-between; /* Space between title and right items */
+            justify-content: space-between;
             padding: 10px 20px;
             position: sticky;
             top: 0;
@@ -56,7 +56,6 @@
         .nav-buttons {
             display: flex;
             gap: 20px; /* Increased gap between buttons */
-            margin-left: 20px;
         }
 
         .nav-button {
@@ -75,6 +74,21 @@
             background-color: black; /* Keep the background black */
             box-shadow: 0px 0px 15px 4px #008CFF; /* Blue highlight with glow effect */
             color: #008CFF; /* Change text color to blue */
+        }
+
+        .clock {
+            font-size: 20px; /* Slightly smaller font size */
+            color: white;
+            font-weight: bold;
+            background-color: #444;
+            padding: 5px 10px; /* Reduced padding to make the box smaller */
+            border-radius: 10px; /* Keeps the rounded corners */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .clock:hover {
+            transform: scale(1.2); /* Zoom effect on hover */
+            box-shadow: 0px 0px 15px 5px #008CFF; /* Glow effect on hover */
         }
 
         .subtitle-container {
@@ -124,47 +138,6 @@
             box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
-
-            .nav-buttons {
-                display: block;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .nav-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .subtitle {
-                font-size: 60px;
-            }
-
-            .custom-search-bar {
-                width: 80%;
-            }
-        }
-
-        /* Clock styling */
-        .clock {
-            font-size: 24px;
-            color: white;
-            font-weight: bold;
-            background-color: #444;
-            padding: 10px 20px;
-            border-radius: 15px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .clock:hover {
-            transform: scale(1.2); /* Zoom effect */
-            box-shadow: 0px 0px 15px 5px #008CFF; /* Glow effect on hover */
-        }
-
         /* Snow effect container */
         .snow-container {
             position: absolute;
@@ -194,6 +167,35 @@
             }
         }
 
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .nav-buttons {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .subtitle {
+                font-size: 60px;
+            }
+
+            .custom-search-bar {
+                width: 80%;
+            }
+
+            .clock {
+                font-size: 16px; /* Smaller clock for mobile */
+                padding: 3px 6px;
+            }
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -206,8 +208,8 @@
             <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://your-settings-url.com" class="nav-button">SETTINGS</a>
-            <span class="clock" id="clock"></span>
         </div>
+        <div id="clock" class="clock"></div>
     </header>
 
     <div class="subtitle-container">
@@ -215,8 +217,6 @@
             <span class="white">UNBLOCK</span>
             <span class="blue">ZONE</span>
         </div>
-
-        <!-- Search Bar Positioned Directly Below Subtitle -->
         <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
     </div>
 
@@ -232,6 +232,16 @@
             }
         });
 
+        // Real-time clock
+        function updateClock() {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            document.getElementById('clock').textContent = `${hours}:${minutes}`;
+        }
+        setInterval(updateClock, 1000);
+        updateClock();
+
         // Snow effect generator
         const snowContainer = document.getElementById('snowContainer');
 
@@ -240,49 +250,27 @@
             snowflake.classList.add('snowflake');
             snowflake.textContent = '❄';
             snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 2 + 2 + 's'; // Faster snowflakes
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px'; // Random size
-            snowflake.style.opacity = Math.random() * 0.8 + 0.2; // Random opacity
+            snowflake.style.animationDuration = Math.random() * 2 + 2 + 's';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.style.opacity = Math.random() * 0.8 + 0.2;
 
             snowContainer.appendChild(snowflake);
-
-            // Remove snowflake after falling
-            setTimeout(() => {
-                snowflake.remove();
-            }, 5000);
+            setTimeout(() => snowflake.remove(), 5000);
         }
 
         function createSnowball() {
             const snowball = document.createElement('div');
             snowball.classList.add('snowball');
-            snowball.textContent = '⚪'; // Snowball symbol
+            snowball.textContent = '⚪';
             snowball.style.left = Math.random() * 100 + 'vw';
-            snowball.style.animationDuration = Math.random() * 2 + 1 + 's'; // Faster snowballs
-            snowball.style.fontSize = Math.random() * 10 + 10 + 'px'; // Random size
-            snowball.style.opacity = Math.random() * 0.8 + 0.2; // Random opacity
+            snowball.style.animationDuration = Math.random() * 2 + 1 + 's';
 
             snowContainer.appendChild(snowball);
-
-            // Remove snowball after falling
-            setTimeout(() => {
-                snowball.remove();
-            }, 5000);
+            setTimeout(() => snowball.remove(), 5000);
         }
 
-        // Generate snowflakes and snowballs continuously
-        setInterval(createSnowflake, 150); // Frequency of snowflakes
-        setInterval(createSnowball, 100); // Frequency of snowballs
-
-        // Real-time clock
-        function updateClock() {
-            const now = new Date();
-            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
-            document.getElementById('clock').textContent = timeString;
-        }
-
-        // Update the clock every second
-        setInterval(updateClock, 1000);
-        updateClock(); // Initial call to set clock immediately
+        setInterval(createSnowflake, 150);
+        setInterval(createSnowball, 100);
     </script>
 </body>
 </html>
