@@ -151,10 +151,18 @@
 
         /* Clock styling */
         .clock {
-            font-size: 16px;
+            font-size: 24px;
             color: white;
             font-weight: bold;
-            padding-left: 15px;
+            background-color: #444;
+            padding: 10px 20px;
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .clock:hover {
+            transform: scale(1.2); /* Zoom effect */
+            box-shadow: 0px 0px 15px 5px #008CFF; /* Glow effect on hover */
         }
 
         /* Snow effect container */
@@ -268,7 +276,7 @@
         // Real-time clock
         function updateClock() {
             const now = new Date();
-            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+            const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false });
             document.getElementById('clock').textContent = timeString;
         }
 
