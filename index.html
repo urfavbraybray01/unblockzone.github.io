@@ -146,10 +146,10 @@
         .wavy-text {
             font-family: 'Roboto', sans-serif;
             font-weight: 700; /* Medium Bold */
-            font-size: 18px;
+            font-size: 24px; /* Increased font size */
             color: white;
             text-transform: none; /* Ensure no caps */
-            margin-top: 10px;
+            margin-top: 50px; /* Moved down */
             display: inline-block;
             animation: wave 3s infinite ease-in-out;
         }
@@ -172,7 +172,7 @@
             pointer-events: none; /* Allow interaction with elements above */
         }
 
-        .snowflake, .snowball {
+        .snowflake {
             position: absolute;
             top: -10px;
             color: white;
@@ -217,6 +217,11 @@
             .clock {
                 font-size: 16px; /* Smaller clock for mobile */
                 padding: 3px 6px;
+            }
+
+            .wavy-text {
+                font-size: 20px; /* Smaller text for mobile */
+                margin-top: 30px;
             }
         }
     </style>
@@ -275,8 +280,7 @@
             const snowflake = document.createElement('div');
             snowflake.classList.add('snowflake');
             snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 2 + 2 + 's';
+            snowflake.style.left = Math.random() * 100 + '%';
             snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
             snowflake.style.opacity = Math.random();
             snowflake.style.animationDelay = Math.random() * 5 + 's';
@@ -287,7 +291,8 @@
             });
         }
 
-        setInterval(createSnowflake, 200);
+        // Reduced frequency of snowflake creation
+        setInterval(createSnowflake, 1000);
     </script>
 </body>
 </html>
