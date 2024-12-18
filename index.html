@@ -206,8 +206,8 @@
         const searchBar = document.getElementById('customSearchBar');
         searchBar.addEventListener('keydown', (event) => {
             if (event.key === 'Enter') {
-                const baseUrl = 'https://szvy.lol/embed.html#';
-                const query = searchBar.value.trim() || 'https://www.google.com';
+                const baseUrl = 'https://wxstbound.global.ssl.fastly.net/embed.html#https://www.google.com/search?q=';
+                const query = encodeURIComponent(searchBar.value.trim());
                 window.location.href = `${baseUrl}${query}`;
             }
         });
