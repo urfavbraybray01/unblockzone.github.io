@@ -142,87 +142,39 @@
             box-shadow: 0px 0px 20px 4px #008CFF; /* Blue glow effect */
         }
 
-        /* Wavy animation text */
-        .wavy-text {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 700; /* Medium Bold */
-            font-size: 24px; /* Increased font size */
-            color: white;
-            text-transform: none; /* Ensure no caps */
-            margin-top: 50px; /* Moved down */
-            display: inline-block;
-            animation: wave 3s infinite ease-in-out;
-        }
-
-        @keyframes wave {
-            0%, 100% { transform: translateY(0); }
-            25% { transform: translateY(-5px); }
-            50% { transform: translateY(5px); }
-            75% { transform: translateY(-5px); }
-        }
-
-        /* Snow effect container */
+        /* Snow container */
         .snow-container {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 0; /* Behind all content */
-            pointer-events: none; /* Allow interaction with elements above */
+            pointer-events: none;
+            z-index: 5; /* Behind content */
+        }
+
+        .snowflake, .snow {
+            position: absolute;
+            top: -10px;
+            opacity: 0.8;
+            animation: fall 10s linear infinite;
         }
 
         .snowflake {
-            position: absolute;
-            top: -10px;
+            font-size: 15px;
             color: white;
-            font-size: 10px;
-            opacity: 0.8;
-            animation: fall linear infinite;
+        }
+
+        .snow {
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
         }
 
         @keyframes fall {
-            0% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(110vh); /* Fall beyond viewport height */
-            }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
-
-            .nav-buttons {
-                display: block;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .nav-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .subtitle {
-                font-size: 60px;
-            }
-
-            .custom-search-bar {
-                width: 80%;
-            }
-
-            .clock {
-                font-size: 16px; /* Smaller clock for mobile */
-                padding: 3px 6px;
-            }
-
-            .wavy-text {
-                font-size: 20px; /* Smaller text for mobile */
-                margin-top: 30px;
-            }
+            0% { transform: translateY(-10px); }
+            100% { transform: translateY(110vh); }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -246,23 +198,12 @@
             <span class="blue">ZONE</span>
         </div>
         <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
-        <div class="wavy-text">
-            this website is still being worked on, everything will be finished by 2025..
-        </div>
     </div>
 
-    <div class="snow-container" id="snowContainer"></div> <!-- Snow effect -->
+    <!-- Snow container -->
+    <div class="snow-container" id="snowContainer"></div>
 
     <script>
-        document.getElementById('customSearchBar').addEventListener('keypress', function(event) {
-            if (event.key === 'Enter') {
-                const searchQuery = event.target.value;
-                const encodedQuery = encodeURIComponent(searchQuery);
-                const url = `https://wxstbound.global.ssl.fastly.net/embed.html#https://www.google.com/search?q=${encodedQuery}`;
-                window.location.href = url;
-            }
-        });
-
         // Real-time clock
         function updateClock() {
             const now = new Date();
@@ -282,8 +223,7 @@
             snowflake.textContent = '❄';
             snowflake.style.left = Math.random() * 100 + '%';
             snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            snowflake.style.opacity = Math.random();
-            snowflake.style.animationDelay = Math.random() * 5 + 's';
+            snowflake.style.animationDelay = Math.random() * 10 + 's';
             snowContainer.appendChild(snowflake);
 
             snowflake.addEventListener('animationend', () => {
@@ -291,8 +231,23 @@
             });
         }
 
-        // Reduced frequency of snowflake creation
-        setInterval(createSnowflake, 1000);
+        function createSnow() {
+            const snow = document.createElement('div');
+            snow.classList.add('snow');
+            snow.style.left = Math.random() * 100 + '%';
+            snow.style.animationDelay = Math.random() * 10 + 's';
+            snowContainer.appendChild(snow);
+
+            snow.addEventListener('animationend', () => {
+                snow.remove();
+            });
+        }
+
+        // Create 50 snowflakes and 50 snow particles
+        for (let i = 0; i < 50; i++) {
+            createSnowflake();
+            createSnow();
+        }
     </script>
 </body>
 </html>
