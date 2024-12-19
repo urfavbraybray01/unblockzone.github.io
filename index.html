@@ -64,16 +64,32 @@
         }
 
         .nav-button {
-            width: 60px;
-            height: 60px;
-            background-size: contain;
-            background-repeat: no-repeat;
-            border-radius: 10px;
-            transition: transform 0.3s ease;
-            display: block;
+            background-color: black;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .nav-button:hover {
+            transform: scale(1.1);
+            background-color: black;
+            box-shadow: 0px 0px 15px 4px #008CFF;
+            color: #008CFF;
+        }
+
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
             transform: scale(1.2);
         }
 
@@ -124,22 +140,38 @@
             box-shadow: 0px 0px 20px 4px #008CFF;
         }
 
-        /* Particle Styles */
-        .particle {
+        .snow-container {
             position: absolute;
-            width: 10px;
-            height: 10px;
-            background-color: blue;
-            border-radius: 50%;
-            opacity: 0.8;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             pointer-events: none;
-            transform: scale(0);
-            animation: particleZoom 2s linear infinite;
+            z-index: 5;
         }
 
-        @keyframes particleZoom {
-            0% { transform: scale(0); }
-            100% { transform: scale(1.5); opacity: 0; }
+        .snowflake, .snow {
+            position: absolute;
+            top: -10px;
+            opacity: 0.8;
+            animation: fall 10s linear infinite;
+        }
+
+        .snowflake {
+            font-size: 15px;
+            color: white;
+        }
+
+        .snow {
+            width: 5px;
+            height: 5px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(-10px); }
+            100% { transform: translateY(110vh); }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -150,12 +182,13 @@
             <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
         </h1>
         <div class="nav-buttons">
-            <a href="https://unblockzone.github.io/apps/" class="nav-button" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHUdxrBVI_eXPd3BfxpIhbxT82TZlieaNvag&s');"></a>
-            <a href="https://unblockzone.github.io/games/" class="nav-button" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI72KLxHGfFRrh9qstfw_qnch8hWxCLHnCTg&s');"></a>
-            <a href="https://unblockzone.github.io/proxies/" class="nav-button" style="background-image: url('https://www.pngkey.com/png/full/45-455131_white-internet-icon-png-clipart-library-library-internet.png');"></a>
-            <a href="https://unblockzone.github.io/exploits/" class="nav-button" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYiFP7Rb45dTgshWwcAzFAdNcFfka988TOVg&s');"></a>
-            <a href="https://unblockzone.github.io/settings/" class="nav-button" style="background-image: url('https://img.icons8.com/m_rounded/512/FFFFFF/settings.png');"></a>
+            <a href="https://unblockzone.github.io/apps/" class="nav-button">APPS</a>
+            <a href="https://unblockzone.github.io/games/" class="nav-button">GAMES</a>
+            <a href="https://unblockzone.github.io/proxies/" class="nav-button">PROXIES</a>
+            <a href="https://unblockzone.github.io/exploits/" class="nav-button">EXPLOITS</a>
+            <a href="https://unblockzone.github.io/settings/" class="nav-button">SETTINGS</a>
         </div>
+        <img src="https://cdn-icons-png.flaticon.com/512/61/61457.png" alt="Logo" class="logo" onclick="window.location.href='https://unblockzone.github.io/'">
     </header>
 
     <div class="subtitle-container">
@@ -166,8 +199,8 @@
         <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
     </div>
 
-    <!-- Particle container -->
-    <div class="particle-container" id="particleContainer"></div>
+    <!-- Snow container -->
+    <div class="snow-container" id="snowContainer"></div>
 
     <script>
         const searchBar = document.getElementById('customSearchBar');
@@ -179,44 +212,39 @@
             }
         });
 
-        // Particle generation and mouse follow effect
-        const particleContainer = document.getElementById('particleContainer');
-        const particles = [];
+        // Snow effect generator
+        const snowContainer = document.getElementById('snowContainer');
 
-        // Create 100 initial particles
-        for (let i = 0; i < 100; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particleContainer.appendChild(particle);
-            particles.push(particle);
-        }
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.style.animationDelay = Math.random() * 10 + 's';
+            snowContainer.appendChild(snowflake);
 
-        // Update particle positions to follow the mouse
-        let mouseX = 0;
-        let mouseY = 0;
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = event.clientX;
-            mouseY = event.clientY;
-        });
-
-        function updateParticles() {
-            particles.forEach(particle => {
-                const angle = Math.atan2(mouseY - particle.offsetTop, mouseX - particle.offsetLeft);
-                const distance = Math.min(Math.sqrt(Math.pow(mouseX - particle.offsetLeft, 2) + Math.pow(mouseY - particle.offsetTop, 2)), 200);
-
-                // Move particles towards the mouse
-                particle.style.left = `${particle.offsetLeft + Math.cos(angle) * distance * 0.1}px`;
-                particle.style.top = `${particle.offsetTop + Math.sin(angle) * distance * 0.1}px`;
-
-                // Zoom particles towards the mouse
-                particle.style.transform = `scale(${1 + distance / 200})`;
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
             });
-
-            requestAnimationFrame(updateParticles);
         }
 
-        updateParticles(); // Start the particle update loop
+        function createSnow() {
+            const snow = document.createElement('div');
+            snow.classList.add('snow');
+            snow.style.left = Math.random() * 100 + '%';
+            snow.style.animationDelay = Math.random() * 10 + 's';
+            snowContainer.appendChild(snow);
+
+            snow.addEventListener('animationend', () => {
+                snow.remove();
+            });
+        }
+
+        for (let i = 0; i < 50; i++) {
+            createSnowflake();
+            createSnow();
+        }
     </script>
 </body>
 </html>
