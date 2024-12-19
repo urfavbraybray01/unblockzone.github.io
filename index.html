@@ -103,38 +103,22 @@
             box-shadow: 0px 0px 20px 4px #008CFF;
         }
 
-        .snow-container {
+        /* Particle Styles */
+        .particle {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 5;
-        }
-
-        .snowflake, .snow {
-            position: absolute;
-            top: -10px;
-            opacity: 0.8;
-            animation: fall 10s linear infinite;
-        }
-
-        .snowflake {
-            font-size: 15px;
-            color: white;
-        }
-
-        .snow {
-            width: 5px;
-            height: 5px;
-            background-color: white;
+            width: 10px;
+            height: 10px;
+            background-color: blue;
             border-radius: 50%;
+            opacity: 0.8;
+            pointer-events: none;
+            transform: scale(0);
+            animation: particleZoom 2s linear infinite;
         }
 
-        @keyframes fall {
-            0% { transform: translateY(-10px); }
-            100% { transform: translateY(110vh); }
+        @keyframes particleZoom {
+            0% { transform: scale(0); }
+            100% { transform: scale(1.5); opacity: 0; }
         }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -158,8 +142,8 @@
         <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
     </div>
 
-    <!-- Snow container -->
-    <div class="snow-container" id="snowContainer"></div>
+    <!-- Particle container -->
+    <div class="particle-container" id="particleContainer"></div>
 
     <script>
         const searchBar = document.getElementById('customSearchBar');
@@ -171,39 +155,44 @@
             }
         });
 
-        // Snow effect generator
-        const snowContainer = document.getElementById('snowContainer');
+        // Particle generation and mouse follow effect
+        const particleContainer = document.getElementById('particleContainer');
+        const particles = [];
 
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + '%';
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            snowflake.style.animationDelay = Math.random() * 10 + 's';
-            snowContainer.appendChild(snowflake);
+        // Create 100 initial particles
+        for (let i = 0; i < 100; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            particleContainer.appendChild(particle);
+            particles.push(particle);
+        }
 
-            snowflake.addEventListener('animationend', () => {
-                snowflake.remove();
+        // Update particle positions to follow the mouse
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX;
+            mouseY = event.clientY;
+        });
+
+        function updateParticles() {
+            particles.forEach(particle => {
+                const angle = Math.atan2(mouseY - particle.offsetTop, mouseX - particle.offsetLeft);
+                const distance = Math.min(Math.sqrt(Math.pow(mouseX - particle.offsetLeft, 2) + Math.pow(mouseY - particle.offsetTop, 2)), 200);
+
+                // Move particles towards the mouse
+                particle.style.left = `${particle.offsetLeft + Math.cos(angle) * distance * 0.1}px`;
+                particle.style.top = `${particle.offsetTop + Math.sin(angle) * distance * 0.1}px`;
+
+                // Zoom particles towards the mouse
+                particle.style.transform = `scale(${1 + distance / 200})`;
             });
+
+            requestAnimationFrame(updateParticles);
         }
 
-        function createSnow() {
-            const snow = document.createElement('div');
-            snow.classList.add('snow');
-            snow.style.left = Math.random() * 100 + '%';
-            snow.style.animationDelay = Math.random() * 10 + 's';
-            snowContainer.appendChild(snow);
-
-            snow.addEventListener('animationend', () => {
-                snow.remove();
-            });
-        }
-
-        for (let i = 0; i < 50; i++) {
-            createSnowflake();
-            createSnow();
-        }
+        updateParticles(); // Start the particle update loop
     </script>
 </body>
 </html>
