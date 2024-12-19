@@ -31,11 +31,31 @@
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: space-between;
             padding: 10px 20px;
             position: sticky;
             top: 0;
             z-index: 10;
+        }
+
+        h1 {
+            font-size: 50px;
+            margin: 0;
+            display: inline-block;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        h1:hover {
+            transform: scale(1.1);
+        }
+
+        .blue {
+            color: blue;
+        }
+
+        .white {
+            color: white;
         }
 
         .nav-buttons {
@@ -44,16 +64,17 @@
         }
 
         .nav-button {
-            width: 40px;
-            height: 40px;
-            background-size: cover;
+            width: 60px;
+            height: 60px;
+            background-size: contain;
+            background-repeat: no-repeat;
             border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
+            display: block;
         }
 
         .nav-button:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px 4px #008CFF;
+            transform: scale(1.2);
         }
 
         .subtitle-container {
@@ -125,6 +146,9 @@
 </head>
 <body>
     <header>
+        <h1 onclick="window.location.href='https://unblockzone.github.io/'">
+            <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
+        </h1>
         <div class="nav-buttons">
             <a href="https://unblockzone.github.io/apps/" class="nav-button" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHUdxrBVI_eXPd3BfxpIhbxT82TZlieaNvag&s');"></a>
             <a href="https://unblockzone.github.io/games/" class="nav-button" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI72KLxHGfFRrh9qstfw_qnch8hWxCLHnCTg&s');"></a>
