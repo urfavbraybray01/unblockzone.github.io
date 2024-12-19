@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -173,53 +174,6 @@
             0% { transform: translateY(-10px); }
             100% { transform: translateY(110vh); }
         }
-
-        /* Tab Cloaker Styles */
-        .scroll-box {
-            width: 80%;
-            height: 70vh;
-            margin: 50px auto;
-            background-color: #333;
-            border-radius: 20px;
-            overflow-y: auto;
-            padding: 20px;
-        }
-
-        .scroll-box h2 {
-            font-size: 30px;
-            color: #008CFF;
-        }
-
-        .cloaker-section {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .cloaker-option {
-            background-color: #222;
-            border-radius: 10px;
-            box-shadow: 0 0 10px 2px #111;
-            padding: 10px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            width: 150px;
-            cursor: pointer;
-        }
-
-        .cloaker-option:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px 5px #008CFF;
-        }
-
-        .cloaker-option img {
-            width: 80px;
-            height: 80px;
-            border-radius: 10px;
-            margin-bottom: 10px;
-        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
@@ -229,56 +183,68 @@
             <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
         </h1>
         <div class="nav-buttons">
-            <a href="https://unblockzone.github.io/apps" class="nav-button">APPS</a>
-            <a href="https://unblockzone.github.io/games" class="nav-button">GAMES</a>
-            <a href="https://unblockzone.github.io/proxies" class="nav-button">PROXIES</a>
-            <a href="https://unblockzone.github.io/exploits" class="nav-button">EXPLOITS</a>
-            <a href="https://unblockzone.github.io/settings" class="nav-button">SETTINGS</a>
+            <a href="https://unblockzone.github.io/apps/" class="nav-button">APPS</a>
+            <a href="https://unblockzone.github.io/games/" class="nav-button">GAMES</a>
+            <a href="https://unblockzone.github.io/proxies/" class="nav-button">PROXIES</a>
+            <a href="https://unblockzone.github.io/exploits/" class="nav-button">EXPLOITS</a>
+            <a href="https://unblockzone.github.io/settings/" class="nav-button">SETTINGS</a>
         </div>
         <img src="https://cdn-icons-png.flaticon.com/512/61/61457.png" alt="Logo" class="logo" onclick="window.location.href='https://unblockzone.github.io/'">
     </header>
 
-    <div class="scroll-box">
-        <h2>Tab Cloaker</h2>
-        <div class="cloaker-section">
-            <!-- Canvas -->
-            <div class="cloaker-option" onclick="setTabCloak('Canvas', 'https://copyleaks.com/wp-content/uploads/2022/08/Canvas_Logo.webp')">
-                <img src="https://copyleaks.com/wp-content/uploads/2022/08/Canvas_Logo.webp" alt="Canvas">
-                <span>Canvas</span>
-            </div>
-            <!-- Google Drive -->
-            <div class="cloaker-option" onclick="setTabCloak('My Drive - Google Drive', 'https://icons.iconarchive.com/icons/marcus-roberto/google-play/512/Google-Drive-icon.png')">
-                <img src="https://icons.iconarchive.com/icons/marcus-roberto/google-play/512/Google-Drive-icon.png" alt="Google Drive">
-                <span>Google Drive</span>
-            </div>
-            <!-- YouTube -->
-            <div class="cloaker-option" onclick="setTabCloak('YouTube', 'https://cdn-icons-png.flaticon.com/512/1384/1384060.png')">
-                <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" alt="YouTube">
-                <span>YouTube</span>
-            </div>
-            <!-- Outlook -->
-            <div class="cloaker-option" onclick="setTabCloak('Outlook', 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg/1024px-Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg.png')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/df/Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg/1024px-Microsoft_Office_Outlook_%282018%E2%80%93present%29.svg.png" alt="Outlook">
-                <span>Outlook</span>
-            </div>
-            <!-- Discord -->
-            <div class="cloaker-option" onclick="setTabCloak('Discord', 'https://cdn-icons-png.flaticon.com/512/1216/1216802.png')">
-                <img src="https://cdn-icons-png.flaticon.com/512/1216/1216802.png" alt="Discord">
-                <span>Discord</span>
-            </div>
-            <!-- Facebook -->
-            <div class="cloaker-option" onclick="setTabCloak('Facebook', 'https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg')">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/5/51/Facebook_f_logo_%282019%29.svg" alt="Facebook">
-                <span>Facebook</span>
-            </div>
+    <div class="subtitle-container">
+        <div class="subtitle">
+            <span class="white">UNBLOCK</span>
+            <span class="blue">ZONE</span>
         </div>
+        <input type="text" id="customSearchBar" class="custom-search-bar" placeholder="Search...">
     </div>
 
+    <!-- Snow container -->
+    <div class="snow-container" id="snowContainer"></div>
+
     <script>
-        function setTabCloak(tabName, iconUrl) {
-            document.title = tabName;
-            const link = document.querySelector("link[rel~='icon']");
-            link.href = iconUrl;
+        const searchBar = document.getElementById('customSearchBar');
+        searchBar.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                const baseUrl = 'https://wxstbound.global.ssl.fastly.net/embed.html#https://www.google.com/search?q=';
+                const query = encodeURIComponent(searchBar.value.trim());
+                window.location.href = `${baseUrl}${query}`;
+            }
+        });
+
+        // Snow effect generator
+        const snowContainer = document.getElementById('snowContainer');
+
+        function createSnowflake() {
+            const snowflake = document.createElement('div');
+            snowflake.classList.add('snowflake');
+            snowflake.textContent = '❄';
+            snowflake.style.left = Math.random() * 100 + '%';
+            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
+            snowflake.style.animationDelay = Math.random() * 10 + 's';
+            snowContainer.appendChild(snowflake);
+
+            snowflake.addEventListener('animationend', () => {
+                snowflake.remove();
+            });
+        }
+
+        function createSnow() {
+            const snow = document.createElement('div');
+            snow.classList.add('snow');
+            snow.style.left = Math.random() * 100 + '%';
+            snow.style.animationDelay = Math.random() * 10 + 's';
+            snowContainer.appendChild(snow);
+
+            snow.addEventListener('animationend', () => {
+                snow.remove();
+            });
+        }
+
+        for (let i = 0; i < 50; i++) {
+            createSnowflake();
+            createSnow();
         }
     </script>
 </body>
