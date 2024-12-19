@@ -31,31 +31,11 @@
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             padding: 10px 20px;
             position: sticky;
             top: 0;
             z-index: 10;
-        }
-
-        h1 {
-            font-size: 50px;
-            margin: 0;
-            display: inline-block;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        h1:hover {
-            transform: scale(1.1);
-        }
-
-        .blue {
-            color: blue;
-        }
-
-        .white {
-            color: white;
         }
 
         .nav-buttons {
@@ -64,33 +44,16 @@
         }
 
         .nav-button {
-            background-color: black;
-            color: white;
-            padding: 15px 25px;
-            border-radius: 20px;
-            font-size: 18px;
-            text-decoration: none;
-            text-align: center;
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            width: 40px;
+            height: 40px;
+            background-size: cover;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .nav-button:hover {
             transform: scale(1.1);
-            background-color: black;
             box-shadow: 0px 0px 15px 4px #008CFF;
-            color: #008CFF;
-        }
-
-        .logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .logo:hover {
-            transform: scale(1.2);
         }
 
         .subtitle-container {
@@ -178,17 +141,13 @@
 </head>
 <body>
     <header>
-        <h1 onclick="window.location.href='https://unblockzone.github.io/'">
-            <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
-        </h1>
         <div class="nav-buttons">
-            <a href="https://unblockzone.github.io/apps/" class="nav-button">APPS</a>
-            <a href="https://unblockzone.github.io/games/" class="nav-button">GAMES</a>
-            <a href="https://unblockzone.github.io/proxies/" class="nav-button">PROXIES</a>
-            <a href="https://unblockzone.github.io/exploits/" class="nav-button">EXPLOITS</a>
-            <a href="https://unblockzone.github.io/settings/" class="nav-button">SETTINGS</a>
+            <a href="https://unblockzone.github.io/apps/" class="nav-button" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHUdxrBVI_eXPd3BfxpIhbxT82TZlieaNvag&s');"></a>
+            <a href="https://unblockzone.github.io/games/" class="nav-button" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRI72KLxHGfFRrh9qstfw_qnch8hWxCLHnCTg&s');"></a>
+            <a href="https://unblockzone.github.io/proxies/" class="nav-button" style="background-image: url('https://www.pngkey.com/png/full/45-455131_white-internet-icon-png-clipart-library-library-internet.png');"></a>
+            <a href="https://unblockzone.github.io/exploits/" class="nav-button" style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYiFP7Rb45dTgshWwcAzFAdNcFfka988TOVg&s');"></a>
+            <a href="https://unblockzone.github.io/settings/" class="nav-button" style="background-image: url('https://img.icons8.com/m_rounded/512/FFFFFF/settings.png');"></a>
         </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/61/61457.png" alt="Logo" class="logo" onclick="window.location.href='https://unblockzone.github.io/'">
     </header>
 
     <div class="subtitle-container">
