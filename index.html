@@ -45,7 +45,7 @@
 
         #loadingText {
             font-size: 40px;
-            animation: wave 1.5s infinite;
+            animation: wave 2s infinite ease-in-out, fadeOut 2s forwards 2s;
         }
 
         @keyframes fadeOut {
@@ -57,7 +57,7 @@
 
         @keyframes wave {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-15px); }
         }
 
         header {
